@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/ion.rangeSlider.css">
+    <link rel="stylesheet" href="assets/ion.rangeSlider.min.css">
 
 
     
@@ -141,25 +143,17 @@
     
     <div class="widget price-range w-100">
       <h4 class="widget-header">PRICE RANGE</h4>
+      <input type="text" class="js-range-slider" name="my_range" value=""
+      data-type="double"
+      data-min="0"
+      data-max="10000000"
+      data-from="500000"
+      data-to="5000000"
+      data-grid="true"
       
-        <div class="col-lg-6">
-          <div class="range-slider-wrapper ">
-              <!-- Range slider container -->
-              <div id="input-slider-range" data-range-value-min="100" data-range-value-max="500"></div>
-              <!-- Range slider values -->
-              <div class="row">
-                  <div class="col-6">
-                      <span class="range-slider-value value-low" data-range-value-low="200" id="input-slider-range-value-low"></span>
-                  </div>
-                  <div class="col-6 text-right">
-                      <span class="range-slider-value value-high" data-range-value-high="400" id="input-slider-range-value-high"></span>
-                  </div>
-            
-          </div>
-      </div>
-            <div class="d-flex justify-content-between mt-2">
-              <output for="range" class="output">w-er0543</output>
-            </div>
+      />
+        <div class="col-lg-8" style="max-width: 100%;">
+         
       </div>
     </div>
     
@@ -240,33 +234,34 @@
               <div class="row mt-30">
                 <div class="col-sm-12 col-lg-4 col-md-6">
                   <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: auto;" src="images/lekki8.png" alt="Card image cap">
-          
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-            <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-            <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-           
-            <p class="card-text" style="font-size: 13px; font-weight: bold;
-            line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-              Bungalow <br>
-              11 building Estate Housing, Ibeju</p></a>
-            <div class="product-ratings">
-              <ul class="list-inline">
-                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                <li class="list-inline-item "><i class="fa fa-star"></i></li>
-                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-        </div>
-      </div>
-    </div>
+                  <div class="product-item bg-light">
+                    <div class="card">
+                      <div class="thumb-content">
+                        <a href="detailspage.html">
+                          <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki8.png" alt="Card image cap">
+                        </a>
+                      </div>
+                      <div class="card-body " style="padding-left: 10px; color: black; ">
+                        <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
+                        <p class="card-title" style="color: #044CBC;">N 9.2 Million</p>
+                       
+                        <p class="card-text" style="font-size: 13px; font-weight: bold;
+                        line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
+                          Bungalow <br>
+                          11 building Estate Housing, Ibeju</p></a>
+                        <div class="product-ratings">
+                          <ul class="list-inline">
+                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                            <li class="list-inline-item "><i class="fa fa-star"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                          </ul>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                  
 
                 </div>
                 <div class="col-sm-12 col-lg-4 col-md-6">
@@ -568,7 +563,7 @@
           
             
               
-         <div class="row lg-12" style="float: right;  position: relative; left:98.5%; padding-bottom: 50px;">
+         <div class="row lg-12 ellipse">
 			<img src="images/ellipse2.svg">
 		</div>
 		  </div> 
@@ -652,8 +647,22 @@
   <script src="js/scrollax.min.js"></script>
 
   <script src="js/main.js"></script>
+  <script src="assets/ion.rangeSlider.js"></script>
+  <script src="assets/ion.rangeSlider.min.js"></script>
+
+  
     
   <script>
+
+
+$(".js-range-slider").ionRangeSlider({
+  skin: "square",
+  prefix: "₦",
+  prettify_enabled: true,
+  step: 500000,
+        prettify_separator: ","
+});
+
     (function ($) {
   'use strict';
 
