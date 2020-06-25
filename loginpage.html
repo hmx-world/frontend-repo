@@ -201,6 +201,7 @@
         }).catch(function(error) {
           console.log(error);
         }).then(response => {
+		window.location="https://hmx-world.github.io/frontend-repo/firmdashboard.html";
         localStorage.setItem(
           "providerName",
           JSON.stringify(response.data.name)
