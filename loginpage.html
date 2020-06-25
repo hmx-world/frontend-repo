@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    
+    <div id="app">
 	  <nav  class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container-fluid px-md-4	">
 	      <a class="navbar-brand" href="index.html">HMX.World </a>
@@ -60,17 +60,18 @@
             <div class="col-md-6 order-md-last d-flex">
               <form action="#" class="bg-white p-5 contact-form">
                
+                
                 <div class="form-group">
                     <h3 style="color: #044CBC; font-size: 34px; font-weight: bold !important;">Welcome - Login  </h3>
                   </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Login id" required>
+                  <input v-model="loginId" type="text" class="form-control" placeholder="Login id" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Password" required> 
+                  <input v-model="password" type="password" class="form-control" placeholder="Password" required> 
                 </div>
                 <div class="form-group">
-                  <input type="submit" value="SIGN IN" class="btn btn-primary py-3 px-5" style=" font-weight: bold;width: 100%;">
+                  <input @click.prevent="submitToInternet" type="submit" value="SIGN IN" class="btn btn-primary py-3 px-5" style=" font-weight: bold;width: 100%;">
                 </div>
                 <div class="form-group">
                 <p style="color: black;">Don't have an account ? <a href="signuppage.html" style="color:#044CBC;">Create an account</a></p>    
@@ -168,6 +169,76 @@
   <script src="js/scrollax.min.js"></script>
 
   <script src="js/main.js"></script>
-    
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  
+  <script>
+     function Redirect() {
+               window.location="file:///Users/admin/Downloads/hmx/firmdashboard.html";
+            }
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+      loginId: '',
+      password: ''
+    },
+    methods: {
+      submitToInternet() {
+        alert(this.loginId);
+        axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/'; 
+        axios.post('firm/login',
+         {
+          loginId: this.loginId,
+           password: this.password
+  
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin" : "*"
+          }
+        }).catch(function(error) {
+          console.log(error);
+        }).then(response => {
+        localStorage.setItem(
+          "providerName",
+          JSON.stringify(response.data.name)
+        );
+        localStorage.setItem(
+          "email",
+          JSON.stringify(response.data.email)
+        );
+        localStorage.setItem(
+          "FirmId",
+          JSON.stringify(response.data.id)
+        );
+        localStorage.setItem(
+          "token",
+          JSON.stringify(response.data.token)
+        );
+        console.log(response);
+        })    
+    }
+  }
+})
+  
+  
+      // const axios = require('axios').default;
+      // axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+      // axios.post('firm/register', {
+      // name: 'Karat firm',
+      // email: 'ishi@gmail.com',
+      // imageFile1: '',
+      // phoneNumber: 090989898,
+      // location: 'somewhere, in us',
+      // Description: 'lorem ipsum story',
+      // Password: 'Ishi1234#',
+      // Plan: 'Premium'
+  
+  //  })
+  
+  </script>
+    </div>
   </body>
 </html>

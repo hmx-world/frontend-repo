@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    
+    <div id="app">
 	  <nav  class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container-fluid px-md-4	">
 	      <a class="navbar-brand" href="index.html">HMX.World </a>
@@ -67,40 +67,49 @@
                     <p>Give us some of your firm's information to get you all setup</p>
                   </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Firm's Name" required>
+                  <i class="fa fa-user input-prefix"></i>
+                  <input v-model="name" type="text" class="form-control required" placeholder="Firm's Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Firm's Email" required>
+                    <input v-model="email" type="text" class="form-control" placeholder="Firm's Email" required>
                   </div>
                   
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Password" required>
+                  <input v-model="Password" type="password" class="form-control" placeholder="Password" required>
                 </div>
+                
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Location">
+                    <input v-model="location" type="text" class="form-control" placeholder="Location">
                   </div>
                   <div class="form-group">
-                    <input type="tel" id="phone" name="phone"
+                    <input v-model="phoneNumber" type="tel" id="phone" name="phone"
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{5}" class="form-control" placeholder="Firm's Telephone"
                     required>          
                         </div>
                         <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Tell us about your company."></textarea>
+                        <select class="form-control" v-model="Plan">
+
+                          <option  value="Business">Business</option>
+                          <option value="Pro">Pro</option>
+                          <option value="Premium">Premium</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea v-model="Description" name="" id="" cols="30" rows="7" class="form-control" placeholder="Tell us about your company."></textarea>
                           </div>
                           <div class="form-group">
-                           <label for="file-upload" class="custom-file-upload">
-                            <div class="icon" style="font-size: 14px;"><span class="icon-file_upload" style="color: blue; "></span> Firm's Logo/image         <strong>Choose file</strong></div> 
+                           <label for="file-upload" class="form-control">
+                            <div class="icon" style="font-size: 14px;"> Firm's Logo/image <strong style="font-size: 13px;font-weight: 500; color: white; float: right;
+                             background-color: #044CBC; margin-right: 50px;  padding: 6px 6px 6px 6px ;">Choose file</strong> </div> 
                         </label>
-                        <input id="file-upload" class="form-control" type="file"/>  
-                    
+                        <input ref="file_upload" v-model="imageFile1" id="file-upload" class="form-control" type="file"/>  
                     </div>
-
-                    <p style="text-align: center;">By signing up, you agree to HMX.world’s <a href="#" style="color: #044CBC;">Terms of <br> Conditions and Privacy Policy </a></p>
+                    <p style="text-align: center; font-size: 13px;">By signing up, you agree to HMX.world’s <a href="#" style="color: #044CBC;">Terms of <br> Conditions and Privacy Policy </a></p>
                 <div class="form-group">
-                  <input type="submit" value="SIGN IN" class="btn btn-primary py-3 px-5" style=" font-weight: bold;width: 100%;">
+                  <input @click.prevent="submitToInternet" type="submit" value="SIGN IN" class="btn py-3 px-5" style=" font-weight: bold;width: 100%;">
                 </div>
                 <div class="form-group">
-                <p style="color: black;">Already have an account? <a href="loginpage.html" style="color:#044CBC;">Log in</a></p>    
+                <p style="color: black;text-align: center; font-weight: bold;">Already have an account? <a href="loginpage.html" style="color:#044CBC;">Log in</a></p>    
                 </div>
               </form>
             
@@ -195,6 +204,86 @@
   <script src="js/scrollax.min.js"></script>
 
   <script src="js/main.js"></script>
+  <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  let userFormData = new FormData();
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    name: '',
+    email: '',
+    imageFile1: '',
+    phoneNumber: '',
+    location: '',
+    Description: '',
+    Password: '',
+    Plan: 'Business'
+  },
+  methods: {
+    createFormData() {
+      userFormData.append("name", this.name);
+      userFormData.append("email", this.email);
+      userFormData.append("imageFile1", this.$refs.file_upload.files[0]);
+      userFormData.append("phoneNumber", this.phoneNumber);
+      userFormData.append("location", this.location);
+      userFormData.append("Description", this.Description);
+      userFormData.append("Password", this.Password);
+      userFormData.append("Plan", this.Plan);
+
+      return userFormData;
+    },
+    submitToInternet() {
+      alert("Account creation in process for "+this.name +"\nIf no redirection some fields are required");
+      axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/'; 
+      axios.post('firm/register',this.createFormData(),
+      {
+        headers: {
+          "Access-Control-Allow-Origin" : "*"
+        }
+      }).catch(function(error) {
+        console.log(error);
+      }).then(response => {
+        localStorage.setItem(
+          "loginId",
+          JSON.stringify(response.data[0].loginId)
+        );
+        alert('Login with this id (copy)'+localStorage.getItem("loginId")+' and your password');
+        localStorage.setItem(
+          "UserId",
+          JSON.stringify(response.data[0].id)
+        ).then(response =>  {
+          window.location="file:///Users/admin/Downloads/hmx/loginpage";
+        })
+            document.write("You will be redirected to main dashboard page in 2 secs.");
+            setTimeout('Redirect()', 2000);
+    console.log(response);
+  })    
+    }
+  }
+})
+
+
+    // const axios = require('axios').default;
+    // axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+    // axios.post('firm/register', {
+    // name: 'Karat firm',
+    // email: 'ishi@gmail.com',
+    // imageFile1: '',
+    // phoneNumber: 090989898,
+    // location: 'somewhere, in us',
+    // Description: 'lorem ipsum story',
+    // Password: 'Ishi1234#',
+    // Plan: 'Premium'
+
+//  })
+
+</script>
     
+</div>
   </body>
 </html>

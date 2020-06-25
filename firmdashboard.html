@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <link href="assets/css/demo.css" rel="stylesheet" />
@@ -61,486 +63,299 @@
     .go:hover {
         color: rgba(255, 255, 255, .4);
     }
+
 </style>
 
 
 <body style="background-color: #EBF2FF;">
-    <div class="wrapper">
-        <div class="sidebar" data-image="assets/img/sidebar-5.jpg">
+    <div id="app">
+        <div class="wrapper">
+            <div class="sidebar">
 
-            <div class="sidebar-wrapper" style="background-color: #044CBC;">
-                <div class="logo">
-                    <a href="index.html" class="simple-text">
-                        <strong>HMX.World</strong>
-                    </a>
+                <div class="sidebar-wrapper" style="background-color: #044CBC;">
+                    <div class="logo">
+                        <a href="index.html" class="simple-text">
+                            <strong>HMX.World</strong>
+                        </a>
+                    </div>
+                    <ul class="nav">
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">
+                                <p style="font-size: 19px;">Property Type</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="nc-icon nc-app"></i>
+                                <p>Residential</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">
+                                <i class="nc-icon nc-app"></i>
+                                <p style="font-size:11px;">Commercial </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="nc-icon nc-app"></i>
+                                <p>Landed</p>
+                            </a>
+                        </li>
+                        
+                        <br> <br> <br> <br>
+
+
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">
+                                <p style="font-size: 19px;">Account</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="subscription.html">
+                                <i class="nc-icon nc-tag-content"></i>
+                                <p style="font-size:11px;">Subscription </p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="dashboardprofile.html">
+                                <i class="nc-icon nc-circle-09"></i>
+                                <p style="font-size:11px;">Profile </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item  active-pro">
+                            <a class="nav-link " href="planpage.html">
+                                <i class="nc-icon nc-spaceship"></i>
+
+                                <p>Upgrade to PRO</p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link " href="#">
-                            <p style="font-size: 19px;">Property Type</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <i class="nc-icon nc-app"></i>
-                            <p>Residential</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">
-                            <i class="nc-icon nc-app"></i>
-                            <p style="font-size:11px;">Commercial </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="nc-icon nc-app"></i>
-                            <p>Landed</p>
-                        </a>
-                    </li>
-                    <br> <br> <br> <br>
-
-
-                    <li class="nav-item active">
-                        <a class="nav-link " href="#">
-                            <p style="font-size: 19px;">Account</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="subscription.html">
-                            <i class="nc-icon nc-tag-content"></i>
-                            <p style="font-size:11px;">Subscription </p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link " href="dashboardprofile.html">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p style="font-size:11px;">Profile </p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item  active-pro">
-                        <a class="nav-link " href="planpage.html">
-                            <i class="nc-icon nc-spaceship"></i>
-
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
-                </ul>
             </div>
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+            <div class="main-panel">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#"> Dashboard </a>
+                        <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                            <ul class="nav navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" data-toggle="dropdown">
+                                        <span class="d-lg-none">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown nav-item">
+                                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                        <i class="nc-icon nc-planet"></i>
+                                        <span class="notification">3</span>
+                                        <span class="d-lg-none">Notification</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Notification 1</a>
+                                        <a class="dropdown-item" href="#">Notification 2</a>
+                                        <a class="dropdown-item" href="#">Notification 3</a>
+                                    </ul>
+                                </li>
+                             
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="no-icon">Account</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="no-icon">Log out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#"> Dashboard </a>
-                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                        aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-toggle="dropdown">
-                                    <span class="d-lg-none">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="dropdown nav-item">
-                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <i class="nc-icon nc-planet"></i>
-                                    <span class="notification">3</span>
-                                    <span class="d-lg-none">Notification</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Notification 1</a>
-                                    <a class="dropdown-item" href="#">Notification 2</a>
-                                    <a class="dropdown-item" href="#">Notification 3</a>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nc-icon nc-zoom-split"></i>
-                                    <span class="d-lg-block">&nbsp;Search</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span class="no-icon">Account</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span class="no-icon">Log out</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- End Navbar -->
-            <div class="container-fluid">
-
-                <div class="row">
-                    <div class="col-lg-8">
-                        <span style="font-size: 48px; font-weight: bold;margin-left: 10px;">Overview</span>
-                    </div>
-                    <div class="col-lg-4">
-                        <search>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <br>
+        <span style="font-size: 24px; font-weight: bold;margin-left: 10px; margin-top: 10%;" >Overview</span>
+                        </div>
+                        <div class="col-lg-5" style="margin:0px 0px 10px 0px; ">
+                            
                             <form class="search" id="search">
-                                <input class='searchbar transparent' id='searchbar' type='text' autocomplete="on"
-                                    required placeholder='Search by name, location' />
+                                <input class='searchbar transparent' onkeyup="myFunction()" id="searchInput" placeholder="Search for properties..." title="Type in a name"
+                                 type='text' autocomplete="on"
+                                    />
                                 <span> <i class="nc-icon nc-zoom-split"></i></span>
-                                <input class='button go' id='go' type="submit" value='Search' />
                             </form>
-                        </search>
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="container-fluid">
-                <div class="row pl-3 ">
-                    <div class="col-lg-3">
-                        <div class="card text-center" style=" background-color: #FFE066;">
-                            <span style="font-size: 60px;">20</span>
-                            <br> Residential
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card text-center" style=" background-color: #A1C2FA;">
-                            <span style="font-size: 60px;">19</span>
-                            <br> Commercial
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card text-center" style=" background-color: #ADADEA;">
-                            <span style="font-size: 60px;">45</span>
-                            <br> Landed
-                            <hr>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                    </div>
-                    <div class="col-md-4" style="margin: auto;">
-                        <a href="add_edit-f.html"><button type="submit"  class=" btn btn-fill btn-primary" style="cursor: pointer;"><strong>+ ADD PROPERTY</strong> </button> </a>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
                 <div class="container-fluid">
-                    <div class="row" style="width: 100%;">
-                        <div class="col-lg-12" style="background-color: white; width: 100%;">
-                            <div class="card card-plain ">
-                                <div class="card-header ">
-
-                                    <p class="card-category">Purpose:<span>
-                                            <select name="" id="" style="border-radius: 10px;">
-                                                <option value="">Rent</option>
-                                                <option value="">For sale</option>
-                                            </select>
-                                        </span>
-                                    </p>
-                                </div>
-                                <div class="card-body table-full-width table-responsive">
-                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th style="color: black;">Property Name</th>
-                                                <th style="color: black;">Price (₦)</th>
-                                                <th style="color: black;">Location</th>
-                                                <th style="color: black;">Active</th>
-                                                <th style="display: none;">Salary</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>A 3/4 Bedroom Flat <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Bungalow , 5
-                                                        Bedrooms</span>
-                                                </td>
-                                                <td>1.2 million</td>
-
-                                                <td>Lagos <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">Ibeju Lekki, Victoria
-                                                        Island LGA</span></td>
-                                                <td><span
-                                                        style="background-color: #044CBC;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">YES</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-on"
-                                                            aria-hidden="true"></i>Activate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Another property a Flat <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Flat, 10 bedrooms</span>
-                                                </td>
-                                                <td>2.3 million</td>
-                                                <td>Abuja <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">House 22, Alimosho area
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-off"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>A new duplex in town <br> <span class="details"
-                                                        style="font-size: 11px;color: #4E4E56;">Bungalow, 5
-                                                        bedrooms</span>
-                                                </td>
-                                                <td>4.0 million</td>
-                                                <td>Bauchi <br> <span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">House 22, Konga Area
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #044CBC;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">YES</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-off"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>A newer duplex in town <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Duplex, 16 bedrooms</span>
-                                                </td>
-                                                <td>3.5 million</td>
-                                                <td>Abuja <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">11 Area, No stree, Ojo 
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-on"
-                                                            aria-hidden="true"></i>Activate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Another property a Flat <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Flat, 10 bedrooms</span>
-                                                </td>
-                                                <td>2.3 million</td>
-                                                <td>Abuja <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">House 22, Alimosho area
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-off"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Another newer duplex in town <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Duplex, 20 bedrooms</span>
-                                                </td>
-                                                <td>7.5 million</td>
-                                                <td>Lagos <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">Ibeju Lekki, Victoria Island LGA
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-on"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>A new duplex in town <br> <span class="details"
-                                                        style="font-size: 11px;color: #4E4E56;">Bungalow, 5
-                                                        bedrooms</span>
-                                                </td>
-                                                <td>6.0 million</td>
-                                                <td>Bauchi <br> <span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">House 22, Konga Area
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #044CBC;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">YES</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-off"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Another newer duplex in town <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Duplex, 20 bedrooms</span>
-                                                </td>
-                                                <td>7.5 million</td>
-                                                <td>Lagos <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">Ibeju Lekki, Victoria Island LGA
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-on"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>A newer duplex in town <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Duplex, 16 bedrooms</span>
-                                                </td>
-                                                <td>3.5 million</td>
-                                                <td>Abuja <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">11 Area, No stree, Ojo 
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-on"
-                                                            aria-hidden="true"></i>Activate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Another newer duplex in town <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Duplex, 20 bedrooms</span>
-                                                </td>
-                                                <td>7.5 million</td>
-                                                <td>Lagos <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">Ibeju Lekki, Victoria Island LGA
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-on"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr> <tr>
-                                                <td>Another newer duplex in town <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Duplex, 20 bedrooms</span>
-                                                </td>
-                                                <td>7.5 million</td>
-                                                <td>Lagos <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">Ibeju Lekki, Victoria Island LGA
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-on"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr><tr>
-                                                <td>Another newer duplex in town <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Duplex, 20 bedrooms</span>
-                                                </td>
-                                                <td>7.5 million</td>
-                                                <td>Lagos <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">Ibeju Lekki, Victoria Island LGA
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-on"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Another property a Flat <br> <span
-                                                        style="font-size: 11px;color: #4E4E56;">Flat, 10 bedrooms</span>
-                                                </td>
-                                                <td> (k) 800000</td>
-                                                <td>Abuja <br><span class="address"
-                                                        style="font-size: 11px;color: #4E4E56;">House 22, Alimosho area
-                                                    </span></td>
-                                                <td><span
-                                                        style="background-color: #F50F0F;color: white;border-radius: 50px; padding: 10px 20px 10px 20px;font-weight: 700;">NO</span>
-                                                </td>
-                                                <td>
-                                                    <span> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
-                                                    <br> <br>
-                                                    <span> <i class="fa fa-toggle-off"
-                                                            aria-hidden="true"></i>Deactivate</span>
-
-                                                </td>
-                                            </tr>
-
-
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Property Name</th>
-                                                <th>Price (₦)</th>
-                                                <th>Location</th>
-                                                <th>Active</th>
-                                                <th style="display: none;">Salary</th>
-
-
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
+                    <div class="row pl-3 ">
+                        <div class="col-lg-3">
+                            <div class="card text-center" style=" background-color: #FFE066;">
+                                <span style="font-size: 36px;font-weight: bold;">{{rentalCount}}</span>
+                                <br> <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">Rental</p>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card text-center" style=" background-color: #A1C2FA;">
+                                <span style="font-size: 36px;font-weight: bold;">{{commercialCount}}</span>
+                                <br> <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">Commercial</p>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card text-center" style=" background-color: #ADADEA;">
+                                <span style="font-size: 36px;font-weight: bold;">{{landCount}}</span>
+                                <br> <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">Landed</p>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card text-center" style=" background-color: #ee405db9;">
+                                <span style="font-size: 36px;font-weight: bold;">{{saleCount}}</span>
+                                <br> <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">For Sale</p>
+                                <hr>
                             </div>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-8">
+                        </div>
+                        <div class="col-md-4" style="margin:0px 0px 10px 0px; ">
+                            
+                            <a href="add_edit-f.html"><button type="submit" class=" btn btn-fill btn-primary"
+                                style="cursor: pointer;"><strong>+ ADD PROPERTY</strong> </button> </a>
+                            
+                        </div>
+                    </div>
+                    
                 </div>
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row" style="width: 100%;">
+                            <div class="col-lg-12" style="background-color: white; width: 100%;">
+                                <div class="card card-plain ">
+                                    <div class="card-header mb-4 row ">
+                                        <p class="card-category col-12 col-sm-4 pt-2"><strong
+                                                style="font-size: 18px; color: black;">Purpose:</strong> </p>
+                                        <select v-model="selectedType" @change="propertyType"
+                                            class="form-control col-12 col-sm-7" name="" id=""
+                                            style="border-radius: 10px;">
+                                            <option value="all" selected>All</option>
+                                            <option value="rent">Rent</option>
+                                            <option value="onsale">For sale</option>
+                                            <option value="commercial">Commercial</option>
+                                            <option value="landproperty">Landed Property </option>
+                                        </select>
+                                    </div>
+                                    <div class="card-body table-full-width table-responsive">
+                                        <table id="example" class="table "
+                                            style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th style="color: black; text-transform: none; font-size: 16px; font-weight: bold;">
+                                                        Property
+                                                        Name</th>
+                                                    <th style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">Price
+                                                        </th>
+                                                    <th style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Location</th>
+                                                    <th style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">Active
+                                                    </th>
+                                                    <th style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Emergency</th>
+                                                    <th style="display: none; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Salary</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr :key="property.id" v-for="property in selectedProperty">
+                                                    <td class="text-capitalize">{{property.name}} <br><p style="font-weight: 300;color:#4E4E56; font-size: 10px;">{{property.buildingType}} {{property.numberOfBedrooms}} </p></td>
+                                                    <td>₦{{property.price.toLocaleString()}} </td>
+                                                    <td><strong>{{property.city}}</strong> <p style="font-weight: 300;color:#4E4E56; font-size: 10px;">{{property.state}}, {{property.town}}</p></td>
+                                                    <td><span class="propactive"
+                                                            v-bind:class="{ 'propactive': property.isActive ,'propdeactive': !property.isActive }">
+                                                            <span v-if="property.isActive">YES</span>
+                                                            <span v-else>NO</span>
+                                                        </span>
+                                                    </td>
+                                                    <td> 
+                                                         <div class="custom-control custom-switch align-self-center mx-sm-2" >
+                                                            <!-- @click="submitToEmergency" -->
+                                                          <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+                                                            <label class="custom-control-label" for="switch1"></label>
+                                                          </div>
+                                                        </td>
+                                                    <td>
+                                                        <span> <a v-if="selectedType=='rent'" :class="{'d-none' : selectedType=='all'}"
+                                                             :href="'edit_rental.html?q='
+                                                            +property.id" class="nav-link"><i class="fa fa-edit"
+                                                                    aria-hidden="true"></i>Edit</span> </a>
 
+                                                                    <a v-else-if="selectedType=='onsale'" :class="{'d-none' : selectedType=='all'}"
+                                                             :href="'edit_sale.html?q='
+                                                            +property.id" class="nav-link"><i class="fa fa-edit"
+                                                                    aria-hidden="true"></i>Edit</span> </a>
+
+                                                                    <a v-else-if="selectedType=='commercial'"  :class="{'d-none' : selectedType=='all'}"
+                                                             :href="'edit_commercial.html?q='
+                                                            +property.id" class="nav-link"><i class="fa fa-edit"
+                                                                    aria-hidden="true"></i>Edit</span> </a>
+
+                                                                    <a v-else-if="selectedType=='landproperty'" :class="{'d-none' : selectedType=='all'}"
+                                                             :href="'edit_landed.html?q='
+                                                            +property.id" class="nav-link"><i class="fa fa-edit"
+                                                                    aria-hidden="true"></i>Edit</span> </a>
+
+                                                                    <a v-else="selectedType=='all'" :class="{'d-none' : selectedType=='all'}"
+                                                             :href="'edit_landed.html?q='
+                                                            +property.id" class="nav-link"><i class="fa fa-edit"
+                                                                    aria-hidden="true"></i>Edit</span> </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Property Name</th>
+                                                    <th>Price</th>
+                                                    <th>Location</th>
+                                                    <th>Active</th>
+                                                    <th>Emergency</th>
+                                                    <th style="display: none;">Salary</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-        </div>
 
-    </div>
+        </div>
     </div>
     <!--   -->
-
+    </div>
 
 </body>
 <!--   Core JS Files   -->
@@ -550,10 +365,7 @@
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 <script src="assets/js/plugins/bootstrap-switch.js"></script>
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!--  Chartist Plugin  -->
 <script src="assets/js/plugins/chartist.min.js"></script>
-<!--  Notifications Plugin    -->
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
@@ -562,15 +374,195 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
 </script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 <script type="text/javascript">
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("example");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
     $(document).ready(function () {
         // Javascript method's body can be found in assets/js/demos.js
         demo.initDashboardPageCharts();
 
-        $('#example').DataTable();
-        demo.showNotification();
 
     });
+</script>
+
+<script>
+     let userFormData = new FormData();
+
+    getFirmId = localStorage.getItem("FirmId")
+    getPropId = localStorage.getItem("id")
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            emergencyId: '',
+            emergencyType:'',
+            allProperties: [],
+            rentalProperties: '',
+            saleProperties: '',
+            commercialProperties: '',
+            landProperties: '',
+            selectedType: 'all',
+            selectedProperty: []
+        },
+        methods: {
+            createFormData() {
+        userFormData.append("PropertyId", localStorage.getItem("emergencyId"));
+        userFormData.append("PropertyType", this.selectedType);
+        
+        return userFormData;
+      },
+      submitToEmergency(){
+        alert('Property has been added to Emergency properties.');
+          axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+          axios.post('firm/emergencyProperty', this.createFormData(),
+                    {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                            "Access-Control-Allow-Origin": "*"
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    }).then(response => {
+                        console.log(response);
+                        // window.location="file:///Users/admin/Downloads/hmx/firmdashboard.html";
+                    });
+           
+      },
+            propertyType() {
+               
+                switch (this.selectedType) {
+                    case 'rent':
+                        this.selectedProperty = this.rentalProperties;
+                        break;
+                    case 'onsale':
+                        this.selectedProperty = this.saleProperties;
+
+                        break;
+                    case 'commercial':
+                        this.selectedProperty = this.commercialProperties;
+
+                        break;
+                    case 'landproperty':
+                        this.selectedProperty = this.landProperties;
+                        break;
+                    case 'all':
+                        this.selectedProperty = this.allProperties;
+                        
+                        break;
+                    default :
+                    this.selectedProperty = this.allProperties;
+                        break;
+
+                }
+
+            },
+            fetchProperties() {
+                axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+                axios.get('/firm/landproperty/' + getFirmId + '/firm', {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }).then(response => {
+                    this.landProperties = response.data;
+                    this.allProperties = this.allProperties.concat(this.landProperties);
+                    this.propertyType();
+                });
+                axios.get('/firm/rental/' + getFirmId + '/firm', {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }).then(response => {
+                    this.rentalProperties = response.data;
+                    this.allProperties = this.allProperties.concat(this.rentalProperties);
+                    this.propertyType();
+
+                   
+                });
+                axios.get('/firm/onsale/' + getFirmId + '/firm', {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }).then(response => {
+                    this.saleProperties = response.data;
+                    this.allProperties = this.allProperties.concat(this.saleProperties);
+                    this.propertyType();
+
+                  
+                });
+                axios.get('/firm/commercial/' + getFirmId + '/firm', {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }).then(response => {
+                    this.commercialProperties = response.data;
+                    this.allProperties = this.allProperties.concat(this.commercialProperties);
+                    this.propertyType();
+
+                });
+            },
+
+            // editProperties() {
+
+            //     axios.put('/firm/landproperty/' + getPropId,
+            //         {
+            //             headers: {
+            //                 "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+            //                 "Access-Control-Allow-Origin": "*"
+            //             }
+            //         }).then(response => {
+            //             this.properties = response.data;
+            //         });
+            // },
+        },
+        mounted: function () {
+            this.fetchProperties();
+            this.selectedType='all';
+            this.propertyType();
+
+        },
+        computed: {
+  landCount () {
+    return this.landProperties.length;
+  },
+  commercialCount () {
+    return this.commercialProperties.length;
+  },
+  saleCount () {
+    return this.saleProperties.length;
+  },
+  rentalCount () {
+    return this.rentalProperties.length;
+  },
+}
+    })
+
+
+
 </script>
 
 </html>
