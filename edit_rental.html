@@ -248,6 +248,7 @@
   var app = new Vue({
     el: '#app',
     data: {
+        editId:'',
       updatedResponse: '',
       name: '',
       price: '',
@@ -274,15 +275,39 @@
     let vars = uri[1].split('=');
     //let params = new URLSearchParams(uri);
     console.log(vars[1]);
-    editId = vars[1];
+    this.editId = vars[1];
     this.fetchProperty();
+    
   },
   updated(){
   },
     methods: {
+        createFormData() {
+        userFormData.append("name", this.name);
+        userFormData.append("price", this.price);
+        userFormData.append("buildingType", this.buildingType);
+        userFormData.append("providerName", localStorage.getItem("providerName"));
+        userFormData.append("FirmId", localStorage.getItem("FirmId"));
+        userFormData.append("numberofbedrooms", this.numberofbedrooms);
+        userFormData.append("watersupply", this.watersupply);
+        userFormData.append("neighbourhoodsecurity", this.neighbourhoodsecurity);
+        userFormData.append("light24hours", this.light24hours);
+        userFormData.append("refundableCautionDeposit", this.refundableCautionDeposit);
+        userFormData.append("refundableCautionDepositPrice", this.refundableCautionDepositPrice);
+        userFormData.append("city", this.city);
+        userFormData.append("state", this.state);
+        userFormData.append("town", this.town);
+        userFormData.append("imageFile1", this.$refs.file_upload.files[0]);
+        userFormData.append("imageFile2", this.$refs.file_upload1.files[0]);
+        userFormData.append("imageFile3", this.$refs.file_upload2.files[0]);
+        userFormData.append("imageFile4", this.$refs.file_upload3.files[0]);
+        userFormData.append("extras", this.extras);
+  
+        return userFormData;
+      },
         fetchProperty() {
                 axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
-                axios.get('/property/rental/' + editId, {
+                axios.get('/property/rental/' + this.editId, {
                     headers: {
                         "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
                         "Access-Control-Allow-Origin": "*"
@@ -312,7 +337,7 @@
       submitToInternet() {
         alert("Addition of Rental Property in progress "+this.name +"\nIf no redirection some fields are required");
         axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/'; 
-        axios.post('firm/rental',this.createFormData(),
+        axios.put('/firm/rental/?id='+ this.editId,this.createFormData(),
         {
           headers: {
               "Authorization" : "Bearer "+localStorage.getItem("token").slice(1,-1),
