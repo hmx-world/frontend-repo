@@ -256,6 +256,9 @@
                   }).then(response => {
 
                     this.propertyMatch = response.data;
+            if (this.propertyMatch.length<1){
+            window.location="https://hmx-world.github.io/frontend-repo/nomatchpage.html?"+nomatch;
+          }
           }).finally(() => (this.loading = false))
 
         }
