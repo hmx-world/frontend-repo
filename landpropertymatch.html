@@ -245,7 +245,7 @@
                     console.log(response.data);
                     this.propertyMatch = response.data;
                     if (this.propertyMatch.length<1){
-                        window.location="file:///Users/admin/Downloads/hmx/nolandmatchpage.html?"+nomatch;
+                        window.location="https://hmx-world.github.io/frontend-repo/nolandmatchpage.html?"+nomatch;
                     }
                 });
             }  else if(indi[0].split("=")[0]==="redirect" ){
@@ -267,7 +267,7 @@
                     console.log(response.data);
                     this.propertyMatch = response.data;
                     if (this.propertyMatch.length<1){
-                        //window.location="file:///Users/admin/Downloads/hmx/nolandmatchpage.html?"+nomatch;
+                        window.location="https://hmx-world.github.io/frontend-repo/nolandmatchpage.html?"+nomatch;
 
                     }
                 }).finally(() => (this.loading = false))
