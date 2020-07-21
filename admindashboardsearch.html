@@ -65,8 +65,9 @@
 
 
 <body >
+<div id="app">
     <div class="wrapper" >
-        <div class="sidebar" data-image="assets/img/sidebar-5.jpg">
+        <div class="sidebar" >
 
      
             <div class="sidebar-wrapper" style="background-color: #044CBC;">
@@ -146,13 +147,13 @@
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" @click.prevent="logout" href="#">
                                     <span class="no-icon">Account</span>
                                 </a>
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="#" @click.prevent.stop="logout" >
                                     <span class="no-icon">Log out</span>
                                 </a>
                             </li>
@@ -402,7 +403,14 @@
                             </div>
                         </div>
                         </div>
-                     
+
+                    <div class="button-container mr-auto ml-auto">
+                        <a class="nav-link" href="#" @click.prevent.stop="logout" >
+                            <button href="#" class="btn  " style="border-radius: 10px; color: white; background-color: #044CBC;">
+                                <span class="no-icon">Log out</span>
+                            </button> </a>
+
+                    </div>
                     </div>
                   
                 </div>
@@ -410,7 +418,8 @@
            
         </div>
     </div>
-    <!--   -->
+</div>
+
     
  
 </body>
@@ -438,5 +447,56 @@
 
     });
 </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script type="text/javascript">
+
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("example1");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+    <script>
+        let userFormData = new FormData();
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+                emergencyProperty: ''
+            },
+            methods: {
+                logout(){
+
+                    localStorage.clear();
+                    alert('You have successfully logged out');
+                    window.location="file:///Users/admin/Downloads/hmx/loginpage.html";
+                },
+
+            },
+            mounted: function () {
+            },
+            computed: {
+            }
+        })
+    </script>
 
 </html>

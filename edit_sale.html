@@ -72,8 +72,8 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Name:</label>
-                                                        <input v-model="name" :value="updatedResponse.name" type="text" style="border-radius: 0px;"
-                                                            id="name" class="form-control" placeholder="" value="">
+                                                        <input v-model="name"  type="text" style="border-radius: 0px;"
+                                                            id="name" class="form-control" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,7 +82,7 @@
                                                     <div class="form-group">
                                                         <label>Price:</label>
                                                         <input v-model="price" type="text" style="border-radius: 0px;"
-                                                            id="price" class="form-control" placeholder="" value="">
+                                                            id="price" class="form-control" placeholder="" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@
                                                         <select v-model="buildingType" name="" id=""
                                                             style="border-radius: 0px;" id="buildingType"
                                                             class="form-control">
-                                                            <option value="bungalow">bungalow</option>
+                                                            <option value="Bungalow">bungalow</option>
                                                             <option value="Duplex">Duplex</option>
                                                             <option value="Mansion"> Mansion</option>
                                                             <option value="3 storey building">3 storey building</option>
@@ -110,7 +110,7 @@
                                                         <select v-model="Title" name="" id=""
                                                             style="border-radius: 0px;" id="title"
                                                             style="border-radius: 0px;" class="form-control">
-                                                            <option value="R/O">R/o</option>
+                                                            <option value="R/O">R/O</option>
                                                             <option value="Duplex">Duplex</option>
                                                             <option value="Mansion"> Mansion</option>
                                                             <option value="3 storey building">3 storey building</option>
@@ -134,50 +134,34 @@
                                                     <div class="form-group">
                                                         <label>Street Address: </label>
                                                         <input v-model="town" type="text" style="border-radius: 0px;"
-                                                            class="form-control" placeholder="" value="">
+                                                            class="form-control" placeholder="" >
 
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6 ">
-                                                    <div class="form-group">
-                                                        <label>City: </label>
-                                                        <select v-model="city" name="" id="" style="border-radius: 0px;"
-                                                            class="form-control">
-                                                            <option value="alimosho">Alimosho</option>
-                                                            <option value="Ajah">Ajah</option>
-                                                            <option value="Ibeju"> Ibeju</option>
-                                                            <option value="Ikorodu">Ikorodu</option>
-                                                            <option value="Maryland">Maryland</option>
-                                                            <option value="Mowe">Mowe</option>
-                                                            <option value="Shagamu">Shagamu</option>
-                                                            <option value="Surulere">Surulere</option>
-                                                            <option value="Lekki">Lekki</option>
-                                                            <option value="Fadeyi">Fadeyi</option>
-
+                                                    <div class="form-group ">
+                                                        <label>State/Territory: </label>
+                                                        <select v-model="state"  name=""
+                                                                style="border-radius: 0px;" class="form-control">
+                                                            <option value="">Please Select...</option>
+                                                            <option v-for="(value, key) in selectObj" :value="key" >{{key}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 ">
-                                                    <div class="form-group ">
-                                                        <label>State/Territory: </label>
-                                                        <select v-model="state" name="" id=""
-                                                            style="border-radius: 0px;" class="form-control">
-                                                            <option value="Alimosho">Alimosho</option>
-                                                            <option value="Ajah">Ajah</option>
-                                                            <option value="Ibeju"> Ibeju</option>
-                                                            <option value="Ikorodu">Ikorodu</option>
-                                                            <option value="Maryland">Maryland</option>
-                                                            <option value="Mowe">Mowe</option>
-                                                            <option value="Shagamu">Shagamu</option>
-                                                            <option value="Lekki">Lekki</option>
-                                                            <option value="lagos">Lagos</option>
-                                                            <option value="Fadeyi">Fadeyi</option>
+                                                    <div class="form-group">
+                                                        <label>City: </label>
+                                                        <select v-model="city" name="" id="" style="border-radius: 0px;"
+                                                                class="form-control">
+                                                            <option value="">Please Select...</option>
+                                                            <option v-for="city in selectObj[state]" :value="city" >{{city}}</option>
+
+
 
                                                         </select>
                                                     </div>
-
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -204,7 +188,7 @@
                                                         <label>Land Area (m.sq)</label>
                                                         <input v-model="area" type="text"
                                                             style="border-radius: 0px;" class="form-control"
-                                                            placeholder="" value="">
+                                                            placeholder="" >
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 px-1">
@@ -212,50 +196,24 @@
                                                         <label>Site Description:</label>
                                                         <input v-model="sitedescription" type="text"
                                                             style="border-radius: 0px;" class="form-control"
-                                                            placeholder="" value="" />
+                                                            placeholder=""  />
                                                     </div>
                                                 </div>
 
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12 pr-1">
-                                                    <div class="form-group" style="display: inline-block;">
-                                                        <label>Pictures of the property(max 4)</label>
-                                                        <div class="row">
-                                                            <input ref="file_upload" v-model="imageFile1"
-                                                                id="file-upload" style="border-radius: 0px; width: 23%;"
-                                                                class="form-control" type="file" />
-                                                            <input ref="file_upload1" v-model="imageFile2"
-                                                                id="file-upload1"
-                                                                style="border-radius: 0px; width: 23%;"
-                                                                class="form-control" type="file" />
-                                                            <input ref="file_upload2" v-model="imageFile3"
-                                                                id="file-upload2"
-                                                                style="border-radius: 0px; width: 23%;"
-                                                                class="form-control" type="file" />
-                                                            <input ref="file_upload3" v-model="imageFile4"
-                                                                id="file-upload3"
-                                                                style="border-radius: 0px; width: 23%;"
-                                                                class="form-control" type="file" />
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Property Description: </label>
                                                             <textarea v-model="extras" rows="4" cols="80"
                                                                 style="border-radius: 0px; height: 100px;"
-                                                                class="form-control" placeholder="" value=""></textarea>
+                                                                class="form-control" placeholder="" ></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <button @click.prevent="submitToInternet" type="submit"
                                                     class="btn btn-info btn-fill "
-                                                    style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>ADD
+                                                    style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>UPDATE
                                                         PROPERTY</strong></button>
                                                 <div class="clearfix"></div>
                                         </form>
@@ -279,7 +237,6 @@
 <script src="assets/js/plugins/bootstrap-switch.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="js/main.js"></script>
-<script src="assets/js/plugins/bootstrap-notify.js"></script>
 <script src="assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -293,6 +250,7 @@
   var app = new Vue({
     el: '#app',
     data: {
+        editId:'',
       updatedResponse: '',
       name: '',
       price: '',
@@ -310,6 +268,11 @@
       Title:'',
       extras: '',
       area: '',
+        selectCityObj: [],
+        selectObj: {
+            'Lagos': ['Alimosho','Ajeromi','Ifelodun','Kosofe','Mushin','Oshodi-Isolo','Ojo','Ikorodu','Surulere','Ifako-Ijaiye','Somolu','Amuwo-Odofin','Lagos Mainland','Ikeja','Eti-Osa','Badagry','Apapa','Lagos Island','Epe','Ibeju-Lekki'],
+            'Abuja': ['Asokoro','Bamburu','Mararaba','Gwarinpa','Wuse','Maitama','Abuja Airport','Garki','Karu','Kubwa','Kurunduma','Jikwoyi','Masaka','Eketahuna','New Nyanya','Karshi','Yoba','Zuba']
+        }
     },
     created()
   {
@@ -317,15 +280,25 @@
     let vars = uri[1].split('=');
     //let params = new URLSearchParams(uri);
     console.log(vars[1]);
-    editId = vars[1];
+    this.editId = vars[1];
     this.fetchProperty();
   },
   updated(){
   },
     methods: {
+        showImage(event, id){
+                let reader = new FileReader();
+                reader.onload = () => {
+                    let output = document.getElementById(id);
+                    output.src = reader.result;
+
+                };
+                reader.readAsDataURL(event.target.files[0]);
+                this[id] = event.target.files[0];
+            },
         fetchProperty() {
                 axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
-                axios.get('/property/onsale/' + editId, {
+                axios.get('/property/onsale/' + this.editId, {
                     headers: {
                         "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
                         "Access-Control-Allow-Origin": "*"
@@ -343,10 +316,11 @@
                     this.state = this.updatedResponse.state;
                     this.town = this.updatedResponse.town;
                     this.sitedescription = this.updatedResponse.siteDescription;
-                    this.imageFile1 = this.updatedResponse.imageFile1;
-                    this.imageFile2 = this.updatedResponse.imageFile2;
-                    this.imageFile3 = this.updatedResponse.imageFile3;
-                    this.imageFile4 = this.updatedResponse.imageFile4;
+                    this.imageFile1 = this.updatedResponse.imageLink1;
+                    console.log(this.updatedResponse);
+                    this.imageFile2 = this.updatedResponse.imageLink2;
+                    this.imageFile3 = this.updatedResponse.imageLink3;
+                    this.imageFile4 = this.updatedResponse.imageLink4;
                     this.extras = this.updatedResponse.extras;
 
                     
@@ -354,9 +328,26 @@
                 });
         },
       submitToInternet() {
-        alert("Addition of Rental Property in progress "+this.name +"\nIf no redirection some fields are required");
+        alert("Addition of Sale Property in progress "+this.name +"\nIf no redirection some fields are required");
         axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/'; 
-        axios.post('firm/rental',this.createFormData(),
+        axios.put('/firm/onsale/'+this.editId,
+        {
+        name: this.name,
+        price: this.price,
+        area: this.landArea,
+        buildingType: this.buildingType,
+        providerName: localStorage.getItem("providerName"),
+        FirmId: localStorage.getItem("FirmId"),
+        numberofbedrooms: this.numberofbedrooms,
+        neighbourhoodsecurity: this.neighbourhoodsecurity,
+        Title: this.title,
+        city: this.city,
+        state: this.state,
+        town: this.town,
+        sitedescription: this.siteDescription,
+
+        extras: this.extras
+        },
         {
           headers: {
               "Authorization" : "Bearer "+localStorage.getItem("token").slice(1,-1),
@@ -366,7 +357,7 @@
           console.log(error);
         }).then(response => {
             console.log(response);
-           //window.location="file:///Users/admin/Downloads/hmx/firmdashboard.html";
+           window.location="file:///Users/admin/Downloads/hmx/firmdashboard.html";
           });
     
       }

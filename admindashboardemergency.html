@@ -1,282 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Hmx Admin Dashboard</title>
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-        <!--     Fonts and icons     -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-        <!-- CSS Files -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-        <link href="assets/css/demo.css" rel="stylesheet" />
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
-        
-    </head>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Hmx Admin Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css" />
+
+</head>
 <style>
-    .nav-link .active{
+    .nav-link .active {
         background-color: #A8CFEF;
     }
-    .nav-item .active{
+
+    .nav-item .active {
         background-color: black;
     }
-  
+
     .searchbar {
-    margin-top: 2em;
-    border: none;
-    width: 60%;
-   
-    color: rgb(95, 91, 91);
-    border-bottom: 1px black solid;
-    background: transparent;
-    
-  }
+        margin-top: 2em;
+        border: none;
+        width: 50%;
 
-  ::placeholder {
-    color: #4E4E56;
-    opacity: .7;
-    padding-left: 1%;
-  }
-  
-  *:focus {
-    outline: none;
-  }
+        color: rgb(95, 91, 91);
+        border-bottom: 1px black solid;
+        background: transparent;
 
-  .go {
-    margin-top: 2em;
-    color: white;
-    border: none;
-    cursor: pointer;
-    background: #044CBC;
-    border-radius: 10px;
-  }
+    }
 
-  .go:hover {
-    color: rgba(255, 255, 255, .4);
-  }
-   
+    ::placeholder {
+        color: #4E4E56;
+        opacity: .7;
+        padding-left: 1%;
+    }
 
+    *:focus {
+        outline: none;
+    }
 
+    .go {
+        margin-top: 2em;
+        color: white;
+        border: none;
+        cursor: pointer;
+        background: #044CBC;
+        border-radius: 10px;
+    }
+
+    .go:hover {
+        color: rgba(255, 255, 255, .4);
+    }
 </style>
 
 
-<body >
-    <div class="wrapper" >
-        <div class="sidebar" data-image="assets/img/sidebar-5.jpg">
+<body>
+    <div id="app">
+        <div class="wrapper">
+            <div class="sidebar">
 
-     
-            <div class="sidebar-wrapper" style="background-color: #044CBC;">
-                <div class="logo">
-                    <a href="index.html" class="simple-text">
-                        <strong>HMX.World</strong>
-                    </a>
+
+
+                <div class="sidebar-wrapper" style="background-color: #044CBC;">
+                    <div class="logo">
+                        <a href="index.html" class="simple-text">
+                            <strong>HMX.World</strong>
+                        </a>
+                    </div>
+                    <ul class="nav">
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">
+                                <p style="font-size: 19px;">Anayltics</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="admindashboardfirm.html">
+                                <i class="nc-icon nc-app"></i>
+                                <p>Firms</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="#">
+                                <i class="nc-icon nc-time-alarm"></i>
+                                <p style="font-size:11px;">Emergency Properties </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="admindashboardsearch.html">
+                                <i class="nc-icon nc-zoom-split"></i>
+                                <p>Search Query</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="admindashboardchecks.html">
+                                <i class="nc-icon nc-send"></i>
+                                <p style="font-size:11px;">Checks and Redirection </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item active active-pro">
+                            <a class="nav-link active" href="planpage.html">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>Upgrade to PRO</p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link " href="#">
-                            <p style="font-size: 19px;">Anayltics</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="admindashboardfirm.html">
-                            <i class="nc-icon nc-app"></i>
-                            <p>Firms</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link active" href="#" >
-                            <i class="nc-icon nc-time-alarm"></i>
-                            <p style="font-size:11px;">Emergency Properties </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="admindashboardsearch.html">
-                            <i class="nc-icon nc-zoom-split"></i>
-                            <p>Search Query</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="admindashboardchecks.html">
-                            <i class="nc-icon nc-send"></i>
-                            <p style="font-size:11px;">Checks and Redirection </p>
-                        </a>
-                    </li>
-                   
-                    <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="planpage.html">
-                            <i class="nc-icon nc-spaceship"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
-                </ul>
             </div>
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#"> Dashboard </a>
-                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="nav navbar-nav mr-auto">
+            <div class="main-panel">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#"> Dashboard </a>
+                        <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
                            
-                            <li class="dropdown nav-item">
-                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <i class="nc-icon nc-bell-55"></i>
-                                    <span class="notification">4</span>
-                                    <span class="d-lg-none">Notification</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Notification 1</a>
-                                    <a class="dropdown-item" href="#">Notification 2</a>
-                                    <a class="dropdown-item" href="#">Notification 3</a>
-                                    <a class="dropdown-item" href="#">Notification 4</a>
-                                  
-                                </ul>
-                            </li>
-                         
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span class="no-icon">Account</span>
-                                </a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span class="no-icon">Log out</span>
-                                </a>
-                            </li>
-                        </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="no-icon">Account</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" @click.prevent.stop="logout" >
+                                        <span class="no-icon">Log out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <br>
+                            <span
+                                style="font-size: 24px; font-weight: bold;margin-left: 10px; margin-top: 10%;">Emergency
+                                Properties</span>
+                        </div>
+                        <div class="col-lg-4">
+                            <form class="search" id="search">
+                                <input class='searchbar transparent' onkeyup="myFunction()" id="searchInput"
+                                    placeholder="Search for firms..." title="Type in a name" type='text'
+                                    autocomplete="on" />
+                                <span> <i class="nc-icon nc-zoom-split"></i></span>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </nav>
-            <!-- End Navbar -->
-<div class="container-fluid">
 
-            <div class="row">
-                <div class="col-lg-8">
-                    <br>
-<span style="font-size: 24px; font-weight: bold;margin-left: 10px; margin-top: 10%;" >Emergency Properties</span>
-                </div>
-                <div class="col-lg-4">
-                    <search >
-                        <form class="search" id="search">
-                          <input class='searchbar transparent' id='searchbar' type='text' autocomplete="on" required placeholder='Search by name, location' />
-                         <span> <i class="nc-icon nc-zoom-split"></i></span>
-                          <input class='button go' id='go' type="submit" value='Search' />
-                        </form>
-                      </search>
-                </div>
-            </div>
-</div>
-                
-          
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row" style="width: 100%;">
-                        <div class="col-lg-12" style="background-color: white; width: 100%;">
-                                  <div class="card card-plain ">
-                              
-                                <div class="card-body table-full-width table-responsive" >
-                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                        <thead>
-                                            <tr >
-                                                <th style="color: black;">Property Name</th>
-                                                <th style="color: black;">Price (₦)</th>
-                                                <th style="color: black;">Location</th>
-                                                <th style="display: none;">Start date</th>
-                                                <th style="display: none;">Salary</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                          
-                                            <tr>
-                                                <td>A 3/4 Bedroom Flat <br> <span style="font-size: 11px;color: #4E4E56;">Bungalow , 5 Bedrooms</span>
-                                                </td>
-                                                <td>1.2 million</td>
-                                               
-                                                <td>Lagos  <br><span class="address" style="font-size: 11px;color: #4E4E56;">Ibeju Lekki, Victoria Island LGA</span></td>
-                                                <td style="display: none;">2012/11/27</td>
-                                                <td style="display: none;">$198,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Another property a Flat <br> <span style="font-size: 11px;color: #4E4E56;">Flat, 10 bedrooms</span>
-                                                </td>                                              
-                                                  <td>2.3 million</td>
-                                                <td>Abuja <br><span class="address" style="font-size: 11px;color: #4E4E56;">House 22, Alimosho area </span></td>
-                                                <td style="display: none;">2010/06/09</td>
-                                                <td style="display: none;">$725,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>A new duplex in town <br> <span class="details" style="font-size: 11px;color: #4E4E56;">Bungalow, 5 bedrooms</span>
-                                                </td>                                          
-                                                      <td>4.0 million</td>
-                                                      <td>Bauchi <br> <span class="address" style="font-size: 11px;color: #4E4E56;">House 22, Konga Area </span></td>
-                                                      <td style="display: none;">2009/04/10</td>
-                                                <td style="display: none;">$237,500</td>
-                                            </tr>
 
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Property Name</th>
-                                                <th>Price (₦)</th>
-                                                <th>Location</th>
-                                                <th style="display: none;">Salary</th>
-                                             
-                                               
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row" style="width: 100%;">
+                            <div class="col-lg-12" style="background-color: white; width: 100%;">
+                                <div class="card card-plain ">
+
+                                    <div id="example1" class="card-body table-full-width table-responsive">
+                                        <table class="table " style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th
+                                                        style="color: black; text-transform: none; font-size: 16px; font-weight: bold;">
+                                                        Property Name</th>
+                                                    <th
+                                                        style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Price
+                                                    </th>
+
+                                                    <th
+                                                        style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Location
+                                                    </th>
+                                                    <th
+                                                        style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Property Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr :key="property.id" v-for="property in emergencyProperty">
+                                                    <td class="text-capitalize">{{property.name}} <br></td>
+                                                    <td>₦{{property.price}} </td>
+                                                    <td>
+                                                        <p>{{property.propertyLocation}}
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>{{property.propertyType}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th
+                                                        style=" text-transform: none; font-size: 16px; font-weight: bold;">
+                                                        Property Name</th>
+                                                    <th
+                                                        style="font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Price
+                                                    </th>
+                                                    <th
+                                                        style=" font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Location</th>
+                                                    <th
+                                                        style="font-size: 16px;text-transform: none; font-weight: bold;">
+                                                        Property Type</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="button-container mr-auto ml-auto">
+                            <a class="nav-link" href="#" @click.prevent.stop="logout" >
+                                <button href="#" class="btn  " style="border-radius: 10px; color: white; background-color: #044CBC;">
+                                    <span class="no-icon">Log out</span>
+                                </button> </a>
+
                         </div>
-                     
                     </div>
-                  
+
                 </div>
             </div>
-           
+
         </div>
     </div>
-    <!--   -->
-    
- 
+
+
 </body>
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
 <script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <script src="assets/js/plugins/bootstrap-switch.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<script src="assets/js/plugins/chartist.min.js"></script>
 <script src="assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
-<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="assets/js/demo.js"></script>
 
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
-</script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 <script type="text/javascript">
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
 
-        $('#example').DataTable();
-        demo.showNotification();
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("example1");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 
-    });
+
+<script>
+    let userFormData = new FormData();
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+            emergencyProperty: ''
+        },
+        methods: {
+            logout(){
+
+                localStorage.clear();
+                alert('You have successfully logged out');
+                 window.location="file:///Users/admin/Downloads/hmx/loginpage.html";
+            },
+            fetchProperties() {
+                axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+                axios.get('/admin/emergency/property', {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }).then(response => {
+                    this.emergencyProperty = response.data;
+                });
+            },
+
+        },
+        mounted: function () {
+            this.fetchProperties();
+        },
+        computed: {
+        }
+    })
 </script>
 
 </html>

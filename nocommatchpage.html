@@ -63,22 +63,12 @@
 <p style="font-size: 18px; font-weight: bold;color: #4E4E56; letter-spacing: 0.5px;"> No matches found in our database </p>
         </div>
         <div class="row justify-content-center mb-3" >
-           <a :href="'matchpage.html?'+vars"> <p style="font-size: 18px; font-weight: bold; letter-spacing: 0.5px;
+           <a :href="'commercialpropertymatch.html?'+vars"> <p style="font-size: 18px; font-weight: bold; letter-spacing: 0.5px;
             color: #044CBC; border: 2px solid #044CBC; 
             border-radius: 6px; padding: 1px 25px 1px 25px;" > CHECK OTHER PROVIDER </p></a>
                     </div>
-       
-		   
         </div>
-      
     </section>
-
-
-   
-
-  
-		
-
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
@@ -93,8 +83,7 @@
               </ul>
             </div>
           </div>
-          
-          
+
           <div class="col-md">
             <div class="ftco-footer-widget mb-3 ml-md-4">
               <h2 class="ftco-heading-2"  style="font-weight: bold; font-size: 18px;">Useful links</h2>
@@ -171,7 +160,6 @@
                   let redirect=true;
                   let uri = window.location.href.split('?');
                   this.uri = uri;
-
                   this.vars = 'redirect='+redirect+'&'+uri[1];
                   console.log(this.vars);
               },
@@ -181,7 +169,6 @@
                   },
               },
           })
-
       </script>
 
 

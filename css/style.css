@@ -44,7 +44,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
 body {
-  margin: 0;
+ 
   font-family: Roboto;
   font-size: 1rem;
   font-weight: 400;
@@ -695,7 +695,7 @@ img {vertical-align: middle;}
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
+  
   margin-left: -15px; }
 
 .no-gutters {
@@ -1124,6 +1124,11 @@ img {vertical-align: middle;}
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%; }
+    .col-md-61 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      }
   .col-md-7 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 58.33333%;
@@ -1838,6 +1843,9 @@ img {vertical-align: middle;}
   font-weight: 400;
     cursor: pointer;
 }
+
+
+
 
 .form-control {
   display: block;
@@ -3678,6 +3686,33 @@ input[type="button"].btn-block {
 
 .tab-content > .active {
   display: block; }
+
+.propactive{
+  background-color: #044CBC;
+  color: white;
+  border-radius: 50px;
+  font-size: 10px;
+  line-height: 12px;
+
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.5px;
+  padding: 4px 15px 4px 15px;
+  font-weight: 700;
+}
+
+.propdeactive{
+  background-color: #F50F0F;
+  color: white;
+  font-size: 10px;
+  line-height: 12px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+  padding: 4px 15px 4px 15px;
+  font-weight: 700;
+}
 
 .navbar {
   position: relative;
@@ -8869,6 +8904,8 @@ h1, h2, h3, h4, h5,
       -moz-box-shadow: 0px 3px 14px -4px rgba(0, 0, 0, 0.1);
       box-shadow: 0px 3px 14px -4px rgba(0, 0, 0, 0.1); } }
 
+
+
 .top-category {
   padding: 20px;
   background: #fff;
@@ -9235,6 +9272,9 @@ h1, h2, h3, h4, h5,
       @media (max-width: 767.98px) {
         .ftco-search .nav-pills .nav-link {
           margin-bottom: 5px; } }
+          @media (max-width: 769.98px) {
+            .ftco-search .tab-content {
+              width: 100%; } }
   .ftco-search .tab-content {
     background: #fff;
     border: 1px solid #FFFFFF;
@@ -9275,34 +9315,64 @@ box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
     color: rgba(0, 0, 0, 0.7) !important;
     background: white !important; }
 
+    
     @media (max-width: 767.98px) {
       .search-job .form-group .form-control{
         width: 70%; } }
+       
+
+        @media (max-width: 1199.98px) {
+          .search-job .form-group .form-control{
+            width: 60%; } }
 
         @media (max-width: 767.98px) {
           .search-job .form-group .form-control1{
             width: 70%; } }
 
 
+.ellipsel{
+  position: relative; left:-14%;
+}
+@media screen and (max-width: 1024.98px) {
+  .ellipsel {
+    left: -18.7%;
+  }}
+@media screen and (max-width: 767.98px) {
+  .ellipsel{
+    left: -20.3%; } }
+
+@media (max-width: 600.98px) {
+  .ellipsel{
+    left: -16%; } }
+
+@media (max-width: 590.98px) {
+  .ellipsel{
+    left: -4%; } }
 
   .ellipse{
-    float: right;  position: relative; left:98.5%; padding-bottom: 50px;
+      position: relative; left:102%;
   }
+  @media screen and (max-width: 1024.98px) {
+    .ellipse{
+    left: 90%; } }
+
             @media screen and (max-width: 767.98px) {
               .ellipse{
-              left: 58%; } }
-              @media (max-width: 767.98px) {
-                .ellipseright{
-                left: 48%; } }
-                @media screen and (max-width: 600px) {
-                  .ellipse{
-                  left: 68%; } }
-                  @media screen and (max-width: 766px) {
-                    .ellipse{
-                    left: 88%; } }
-                  @media screen and (max-width: 600px) {
-                    .ellipseright{
-                    left: 48%; } }
+              left: 54%; } }
+              @media screen and (max-width: 768.98px) {
+                .ellipse{
+
+                left: 95%; } }
+
+@media (max-width: 600.98px) {
+  .ellipse{
+    left: 60%; } }
+
+@media (max-width: 590.98px) {
+  .ellipse{
+    left: 66%; } }
+                
+                
 
     .search-job .form-group .form-control1 {
       padding-left: 30px;
@@ -9319,16 +9389,21 @@ box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
       background: white !important; }
     .search-job .form-group .form-control::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
-      color: rgba(0, 0, 0, 0.7) !important; }
+      font-size: 10px;
+      color: rgba(99, 93, 93, 0.7) !important; }
     .search-job .form-group .form-control::-moz-placeholder {
       /* Firefox 19+ */
-      color: rgba(0, 0, 0, 0.7) !important; }
+      font-size: 10px;
+      color: rgba(99, 93, 93, 0.7) !important; }
     .search-job .form-group .form-control:-ms-input-placeholder {
       /* IE 10+ */
-      color: rgba(0, 0, 0, 0.7) !important; }
+      font-size: 10px;
+      color: rgba(99, 93, 93, 0.7) !important; }
     .search-job .form-group .form-control:-moz-placeholder {
       /* Firefox 18- */
-      color: rgba(0, 0, 0, 0.7) !important; }
+      font-size: 10px;
+      color: rgba(99, 93, 93, 0.7) !important; }
+      
     .search-job .form-group .form-control.btn {
       padding: 0 !important;
       font-size: 16px;
@@ -10542,3 +10617,64 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+.lds-ripple {
+  position: relative;
+}
+.lds-ripple1 {
+  position: relative;
+}
+.lds-ripple div {
+  position: absolute;
+  margin-left: 70%;
+  border: 4px solid #FFFFFF ;
+  opacity: 1;
+
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple1 div {
+  position: absolute;
+  border: 4px solid #044CBC ;
+  opacity: 1;
+
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2), .lds-ripple1 div:nth-child(2)  {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple{
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}@keyframes lds-ripple1{
+   0% {
+     top: 36px;
+     left: 36px;
+     width: 0;
+     height: 0;
+     opacity: 1;
+   }
+   100% {
+     top: 0px;
+     left: 0px;
+     width: 72px;
+     height: 72px;
+     opacity: 0;
+   }
+ }
+

@@ -16,175 +16,218 @@
     <link href="assets/css/demo.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link href="substyle.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
 </head>
 
 
 <body style="background-color: #EBF2FF;">
     <div id="app">
-    <div class="wrapper">
-        <div class="sidebar" data-image="assets/img/sidebar-5.jpg">
-
-            <div class="sidebar-wrapper" style="background-color: #044CBC;">
-                <div class="logo">
-                    <a href="index.html" class="simple-text">
-                        <strong>HMX.World</strong>
-                    </a>
-                </div>
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link " href="#">
-                            <p style="font-size: 19px;">Property Type</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="firmdashboard.html">
-                            <i class="nc-icon nc-app"></i>
-                            <p>Residential</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">
-                            <i class="nc-icon nc-app"></i>
-                            <p style="font-size:11px;">Commercial </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="nc-icon nc-app"></i>
-                            <p>Landed</p>
-                        </a>
-                    </li>
-                    <br> <br> <br> <br>
-
-
-                    <li class="nav-item active">
-                        <a class="nav-link " href="#">
-                            <p style="font-size: 19px;">Account</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="subscription.html">
-                            <i class="nc-icon nc-tag-content"></i>
-                            <p style="font-size:11px;">Subscription </p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link active" href="#">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p style="font-size:11px;">Profile </p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="planpage.html">
-                            <i class="nc-icon nc-spaceship"></i>
-
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
-                </ul>
+        <div v-if="loading" >
+            Loading...
+            <div class="lds-ripple1" >
+                <div></div><div></div></div>
+            <div id="ftco-loader" class="show fullscreen">
+                <svg class="circular" width="48px" height="48px">
+                    <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#5A98FF"/>
+                    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                            stroke="#044CBC"/>   </svg>
             </div>
         </div>
-        <div class="main-panel">
-
-            <!-- End Navbar -->
-
-            <div class="container-fluid" style="margin-top: 5%;">
-
-                <div class="row">
-                    <div class="col-lg-8">
-                        <br>
-                        <span
-                            style="font-size: 32px; font-weight: bold;margin-left: 10px; margin-top: 10%;">Profile</span>
+        <div v-else>
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="sidebar-wrapper" style="background-color: #044CBC;">
+                    <div class="logo">
+                        <a href="index.html" class="simple-text">
+                            <strong>HMX.World</strong>
+                        </a>
                     </div>
-                    <div class="col-lg-4">
-                        <search>
-                            <form class="search" id="search">
-                                <input class='searchbar transparent' id='searchbar' type='text' autocomplete="on"
-                                    required placeholder='Search firm by name' />
-                                <span> <i class="nc-icon nc-zoom-split"></i></span>
-                                <input class='button go' id='go' type="submit" value='Search' />
-                            </form>
-                        </search>
-                    </div>
+                    <ul class="nav">
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">
+                                <p style="font-size: 19px;">Property Type</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="firmdashboard.html">
+                                <i class="nc-icon nc-app"></i>
+                                <p>Residential</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">
+                                <i class="nc-icon nc-app"></i>
+                                <p style="font-size:11px;">Commercial </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="nc-icon nc-app"></i>
+                                <p>Landed</p>
+                            </a>
+                        </li>
+                        <br> <br> <br> <br>
+
+
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">
+                                <p style="font-size: 19px;">Account</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="subscription.html">
+                                <i class="nc-icon nc-tag-content"></i>
+                                <p style="font-size:11px;">Subscription </p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="#">
+                                <i class="nc-icon nc-circle-09"></i>
+                                <p style="font-size:11px;">Profile </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item active active-pro">
+                            <a class="nav-link active" href="planpage.html">
+                                <i class="nc-icon nc-spaceship"></i>
+
+                                <p>Upgrade to PRO</p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="container-fluid" style="margin-top: 10%;">
-                <div class="content">
+            <div class="main-panel">
+                <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                     <div class="container-fluid">
-                        <div class="row" style="width: 100%;color: #000000;">
-                            <div class="col-lg-12" style="background-color: white; width: 100%; margin-top: 30px;">
-                                <div class="card card-user pl-5" style="border: none;">
+                        <a class="navbar-brand" href="#"> Dashboard </a>
+                        <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                            <span class="navbar-toggler-bar burger-lines"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                            <ul class="nav navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" data-toggle="dropdown">
+                                        <span class="d-lg-none">Dashboard</span>
+                                    </a>
+                                </li>
 
-                                    <div class="card-body">
-                                        <div class="author">
+                             
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="dashboardprofile.html">
+                                        <span class="no-icon">Account</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="#" @click.prevent.stop="logout" >
+                                        <span class="no-icon">Log out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+
+                <div class="container-fluid" style="margin-top: 5%;">
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <br>
+                            <span
+                                style="font-size: 32px; font-weight: bold;margin-left: 10px; margin-top: 10%;">Profile</span>
+                        </div>
+                       
+                    </div>
+                </div>
+
+                <div class="container-fluid" style="margin-top: 10%;">
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="row" style="width: 100%;color: #000000;">
+                                <div class="col-lg-12" style="background-color: white; width: 100%; margin-top: 30px;">
+                                    <div class="card card-user pl-5" style="border: none;">
+
+                                        <div class="card-body">
+                                            <div class="author">
+                                                <a href="#">
+
+                                                    <img alt="img-avatar" class="avatar border-gray" :src="firmPicture"
+                                                        width="100%" />
+                                                </a>
+
+                                            </div>
+
+
+                                            <h5 class="title"><strong>Firm Name:</strong>
+                                                <span>{{firmName}}</span></h5>
                                             <a href="#">
-                                                <img class="avatar border-gray" src="images/Tc.png" alt="...">
+                                                <p class="description">Contact:
+                                                    <br> Email: <span> {{firmEmail}}</span>
 
+                                                </p>
+                                                <h5 class="title"><strong>Phone:</strong>
+                                                    <p class="description">
+                                                        {{firmNumber}}
+                                                    </p>
                                             </a>
+                                            <p class="description">
+                                            <h5 class="title"><strong> About</strong> <br>
+                                                <span>{{firmDescription}}</span>
+                                                </p>
+                                                <p>
+                                                <h5 class="title" style="color: #000000;"><strong> Current Plan</strong>
+                                                    <br><span style="font-size: 14px; color: rgb(104, 96, 96);">
+                                                        <span v-if="currentPlan==1">Business</span>
+                                                        <span v-else-if="currentPlan==2">Pro</span>
+                                                        <span v-else-if="currentPlan==3">Premium</span>
+                                                        <span v-else-if="currentPlan==''"></span>
+                                                        plan
+                                                        <a class="nav-link active" href="planpage.html">
+                                                            <i class="nc-icon nc-spaceship"></i>
+                                                            Upgrade</a></span>
+                                                    </p>
+                                        </div>
+                                        <hr>
+                                        <div class="button-container mr-auto ml-auto">
+                                            <button href="#" class="btn btn-simple btn-link btn-icon">
+                                                <i class="fa fa-facebook-square"></i>
+                                            </button>
+                                            <button href="#" class="btn btn-simple btn-link btn-icon">
+                                                <i class="fa fa-twitter"></i>
+                                            </button>
+                                            <button href="#" class="btn btn-simple btn-link btn-icon">
+                                                <i class="fa fa-whatsapp"></i>
+                                            </button>
+                                        </div>
+                                        <div class="button-container mr-auto ml-auto">
+                                                <a class="nav-link" href="#" @click.prevent.stop="logout" >
+                                                    <button href="#" class="btn  " style="border-radius: 10px; color: white; background-color: #044CBC;">
+                                                    <span class="no-icon">Log out</span>
+                                            </button> </a>
 
                                         </div>
-                                        <h5 class="title" style="color: #000000;"><strong>Firm Name:</strong>
-                                            <br> <span>OLATUJI PROPERTY AND SONS</span></h5>
-                                        <a href="#">
-                                            <p class="description">Contact: 
-                                                <br> Email: <span> Olatunji@gmail.com</span>
-                                               
-                                            </p>
-                                            <p class="description">
-                                             Phone: <span>08140539111</span>
-                                            </p>
-                                        </a>
-                                        <p class="description">
-                                        <h5 class="title" style="color: #000000;"><strong> About</strong> <br>
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, <br>
-                                            when an unknown printer took a galley of type and scrambled it to make a
-                                            type specimen book. <br>
-                                            It has survived not only five centuries, but also the leap into electronic
-                                            typesetting, remaining essentially unchanged. <br>
-                                            It was popularised in the 1960s with the release of Letraset sheets
-                                            containing Lorem Ipsum passages, <br>
-                                            and more recently with desktop publishing software like Aldus PageMaker
-                                            including versions of Lorem Ipsum.
-                                            </p>
-                                            <p>
-                                            <h5 class="title" style="color: #000000;"><strong> Current Plan</strong>
-                                                <br><span style="font-size: 14px; color: rgb(104, 96, 96);">Business
-                                                    plan
-                                                    <a class="nav-link active" href="planpage.html">
-                                                        <i class="nc-icon nc-spaceship"></i>
-                                                        Upgrade</a></span>
-                                                </p>
-                                    </div>
-                                    <hr>
-                                    <div class="button-container mr-auto ml-auto">
-                                        <button href="#" class="btn btn-simple btn-link btn-icon">
-                                            <i class="fa fa-facebook-square"></i>
-                                        </button>
-                                        <button href="#" class="btn btn-simple btn-link btn-icon">
-                                            <i class="fa fa-twitter"></i>
-                                        </button>
-                                        <button href="#" class="btn btn-simple btn-link btn-icon">
-                                            <i class="fa fa-whatsapp"></i>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
-
             </div>
+
         </div>
 
     </div>
     </div>
-</div>
-
 
 </body>
 <!--   Core JS Files   -->
@@ -194,40 +237,12 @@
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 <script src="assets/js/plugins/bootstrap-switch.js"></script>
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<script src="assets/js/plugins/chartist.min.js"></script>
 <script src="assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
-<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="assets/js/demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-<script type="text/javascript">
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("example");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    $(document).ready(function () {
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
 
-
-    });
-</script>
 
 <script>
     var app = new Vue({
@@ -236,16 +251,31 @@
             firmName: '',
             firmEmail: '',
             currentPlan: '',
-            phoneNumber: '',
+            firmNumber: '',
             firmDescription: '',
+            firmPicture: '',
+            getFirmId: '',
             landProperties: '',
-            selectedType: 'all',
+            onSaleProperties: '',
+            rentalProperties: '',
+            commercialProperties: '',
+            loading:true,
+
+            FirmArr: [],
 
         },
-        methods: {
+        methods:
+        {
+            logout(){
+
+                localStorage.clear();
+                alert('You have successfully logged out');
+                window.location="file:///Users/admin/Downloads/hmx/loginpage.html";
+                    },
             fetchDetails() {
+                this.loading=false
                 axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
-                axios.get('/firm/landproperty/' + getFirmId + '/firm', {
+                axios.get('/property/firm/' + localStorage.getItem("FirmId"), {
                     headers: {
                         "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
                         "Access-Control-Allow-Origin": "*"
@@ -253,22 +283,22 @@
                 }).then(response => {
                     this.firmName = response.data.name;
                     this.firmEmail = response.data.email;
-                   
-                });
+                    this.firmNumber = response.data.phoneNumber;
+                    this.firmDescription = response.data.description;
+                    this.firmPicture = response.data.imageUri;
+                    this.currentPlan = response.data.plan;
+                }).catch(
+                    function (error) {
+                        console.log(error);
+                        this.loading=false;
+
+                    }
+                ).finally(() => this.loading=false)
             },
         },
         mounted: function () {
             this.fetchDetails();
-
-
         },
-
     })
-
-
-
 </script>
-
-
-
 </html>

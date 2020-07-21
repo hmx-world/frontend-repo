@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
+
     <link rel="stylesheet" href="css/aos.css">
+
     <link rel="stylesheet" href="css/ionicons.min.css">
+
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
@@ -23,9 +26,9 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="m-0">
+
 <div id="app">
-    <div v-if="loading" >
+    <div v-if="loading" style="color: black; font-weight: bold">
         Loading...
         <div class="lds-ripple1" >
             <div></div><div></div></div>
@@ -47,11 +50,12 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-<!--                    <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>-->
+                    <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
                     <li class="nav-item active"><a href="matchpage.html" class="nav-link">Properties</a></li>
-<!--                    <li class="nav-item"><a href="nomatchpage.html" class="nav-link">No Properties</a></li>-->
+                    <li class="nav-item"><a href="nomatchpage.html" class="nav-link">No Properties</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Become a provider</a></li>
                     <li class="nav-item"><a href="contactpage.html" class="nav-link">Contact us</a></li>
+
 
                 </ul>
             </div>
@@ -60,6 +64,7 @@
     <!-- END nav -->
 
     <div class="hero-wrap1 img" style="background-image: url(images/bg.png);">
+
         <div class="container" style="padding-top: 100px;">
 
             <div class="row block-12">
@@ -70,32 +75,24 @@
                         <p style="font-weight: 600; font-size: 2em;">₦{{this.price.toLocaleString()}}</p>
                         <p style="text-align: justify; font-weight: normal; font-size: 16px;line-height: 21px; color: #363636; ">
                             {{this.extras}}</p>
-                        <p v-if="this.purpose=='sale'">Title: {{this.title}}
+                        <p >Title: {{this.title}}
                             <br>
                             Building Type: {{this.buildingType}} <br>
+
+                            <strong> Area: </strong> {{this.areaSize}} m.sq <br>
                             <strong>Number of Bedrooms:</strong> {{this.numberofbedrooms}} <br>
                             <strong> Security:</strong> {{this.neighbourhoodsecurity}}/10 <br>
-                            <strong> Area: </strong> {{this.landArea}} m.sq <br>
-                            <strong> Site Description</strong> : {{this.description}}
-                        </p>
-                        <p v-if="this.purpose=='rent'">
+                            <strong> Parking Space:</strong> {{this.parkingspace}} <br>
 
-                        Building Type: {{this.buildingType}} <br>
-                        <strong>Number of Bedrooms:</strong> {{this.numberofbedrooms}} <br>
-                        <strong> Security:</strong> {{this.neighbourhoodsecurity}}/10 <br>
-                            <strong> Water Supply: </strong> {{this.waterSupply}} <br>
-                            <strong> Light 24 hours: </strong> {{this.light24hours}}/24 <br>
-                            <strong> Refundable Caution Deposit: </strong> {{this.refundableCautionDeposit}} <br>
-                            <strong> Refundable Caution Deposit Price: </strong> {{this.refundableCautionDepositPrice}} <br>
-
+                            <strong> Site Description</strong> : {{this.description}} <br>
                             <strong> Active</strong> :
                             <span class="propactive"
                                   v-bind:class="{ 'propactive': this.isActive==true ,'propdeactive': this.isActive==false }">
                                                             <span v-if="this.isActive==true">YES</span>
                                                             <span v-else>NO</span>
                                                         </span>
+                        </p>
 
-                    </p>
                         <div class="row">
                             <div class="col-md-6" style="padding-right: 10px;"  v-if="isLoading">
                                 <div class="lds-ripple">
@@ -107,10 +104,10 @@
                                 <input type="submit" @click.prevent="check" value="GO FOR CHECK"
                                        style=" font-weight: bold;width: 100%; font-size: 18px;">
                             </div>
-                            <div class="col-md-6 col-lg-8">
 
-                                <a :href="'matchpage.html'+redirect">
-                                    <input type="submit" value="redirect to other providers" style="background-color: transparent; color: #044CBC;border: 1px solid #044CBC; font-weight: bold;width: 100%; position: relative;">
+                            <div class="col-md-6 col-lg-8" >
+                                <a :href="'commercialpropertymatch.html'+redirect"> <input type="submit" value="redirect to other providers  "
+                                       style="background-color: transparent; color: #044CBC;border: 1px solid #044CBC;font-weight: bold;width: 100%;">
                                 </a>
                             </div>
                         </div>
@@ -164,7 +161,7 @@
             <div class="row">
                 <p style="color: #4E4E56; font-weight: bold;
                 font-size: 16px;
-                line-height: 38px;"> &nbsp;&nbsp;&nbsp; Firm information</p>
+                line-height: 38px;"> &nbsp;&nbsp; Firm information</p>
             </div>
             <div class="row block-12">
 
@@ -172,12 +169,9 @@
 
                     <img v-if="this.firmImage==null || this.firmImage==''"
                          alt="" class="card" style="padding-left: 0; height: 100px; width: 70%;"
-                         src="images/defaultfirm.svg" >
-                    <img v-else-if="this.firmImage!=null || this.firmImage!=''"
-                         alt="" class="card" style="padding-left: 0; height: 100px; width: 70%;"
-                      :src="this.firmImage" >
+                         :src="this.firmImage" >
 
-                    <img alt="" v-else class="card" style="padding-left: 0; height: 100px; width: 70%;"
+                    <img alt="" class="card" style="padding-left: 0; height: 100px; width: 70%;"
                          src="images/defaultfirm.svg" >
                 </div>
                 <div class="col-sm-9">
@@ -186,79 +180,79 @@
 
                     <p style="font-size: 14px; color: #4E4E56;
                   line-height: 21px;">{{this.firmDesc}}</p>
-
                 </div>
             </div>
         </div>
 
     </div>
 
+    <br>
+    <br>
+    <br>
+    <br>
 
-
-<br>
-<br>
-<br>
-<br>
-
-<footer class="ftco-footer ftco-bg-dark ftco-section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;"> HMX.World </h2>
-                    <p> HMX World is a platform that incorporates a matching algorithm and an integrated database system
-                        to increase the productivity and efficiency of estate firms. Our platform offers estate firms an
-                        avenue to connect with exact needs and demands of their clients. </p>
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-
-                    </ul>
-                </div>
-            </div>
-
-
-            <div class="col-md">
-                <div class="ftco-footer-widget mb-3 ml-md-4">
-                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Useful links</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="pb-1 d-block">Home</a></li>
-                        <li><a href="planpage.html" class="pb-1 d-block">Become a provider</a></li>
-                        <li><a href="propertiespage.html" class="pb-1 d-block">Properties</a></li>
-                        <li><a href="#" class="pb-1 d-block">About</a></li>
-                        <li><a href="dashboardprofile.html" class="pb-1 d-block">Provider Dashboard</a></li>
-                        <li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
-                        <li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="ftco-footer-widget mb-3">
-                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Contact</h2>
-                    <div class="block-23 mb-3">
-                        <ul style="list-style: none;">
-                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text"> hmxworld@gmail.com</span></a>
-                            </li>
-                            <li><a href="#"><span class="icon icon-phone"></span><span
-                                    class="text">0800-Hmx-World </span></a></li>
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;"> HMX.World </h2>
+                        <p> HMX World is a platform that incorporates a matching algorithm and an integrated database system
+                            to increase the productivity and efficiency of estate firms. Our platform offers estate firms an
+                            avenue to connect with exact needs and demands of their clients. </p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
 
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-left">
-                <p>
-                    Copyright &copy; HMX.world-{{currentYear}}
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
 
 
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-3 ml-md-4">
+                        <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Useful links</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="pb-1 d-block">Home</a></li>
+                            <li><a href="#" class="pb-1 d-block">Become a provider</a></li>
+                            <li><a href="#" class="pb-1 d-block">Properties</a></li>
+                            <li><a href="#" class="pb-1 d-block">About</a></li>
+                            <li><a href="#" class="pb-1 d-block">Provider Dashboard</a></li>
+                            <li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
+                            <li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-3">
+                        <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Contact</h2>
+                        <div class="block-23 mb-3">
+                            <ul style="list-style: none;">
+                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text"> hmxworld@gmail.com</span></a>
+                                </li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span
+                                        class="text">0800-Hmx-World </span></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-left">
+
+                    <p>
+                        Copyright &copy; HMX.world-{{currentYear}}
+                    </p>
+                </div>
+            </div>
         </div>
+    </footer>
+
+
+    <!-- loader -->
+
+</div>
 </div>
 
 </body>
@@ -328,28 +322,25 @@
             city: '',
             state: '',
             town: '',
-            numberofbedrooms:'',
-            neighbourhoodsecurity:'',
-            waterSupply:'',
-            light24hours:'',
-            refundableCautionDeposit: '',
-            refundableCautionDepositPrice:'',
             extras:'',
             description: '',
             imageFile1: '',
             imageFile2: '',
             imageFile3: '',
             buildingType:'',
+            parkingspace:'',
+            numberofbedrooms:'',
+            neighbourhoodsecurity:'',
             imageFile4: '',
             description:'',
-            landArea:'',
+            areaSize:'',
             purpose:'',
             firmDesc:'',
             firmName:'',
             firmImage:'',
             isActive:'',
             loading: true,
-            isLoading: false,
+            isLoading: true,
             redirect: localStorage.getItem("formBody")
         },
         computed: {
@@ -364,81 +355,42 @@
 
             this.purpose=indi[0].split("=")[1];
             this.editId= indi[1].split("=")[1];
+            console.log(this.purpose);
+            this.loading = true
+
+            axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+            axios.get('/property/commercial/' + this.editId, {
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                    "Access-Control-Allow-Origin": "*"
+                }
+            }).then(response => {
+                this.updatedResponse = response.data;
+                this.name = this.updatedResponse.name;
+                this.price = this.updatedResponse.price;
+                this.title = this.updatedResponse.title;
+                this.areaSize = this.updatedResponse.area;
+                this.firmName=this.updatedResponse.firm.name;
+                this.firmDesc=this.updatedResponse.firm.description;
+                this.firmImage = this.updatedResponse.firm.imageUri;
+                this.city = this.updatedResponse.city;
+                this.state = this.updatedResponse.state;
+                this.buildingType = this.updatedResponse.buildingType;
+                this.parkingspace = this.updatedResponse.parkingSpace;
+                this.neighbourhoodsecurity=this.updatedResponse.neighbourhoodSecurity;
+                this.numberofbedrooms=this.updatedResponse.numberOfBedrooms;
+                this.town = this.updatedResponse.town;
+                this.extras = this.updatedResponse.extras;
+                this.description = this.updatedResponse.extras;
+                this.imageFile1 = this.updatedResponse.imageLink1;
+                this.imageFile2 = this.updatedResponse.imageLink2;
+                this.imageFile3 = this.updatedResponse.imageLink3;
+                this.imageFile4 = this.updatedResponse.imageLink4;
+                this.isActive=this.updatedResponse.isActive;
 
 
-            if (this.purpose==="sale"){
-                this.loading = true
-                axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
-                axios.get('/property/onsale/' + this.editId, {
-                    headers: {
-                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
-                        "Access-Control-Allow-Origin": "*"
-                    }
-                }).then(response => {
-                    this.updatedResponse = response.data;
-                    this.name = this.updatedResponse.name;
-                    this.price = this.updatedResponse.price;
-                    this.title = this.updatedResponse.title;
-                    this.landArea = this.updatedResponse.landArea;
-                    this.city = this.updatedResponse.city;
-                    this.state = this.updatedResponse.state;
-                    this.buildingType = this.updatedResponse.buildingType;
-                    this.town = this.updatedResponse.town;
-                    this.extras = this.updatedResponse.extras;
-                    this.firmName=this.updatedResponse.firm.name;
-                    this.firmDesc=this.updatedResponse.firm.description;
-                    this.firmImage = this.updatedResponse.firm.imageUri;
-                    this.numberofbedrooms= this.updatedResponse.numberOfBedrooms;
-                    this.neighbourhoodsecurity = this.updatedResponse.neighbourhoodSecurity;
-                    this.description = this.updatedResponse.siteDescription;
-                    this.imageFile1 = this.updatedResponse.imageLink1;
-                    this.imageFile2 = this.updatedResponse.imageLink2;
-                    this.imageFile3 = this.updatedResponse.imageLink3;
-                    this.imageFile4 = this.updatedResponse.imageLink4;
-                    this.isActive=this.updatedResponse.isActive;
+            }).finally(() => (this.loading = false))
 
-
-                }).finally(() => (this.loading = false))
-            } else if (this.purpose==="rent"){
-                this.loading = true
-                axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
-                axios.get('/property/rental/' + this.editId, {
-                    headers: {
-                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
-                        "Access-Control-Allow-Origin": "*"
-                    }
-                }).then(response => {
-                    this.updatedResponse = response.data;
-                    this.name = this.updatedResponse.name;
-                    this.price = this.updatedResponse.price;
-                    this.title = this.updatedResponse.title;
-                    this.landArea = this.updatedResponse.landArea;
-                    this.city = this.updatedResponse.city;
-                    this.state = this.updatedResponse.state;
-                    this.buildingType = this.updatedResponse.buildingType;
-                    this.town = this.updatedResponse.town;
-                    this.extras = this.updatedResponse.extras;
-                    this.numberofbedrooms= this.updatedResponse.numberOfBedrooms;
-                    this.neighbourhoodsecurity = this.updatedResponse.neighbourhoodSecurity;
-                    this.waterSupply =this.updatedResponse.waterSupply;
-                    this.light24hours=this.updatedResponse.light24hours;
-                    this.refundableCautionDeposit=this.updatedResponse.refundableCautionDeposit;
-                    this.refundableCautionDepositPrice=this.updatedResponse.refundableCautionDepositPrice;
-                    this.description = this.updatedResponse.siteDescription;
-                    this.imageFile1 = this.updatedResponse.imageLink1;
-                    this.imageFile2 = this.updatedResponse.imageLink2;
-                    this.imageFile3 = this.updatedResponse.imageLink3;
-                    this.imageFile4 = this.updatedResponse.imageLink4;
-                    this.isActive=this.updatedResponse.isActive;
-
-
-                }).finally(() => {this.loading = false;
-                console.log(this.loading)
-                })
-            }
-            else {
-                console.log('do nothing');
-            }
 
         },
         updated() {
@@ -446,7 +398,7 @@
         methods: {
             check(){
                 this.isLoading=true
-
+                console.log('go for check');
             }
         },
 

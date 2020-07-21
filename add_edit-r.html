@@ -78,6 +78,7 @@
                                                <div class="form-group" style="border-radius: 0px;">
                                                    <label>Building Type</label>
                                                    <select v-model="buildingType" name="" id="" style="border-radius: 0px;" class="form-control">
+                                                       <option value="">Please Select...</option>
                                                        <option value="Bungalow">Bungalow</option>
                                                        <option value="Duplex">Duplex</option>
                                                      <option value="Mansion"> Mansion</option>
@@ -93,13 +94,14 @@
                                                <div class="form-group">
                                                    <label>Water Supply: </label>
                                                    <select v-model="watersupply" name="" id="" style="border-radius: 0px;" style="border-radius: 0px;" class="form-control">
+                                                       <option value="">Please Select...</option>
                                                        <option value="true">true</option>
                                                        <option value="false">false</option>   
                                                    </select> 
                                                </div>
                                            </div>
                                            <div class="col-md-6 ">
-                                               <div class="form-group incre">
+                                               <div class="form-group ">
                                                    <label>Number of Bedroom</label>
                                                    <input v-model="numberofbedrooms" type="number" style="border-radius: 0px;" min="1" class="form-control" placeholder="2">
                                                </div>
@@ -115,45 +117,31 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6 ">
-                                            <div class="form-group">
-                                                <label>City: </label>
-                                                <select v-model="city" name="" id="" style="border-radius: 0px;" class="form-control">
-                                                    <option value="Alimosho">Alimosho</option>
-                                                    <option value="Ajah">Ajah</option>
-                                                  <option value="Ibeju"> Ibeju</option>
-                                                  <option value="Ikorodu">Ikorodu</option>
-                                                  <option value="Maryland">Maryland</option>
-                                                  <option value="Mowe">Mowe</option>
-                                                  <option value="Shagamu">Shagamu</option>
-                                                  <option value="Surulere">Surulere</option>
-                                                  <option value="Lekki">Lekki</option>
-                                                  <option value="Fadeyi">Fadeyi</option>
-                                                
-                                                </select> 
+                                        <div class="row">
+                                            <div class="col-md-6 ">
+                                                <div class="form-group ">
+                                                    <label>State/Territory: </label>
+                                                    <select v-model="state"  name=""
+                                                            style="border-radius: 0px;" class="form-control">
+                                                        <option value="">Please Select...</option>
+                                                        <option v-for="(value, key) in selectObj" :value="key" >{{key}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="form-group">
+                                                    <label>City: </label>
+                                                    <select v-model="city" name="" id="" style="border-radius: 0px;"
+                                                            class="form-control">
+                                                        <option value="">Please Select...</option>
+                                                        <option v-for="city in selectObj[state]" :value="city" >{{city}}</option>
+
+
+
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 ">
-                                            <div class="form-group ">
-                                             <label>State/Territory: </label>
-                                             <select v-model="state" name="" id="" style="border-radius: 0px;" class="form-control">
-                                                <option value="Alimosho">Alimosho</option>
-                                                <option value="Ajah">Ajah</option>
-                                              <option value="Ibeju"> Ibeju</option>
-                                              <option value="Ikorodu">Ikorodu</option>
-                                              <option value="Maryland">Maryland</option>
-                                              <option value="Mowe">Mowe</option>
-                                              <option value="Shagamu">Shagamu</option>
-                                              <option value="Surulere">Surulere</option>
-                                              <option value="Lekki">Lekki</option>
-                                              <option value="Fadeyi">Fadeyi</option>
-                                             
-                                             </select> 
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
                       
                                        <div class="row">
                                            <div class="col-md-6 ">
@@ -195,12 +183,36 @@
                                             <div class="col-md-12 pr-1">
                                                 <div class="form-group">
                                                     <label>Pictures of the property(max 4)</label>
-                                                    <div class="row">
-                                                    <input ref="file_upload" v-model="imageFile1" id="file-upload" style="border-radius: 0px; width: 23%;"   class="form-control"  type="file"/>
-                                                    <input ref="file_upload1" v-model="imageFile2" id="file-upload" style="border-radius: 0px; width: 23%;"   class="form-control"  type="file"/>
-                                                    <input ref="file_upload2" v-model="imageFile3" id="file-upload" style="border-radius: 0px; width: 23%;"   class="form-control"  type="file"/>
-                                                    <input ref="file_upload3" v-model="imageFile4" id="file-upload" style="border-radius: 0px; width: 23%;"   class="form-control"  type="file"/>
-                                                  </div>                                 
+                                                    <div class="row mt-2 mx-1">
+                                                       <div class="form-group col-md-4" >
+                                                           <label for="">New Property Image 1<span class="text-danger">*</span></label>
+                                                        <input ref="file_upload" v-model="imageFile1"
+                                                            id="file-upload" 
+                                                            class="form-control" type="file" @change="showImage($event, 'output_image1')"/>
+                                                            <img alt="" id="output_image1" width="100%"/>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="">New Property Image 2<span class="text-danger">*</span></label>
+                                                        <input ref="file_upload1" v-model="imageFile2"
+                                                            id="file-upload1"
+                                                            class="form-control" type="file" @change="showImage($event, 'output_image2')"/>
+                                                            <img alt="" id="output_image2" width="100%"/>
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="">New Property Image 3<span class="text-danger">*</span></label>
+                                                        <input ref="file_upload2" v-model="imageFile3" 
+                                                            id="file-upload2"
+                                                            class="form-control" type="file" @change="showImage($event, 'output_image3')"/>
+                                                            <img alt="" id="output_image3" width="100%"/>    
+                                                        </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="">New Property Image 4<span class="text-danger">*</span></label>
+                                                        <input ref="file_upload3" v-model="imageFile4"
+                                                            id="file-upload3" 
+                                                            class="form-control" type="file" @change="showImage($event, 'output_image4')"/>
+                                                            <img alt="" id="output_image4" width="100%"/>
+                                                        </div>
+                                                    </div>                               
                                                 </div>
                                             </div>
                                            
@@ -265,10 +277,24 @@
       imageFile2: '',
       imageFile3: '',
       imageFile4: '',
-      extras: ''
+      extras: '',
+        selectCityObj: [],
+        selectObj: {
+            'Lagos': ['Alimosho','Ajeromi','Ifelodun','Kosofe','Mushin','Oshodi-Isolo','Ojo','Ikorodu','Surulere','Ifako-Ijaiye','Somolu','Amuwo-Odofin','Lagos Mainland','Ikeja','Eti-Osa','Badagry','Apapa','Lagos Island','Epe','Ibeju-Lekki'],
+            'Abuja': ['Asokoro','Bamburu','Mararaba','Gwarinpa','Wuse','Maitama','Abuja Airport','Garki','Karu','Kubwa','Kurunduma','Jikwoyi','Masaka','Eketahuna','New Nyanya','Karshi','Yoba','Zuba']
+        }
     },
     methods: {
+        showImage(event, id){
+                let reader = new FileReader();
+                reader.onload = () => {
+                    let output = document.getElementById(id);
+                    output.src = reader.result;
 
+                };
+                reader.readAsDataURL(event.target.files[0]);
+                this[id] = event.target.files[0];
+            },
       createFormData() {
         userFormData.append("name", this.name);
         userFormData.append("price", this.price);
