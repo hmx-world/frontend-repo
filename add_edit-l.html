@@ -305,4 +305,34 @@
 
 </script>
 
+<<<<<<< HEAD
 </html>
+=======
+        return userFormData;
+      },
+      submitToInternet() {
+        alert("Addition of Landed Property in progress ''" +this.name + "'\nIf no redirection some fields are required");
+        axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/'; 
+        axios.post('firm/landproperty',this.createFormData(),
+        {
+          headers: {
+              "Authorization" : "Bearer " + localStorage.getItem("token").slice(1,-1),
+            "Access-Control-Allow-Origin" : "*"
+          }
+        }).catch(function(error) {
+          console.log(error);
+        }).then(response => {
+           window.location="https://hmx-world.github.io/frontend-repo/firmdashboard.html";
+           localStorage.setItem(
+          "emergencyId",
+          JSON.stringify(response.data.id)
+        );
+          });
+    
+      }
+    }
+  })
+  
+  </script>
+</html>
+>>>>>>> aadaedf37ed090594ea0a5bc97af813e7d7e30af
