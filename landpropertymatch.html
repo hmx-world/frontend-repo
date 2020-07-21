@@ -247,7 +247,7 @@
                     if (this.propertyMatch.length<1){
                         window.location="https://hmx-world.github.io/frontend-repo/nolandmatchpage.html?"+nomatch;
                     }
-                });
+                }).finally(() => (this.loading = false));
             }  else if(indi[0].split("=")[0]==="redirect" ){
                 let formbody = {
                     state: indi[1].split("=")[1],
