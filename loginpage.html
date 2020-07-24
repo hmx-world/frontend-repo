@@ -239,17 +239,13 @@
               this.isLoading = false;
                 alert('Correct login Id and Password required');
               }).then(response => {
-<<<<<<< HEAD
                 console.log(response);
-                if (response.data.length<1){
+                  if (response.data.length<1){
                   window.location = "file:///Users/admin/Downloads/hmx/loginpage.html";
                   this.isLoading = false;
                 }
-                window.location = "file:///Users/admin/Downloads/hmx/firmdashboard.html";
-=======
                 window.location = "https://hmx-world.github.io/frontend-repo/firmdashboard.html";
->>>>>>> 89b61e4eba7edf1e190eaca333624f5c80ecad4b
-                localStorage.setItem(
+              localStorage.setItem(
                   "providerName",
                   JSON.stringify(response.data.name)
                 );
