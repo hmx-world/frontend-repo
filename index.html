@@ -28,7 +28,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+	<link rel = "icon" href =
+			"https://svgshare.com/i/N9e.svg"
+		  type = "image/x-icon">
 
 </head>
 
@@ -100,17 +102,20 @@
 													<div class="col-md mr-md-2">
 														<div class="form-group">
 															<div class="form-field">
+																<div class="select-wrap">
 																<div class="icon"><span class="icon-building-o"
 																						style="color: blue;"></span></div>
-																<label class="label"
-																	   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Firm
+																	<label class="label"
+																		   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Firm (<a href="loginpage.html" style="font-weight: bold; color: white; font-size: 8px; background-color:red;">login </a> to view firms)
 																	</label>
 																<select name="" v-model="firmId"   class=" form-control">
 																<option value="">Please Select...</option>
 																<option v-for="firm in selectedFirm" :value="firm.id">{{firm.firmName}}</option>
 																</select>
 															</div>
+															</div>
 															<div class="form-field">
+																<div class="select-wrap">
 																<div class="icon"><span class="icon-map-marker"
 																						style="color: blue;"></span></div>
 																<label class="label"
@@ -118,22 +123,25 @@
 																	e.g, State</label>
 
 																<select v-model="state"  name=""
-																		style="border-radius: 0px;" class="form-control">
+																		 class="form-control">
 																	<option value="">Please Select...</option>
 																	<option v-for="(value, key) in selectObj" :value="key" >{{key}}</option>
 																</select>
 															</div>
+															</div>
 															<div class="form-field">
+																<div class="select-wrap">
 																<div class="icon"><span class="icon-street-view"
 																						style="color: blue;"></span></div>
 																<label class="label"
 																	   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Location
 																	e.g, City</label>
-																<select v-model="city" name="" style="border-radius: 0px;"
+																<select v-model="city" name=""
 																		class="form-control">
 																	<option value="">Please Select...</option>
 																	<option v-for="city in selectObj[state]" :value="city" >{{city}}</option>
 																</select>
+															</div>
 															</div>
 
 														</div>
@@ -255,40 +263,49 @@
 														<div class="col-md mr-md-2">
 															<div class="form-group">
 																<div class="form-field">
+																	<div class="select-wrap">
 																	<div class="icon"><span class="icon-building-o"
 																							style="color: blue;"></span></div>
-																	<label class="label"
-																		   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Firm
-																	</label>
+																		<label class="label"
+																			   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Firm (<a href="loginpage.html" style="font-weight: bold; color: white; font-size: 8px; background-color:red;">login </a> to view firms)
+																		</label>
 
 																	<select name="" v-model="firmId"   class=" form-control">
-																		<option value="">Please Select...</option>
+																		<option value="">
+																			Please Select...</option>
 																		<option v-for="firm in selectedFirm" :value="firm.id">{{firm.firmName}}</option>
 																	</select>
 																</div>
+																</div>
 																<div class="form-field">
+																	<div class="select-wrap">
 																	<div class="icon"><span class="icon-map-marker"
 																							style="color: blue;"></span></div>
 																	<label class="label"
 																		   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Location
 																		e.g, State</label>
 																	<select v-model="state"  name=""
-																			style="border-radius: 0px;" class="form-control">
-																		<option value="">Please Select...</option>
+																			 class="form-control">
+																		<option value="">
+																			Please Select...</option>
 																		<option v-for="(value, key) in selectObj" :value="key" >{{key}}</option>
 																	</select>
 																</div>
+																</div>
 																<div class="form-field">
+																	<div class="select-wrap">
 																	<div class="icon"><span class="icon-street-view"
 																							style="color: blue;"></span></div>
 																	<label class="label"
 																		   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Location
 																		e.g, City</label>
-																	<select v-model="city" name="" style="border-radius: 0px;"
+																	<select v-model="city" name=""
 																			class="form-control">
-																		<option value="">Please Select...</option>
+																		<option value="">
+																			Please Select...</option>
 																		<option v-for="city in selectObj[state]" :value="city" >{{city}}</option>
 																	</select>
+																</div>
 																</div>
 
 															</div>
@@ -360,7 +377,7 @@
 																				class="form-control">
 																			<option value=""></option>
 																			<option value="rent">Rent</option>
-																			<option value="sale">Sale</option>
+																			<option value="sale"> Sale</option>
 
 																		</select>
 																	</div>
@@ -392,46 +409,55 @@
 													<div class="col-md mr-md-2">
 														<div class="form-group">
 															<div class="form-field">
+																<div class="select-wrap">
 																<div class="icon"><span class="icon-building-o"
 																						style="color: blue;"></span></div>
 																<label class="label"
-																	   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Firm
+																	   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Firm (<a href="loginpage.html" style="font-weight: bold; color: white; font-size: 8px; background-color:red;">login </a> to view firms)
 																</label>
 
 																<select name="" v-model="firmId"  class=" form-control">
-																	<option value="">Please Select...</option>
-																	<option   v-for="firm in selectedFirm" :value="firm.id" >{{firm.firmName}}</option>
+																	<option value="">
+																		Please Select...</option>
+																	<option  v-for="firm in selectedFirm" :value="firm.id" >
+																		{{firm.firmName}}</option>
+
+
 																</select>
 															</div>
+															</div>
+
 															<div class="form-field">
+																<div class="select-wrap">
 																<div class="icon"><span class="icon-map-marker"
 																						style="color: blue;"></span></div>
 																<label class="label"
 																	   style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Location
 																	e.g, State</label>
 																<select v-model="state"  name=""
-																		style="border-radius: 0px;" class="form-control">
+																		 class="form-control">
 																	<option value="">Please Select...</option>
 																	<option v-for="(value, key) in selectObj" :value="key" >{{key}}</option>
 																</select>
 															</div>
+															</div>
 															<div class="form-field">
+																<div class="select-wrap">
 																<div class="icon"><span class="icon-street-view"
 																		style="color: blue;"></span></div>
 																<label class="label"
 																	style="position: absolute; font-size: 9px; left: 9.12%; opacity: 0.5; color: #4E4E56;">Location
 																	e.g, City</label>
-																<select v-model="city" name="" style="border-radius: 0px;"
+																<select v-model="city" name=""
 																		class="form-control">
-																	<option value="">Please Select...</option>
+																	<option value="">
+																		Please Select...</option>
 																	<option v-for="city in selectObj[state]" :value="city" >{{city}}</option>
 																</select>
+																</div>
 
 															</div>
-
-														</div>
 													</div>
-													<div class="col-md mr-md-2">
 														<div class="form-group">
 															<div class="form-field">
 																<div class="select-wrap">
@@ -462,7 +488,6 @@
 														<div class="form-group">
 															<div class="form-field">
 																<div class="select-wrap">
-
 																	<div class="icon"><span class="icon-road"
 																			style="color: blue;"></span></div>
 																	<label class="label"
@@ -539,7 +564,7 @@
 							</div>
 						</li>
 					</a>
-					<a href="add_edit-f.html" style="color: #4E4E56;">
+					<a href="propertiespage.html" style="color: #4E4E56;">
 						<li>
 							<div class="col-12 ">
 								<img src="images/step2.png" alt="Image" class="img-fluid">
@@ -695,7 +720,7 @@
 </div>
 
 <script>
-	 new Vue({
+	var app = new Vue({
 		el: '#app',
 		data: {
 			loading:true,
@@ -778,6 +803,8 @@
 </body>
 
 <script src="js/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

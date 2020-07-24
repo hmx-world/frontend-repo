@@ -50,6 +50,69 @@
     }
 }
 
+
+
+.lds-ripple {
+    position: relative;
+}
+.lds-ripple1 {
+    position: relative;
+}
+.lds-ripple div {
+    position: absolute;
+    margin-left: 60%;
+    margin-top: -11px;
+    border: 4px solid #FFFFFF ;
+    opacity: 1;
+
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple1 div {
+    position: absolute;
+    border: 4px solid #044CBC ;
+    opacity: 1;
+
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2), .lds-ripple1 div:nth-child(2)  {
+    animation-delay: -0.5s;
+}
+@keyframes lds-ripple{
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}@keyframes lds-ripple1{
+     0% {
+         top: 36px;
+         left: 36px;
+         width: 0;
+         height: 0;
+         opacity: 1;
+     }
+     100% {
+         top: 0px;
+         left: 0px;
+         width: 72px;
+         height: 72px;
+         opacity: 0;
+     }
+ }
+
+
 /*           Font Smoothing      */
 
 body,
@@ -76,7 +139,7 @@ td,
 button.close {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+
     font-weight: 400;
 }
 
@@ -158,6 +221,7 @@ h6 .small,
 .h6 .small {
     color: #9A9A9A;
     font-weight: 300;
+
     line-height: 1.5;
 }
 
@@ -387,7 +451,7 @@ body>.navbar-collapse .logo p {
     margin: 10px 10px;
     color: #FFFFFF;
     line-height: 20px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Roboto;
 }
 
 .sidebar .logo .simple-text,
@@ -530,7 +594,7 @@ body>.navbar-collapse .logo p {
     margin: 10px 10px;
     color: #FFFFFF;
     line-height: 20px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Roboto;
 }
 
 .sidebar .logo .simple-text,
@@ -1788,7 +1852,7 @@ fieldset[disabled] .form-control {
     border-bottom-width: 1px;
     font-size: 12px;
     text-transform: uppercase;
-    color: #9A9A9A;
+
     font-weight: 400;
     padding-bottom: 5px;
     border-top: none !important;

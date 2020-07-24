@@ -13,7 +13,9 @@
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
 </head>
 
 <body style="background-color: #9dbcf7;">
@@ -154,32 +156,33 @@
                                                         <div class="row mt-2 mx-1">
                                                            <div class="form-group col-md-4" >
                                                                <label for="">New Property Image 1<span class="text-danger">*</span></label>
-                                                            <input ref="file_upload" v-model="imageFile1"
+                                                            <input ref="file_upload" v-on:change="imageFile1"
                                                                 id="file-upload" 
                                                                 class="form-control" type="file" @change="showImage($event, 'output_image1')"/>
                                                                 <img alt="" id="output_image1" width="100%"/>
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label for="">New Property Image 2<span class="text-danger">*</span></label>
-                                                            <input ref="file_upload1" v-model="imageFile2"
+                                                            <input ref="file_upload1" v-on:change="imageFile2"
                                                                 id="file-upload1"
                                                                 class="form-control" type="file" @change="showImage($event, 'output_image2')"/>
                                                                 <img alt="" id="output_image2" width="100%"/>
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="">New Property Image 3<span class="text-danger">*</span></label>
-                                                            <input ref="file_upload2" v-model="imageFile3" 
+                                                            <input ref="file_upload2" v-on:change="imageFile3"
                                                                 id="file-upload2"
                                                                 class="form-control" type="file" @change="showImage($event, 'output_image3')"/>
                                                                 <img alt="" id="output_image3" width="100%"/>    
                                                             </div>
-                                                                <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-4">
                                                                     <label for="">New Property Image 4<span class="text-danger">*</span></label>
-                                                            <input ref="file_upload3" v-model="imageFile4"
-                                                                id="file-upload3" 
+                                                            <input ref="file_upload3" v-on:change="imageFile4"
+                                                                id="file-upload3"
                                                                 class="form-control" type="file" @change="showImage($event, 'output_image4')"/>
                                                                 <img alt="" id="output_image4" width="100%"/>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -197,10 +200,21 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button @click.prevent="submitToInternet" type="submit"
-                                                class="btn btn-info btn-fill "
-                                                style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>ADD
+                                            <div style="width: 100%" v-if="isLoading">
+                                                <div class="lds-ripple">
+                                                    <button @click.prevent="submitToInternet" type="submit"
+                                                            class="btn btn-info btn-fill "
+                                                            style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>ADD
+                                                        PROPERTY</strong></button>
+                                                    <div></div><div></div>
+                                                </div>
+                                            </div>
+                                            <div style="width: 100%" v-else>
+                                                <button @click.prevent="submitToInternet" type="submit"
+                                                        class="btn btn-info btn-fill "
+                                                        style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>ADD
                                                     PROPERTY</strong></button>
+                                            </div>
                                             <div class="clearfix"></div>
                                         </form>
                                     </div>
@@ -246,6 +260,7 @@
             imageFile3: '',
             imageFile4: '',
             selectCityObj: [],
+            isLoading:false,
             selectObj: {
                 'Lagos': ['Alimosho','Ajeromi','Ifelodun','Kosofe','Mushin','Oshodi-Isolo','Ojo','Ikorodu','Surulere','Ifako-Ijaiye','Somolu','Amuwo-Odofin','Lagos Mainland','Ikeja','Eti-Osa','Badagry','Apapa','Lagos Island','Epe','Ibeju-Lekki'],
                 'Abuja': ['Asokoro','Bamburu','Mararaba','Gwarinpa','Wuse','Maitama','Abuja Airport','Garki','Karu','Kubwa','Kurunduma','Jikwoyi','Masaka','Eketahuna','New Nyanya','Karshi','Yoba','Zuba']
@@ -281,7 +296,8 @@
                 return userFormData;
             },
             submitToInternet() {
-                alert("Addition of Landed Property in progress ''" + this.name + "'\nIf no redirection some fields are required");
+                this.isLoading=true;
+                //alert("Addition of Landed Property in progress ''" + this.name + "'\nIf no redirection some fields are required");
                 axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
                 axios.post('firm/landproperty', this.createFormData(),
                     {
@@ -290,49 +306,23 @@
                             "Access-Control-Allow-Origin": "*"
                         }
                     }).catch(function (error) {
-                        console.log(error);
+                    console.log(error);
+                    alert('Try adding property again...');
+                    this.isLoading=false;
+                    window.location = "#";
                     }).then(response => {
-                        window.location = "file:///Users/admin/Downloads/hmx/firmdashboard.html";
-                        localStorage.setItem(
-                            "emergencyId",
-                            JSON.stringify(response.data.id)
-                        );
-                    });
+                    console.log(response);
+                      //  window.location = "file:///Users/admin/Downloads/hmx/firmdashboard.html";
+
+                    }).finally(() => {
+                    this.loading = false;
+                    this.isLoading=false;
+                })
 
             }
         }
     })
 
 </script>
+</html>
 
-<<<<<<< HEAD
-</html>
-=======
-        return userFormData;
-      },
-      submitToInternet() {
-        alert("Addition of Landed Property in progress ''" +this.name + "'\nIf no redirection some fields are required");
-        axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/'; 
-        axios.post('firm/landproperty',this.createFormData(),
-        {
-          headers: {
-              "Authorization" : "Bearer " + localStorage.getItem("token").slice(1,-1),
-            "Access-Control-Allow-Origin" : "*"
-          }
-        }).catch(function(error) {
-          console.log(error);
-        }).then(response => {
-           window.location="https://hmx-world.github.io/frontend-repo/firmdashboard.html";
-           localStorage.setItem(
-          "emergencyId",
-          JSON.stringify(response.data.id)
-        );
-          });
-    
-      }
-    }
-  })
-  
-  </script>
-</html>
->>>>>>> aadaedf37ed090594ea0a5bc97af813e7d7e30af

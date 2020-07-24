@@ -13,7 +13,9 @@
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
 </head>
 
 <body style="background-color: #9dbcf7;">
@@ -177,13 +179,14 @@
                                         <div class="row">
                                             <div class="col-md-12 pr-1">
                                                 <div class="form-group">
-                                                    <label>Pictures of the property(max 4)</label>
+                                                    <label>Property Images: </label>
                                                     <div class="row">
-                                                    <input ref="file_upload" v-model="imageFile1" id="file-upload" style="border-radius: 0px; width: 23%;"   class="form-control"  type="file"/>
-                                                    <input ref="file_upload1" v-model="imageFile2" id="file-upload" style="border-radius: 0px; width: 23%;"   class="form-control"  type="file"/>
-                                                    <input ref="file_upload2" v-model="imageFile3" id="file-upload" style="border-radius: 0px; width: 23%;"   class="form-control"  type="file"/>
-                                                    <input ref="file_upload3" v-model="imageFile4" id="file-upload" style="border-radius: 0px; width: 23%;"   class="form-control"  type="file"/>
-                                                  </div>                                 
+                                                        <img class="card-img-top img-fluid" v-if="updatedResponse.imageLink1!='#'" style="height: inherit; width: 40%"  :src="updatedResponse.imageLink1" class="img-fluid w-40 h-40" alt="Property image 1">
+                                                        <img class="card-img-top img-fluid" style="height: inherit; width: 40%"  v-if="updatedResponse.imageLink2!='#'" :src="updatedResponse.imageLink2" class="img-fluid w-40 h-40" alt="Property image 2">
+                                                        <img class="card-img-top img-fluid" style="height: inherit; width: 40%"  v-if="updatedResponse.imageLink3!='#'"  :src="updatedResponse.imageLink3" class="img-fluid w-40 h-40" alt="Property image 3">
+                                                        <img class="card-img-top img-fluid" style="height: inherit; width: 40%"  v-if="updatedResponse.imageLink4!='#'"  :src="updatedResponse.imageLink4" class="img-fluid w-40 h-40" alt="Property image 4">
+
+                                                    </div>
                                                 </div>
                                             </div>
                                            
@@ -198,7 +201,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button @click.prevent="submitToInternet" type="submit" class="btn btn-info btn-fill " style="width: 100%; background-color: #044CBC; "><strong>UPDATE PROPERTY</strong></button>
+                                        <div style="width: 100%" v-if="isLoading">
+                                            <div class="lds-ripple">
+                                                <button @click.prevent="submitToInternet" type="submit"
+                                                        class="btn btn-info btn-fill "
+                                                        style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>UPDATE
+                                                    PROPERTY</strong></button>
+                                                <div></div><div></div>
+                                            </div>
+                                        </div>
+                                        <div style="width: 100%" v-else>
+                                            <button @click.prevent="submitToInternet" type="submit"
+                                                    class="btn btn-info btn-fill "
+                                                    style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>UPDATE
+                                                PROPERTY</strong></button>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
@@ -220,7 +237,8 @@
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 <script src="assets/js/plugins/bootstrap-switch.js"></script>
 <script src="assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -250,6 +268,7 @@
       imageFile3: '',
       imageFile4: '',
       extras: '',
+        isLoading: false,
         selectCityObj: [],
         selectObj: {
             'Lagos': ['Alimosho','Ajeromi','Ifelodun','Kosofe','Mushin','Oshodi-Isolo','Ojo','Ikorodu','Surulere','Ifako-Ijaiye','Somolu','Amuwo-Odofin','Lagos Mainland','Ikeja','Eti-Osa','Badagry','Apapa','Lagos Island','Epe','Ibeju-Lekki'],
@@ -261,7 +280,7 @@
     let uri = window.location.href.split('?');
     let vars = uri[1].split('=');
     //let params = new URLSearchParams(uri);
-    console.log(vars[1]);
+
     this.editId = vars[1];
     this.fetchProperty();
     
@@ -322,7 +341,8 @@
                 });
         },
       submitToInternet() {
-        alert("Addition of Rental Property in progress "+this.name +"\nIf no redirection some fields are required");
+          this.isLoading=true;
+       // alert("Addition of Rental Property in progress "+this.name +"\nIf no redirection some fields are required");
         axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/'; 
         axios.put('/firm/rental/'+ this.editId, 
         {
@@ -351,11 +371,16 @@
             "Access-Control-Allow-Origin" : "*"
           }
         }).catch(function(error) {
-          console.log(error);
+
+            alert('Try updating property again...');
+            this.isLoading=false;
+            window.location = "#";
         }).then(response => {
             console.log(response);
            window.location="file:///Users/admin/Downloads/hmx/firmdashboard.html";
-          });
+          }).finally(() => {
+            this.isLoading=false;
+        })
     
       }
     },

@@ -17,12 +17,15 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link href="substyle.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
 </head>
 
 
 <body style="background-color: #EBF2FF;">
     <div id="app">
-        <div v-if="loading" >
+        <div v-if="loading">
             Loading...
             <div class="lds-ripple1" >
                 <div></div><div></div></div>
@@ -44,31 +47,11 @@
                     </div>
                     <ul class="nav">
                         <li class="nav-item active">
-                            <a class="nav-link " href="#">
+                            <a class="nav-link " href="firmdashboard.html">
                                 <p style="font-size: 19px;">Property Type</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="firmdashboard.html">
-                                <i class="nc-icon nc-app"></i>
-                                <p>Residential</p>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">
-                                <i class="nc-icon nc-app"></i>
-                                <p style="font-size:11px;">Commercial </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="nc-icon nc-app"></i>
-                                <p>Landed</p>
-                            </a>
-                        </li>
                         <br> <br> <br> <br>
-
-
                         <li class="nav-item active">
                             <a class="nav-link " href="#">
                                 <p style="font-size: 19px;">Account</p>
@@ -116,7 +99,7 @@
                                     </a>
                                 </li>
 
-                             
+
                             </ul>
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
@@ -153,38 +136,34 @@
                         <div class="container-fluid">
                             <div class="row" style="width: 100%;color: #000000;">
                                 <div class="col-lg-12" style="background-color: white; width: 100%; margin-top: 30px;">
-                                    <div class="card card-user pl-5" style="border: none;">
 
+                                    <div class="card card-user pl-5"  style="border: none;">
                                         <div class="card-body">
                                             <div class="author">
                                                 <a href="#">
-
-                                                    <img alt="img-avatar" class="avatar border-gray" :src="firmPicture"
-                                                        width="100%" />
+                                                    <img alt="img-avatar" v-if="firmPicture" class="avatar border-gray" :src="firmPicture"
+                                                         width="100%" />
+                                                    <img alt="img-avatar" v-else class="avatar border-gray" src="images/defaultfirm.svg"
+                                                         width="100%" />
                                                 </a>
-
                                             </div>
+                                            <span style="background-color: red; border-radius: 5px; padding: 0px 4px 0px 4px; color: white" v-if="!firmName">You have not logged in </span>
+                                            <h5 class="title"><strong>Firm Name:</strong></h5>
+                                                <span v-if="firmName">{{firmName}}</span>
+                                            <span v-else>No name</span>
+                                            <h5 class="title"><strong>Email:</strong></h5>
+                                                <span v-if="firmEmail"> {{firmEmail}}</span>
+                                            <span v-else> No Email</span>
+                                            <h5 class="title"><strong>Phone:</strong></h5>
+                                                  <span v-if="firmNumber"> {{firmNumber}}</span>
+                                            <span v-else>Null</span>
 
+                                            <h5 class="title"><strong> About:</strong> <br></h5>
+                                                <span v-if="firmDescription" class="description">{{firmDescription}}</span>
+                                            <span v-else class="description">No Description</span>
 
-                                            <h5 class="title"><strong>Firm Name:</strong>
-                                                <span>{{firmName}}</span></h5>
-                                            <a href="#">
-                                                <p class="description">Contact:
-                                                    <br> Email: <span> {{firmEmail}}</span>
-
-                                                </p>
-                                                <h5 class="title"><strong>Phone:</strong>
-                                                    <p class="description">
-                                                        {{firmNumber}}
-                                                    </p>
-                                            </a>
-                                            <p class="description">
-                                            <h5 class="title"><strong> About</strong> <br>
-                                                <span>{{firmDescription}}</span>
-                                                </p>
-                                                <p>
-                                                <h5 class="title" style="color: #000000;"><strong> Current Plan</strong>
-                                                    <br><span style="font-size: 14px; color: rgb(104, 96, 96);">
+                                            <h5 class="title" ><strong> Current Plan:</strong></h5>
+                                                <span v-if="currentPlan" style="font-size: 14px; font-weight: bold color: rgb(104, 96, 96);">
                                                         <span v-if="currentPlan==1">Business</span>
                                                         <span v-else-if="currentPlan==2">Pro</span>
                                                         <span v-else-if="currentPlan==3">Premium</span>
@@ -193,7 +172,8 @@
                                                         <a class="nav-link active" href="planpage.html">
                                                             <i class="nc-icon nc-spaceship"></i>
                                                             Upgrade</a></span>
-                                                    </p>
+                                            <span v-else> No Plan</span>
+                                            </p>
                                         </div>
                                         <hr>
                                         <div class="button-container mr-auto ml-auto">
@@ -208,10 +188,10 @@
                                             </button>
                                         </div>
                                         <div class="button-container mr-auto ml-auto">
-                                                <a class="nav-link" href="#" @click.prevent.stop="logout" >
-                                                    <button href="#" class="btn  " style="border-radius: 10px; color: white; background-color: #044CBC;">
+                                            <a class="nav-link" href="#" @click.prevent.stop="logout" >
+                                                <button href="#" class="btn  " style="border-radius: 10px; color: white; background-color: #044CBC;">
                                                     <span class="no-icon">Log out</span>
-                                            </button> </a>
+                                                </button> </a>
 
                                         </div>
                                     </div>
@@ -239,6 +219,8 @@
 <!--  Google Maps Plugin    -->
 <script src="assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 <script src="assets/js/demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -260,20 +242,18 @@
             rentalProperties: '',
             commercialProperties: '',
             loading:true,
-
+            details:'',
             FirmArr: [],
-
         },
         methods:
         {
             logout(){
-
                 localStorage.clear();
                 alert('You have successfully logged out');
                 window.location="file:///Users/admin/Downloads/hmx/loginpage.html";
                     },
             fetchDetails() {
-                this.loading=false
+                this.loading = false;
                 axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
                 axios.get('/property/firm/' + localStorage.getItem("FirmId"), {
                     headers: {
@@ -281,19 +261,23 @@
                         "Access-Control-Allow-Origin": "*"
                     }
                 }).then(response => {
+                    this.details = response.data;
                     this.firmName = response.data.name;
                     this.firmEmail = response.data.email;
                     this.firmNumber = response.data.phoneNumber;
                     this.firmDescription = response.data.description;
                     this.firmPicture = response.data.imageUri;
                     this.currentPlan = response.data.plan;
+                    if (this.details.length<1){
+                       alert('You have not logged in ');
+
+                    }
                 }).catch(
                     function (error) {
                         console.log(error);
-                        this.loading=false;
 
                     }
-                ).finally(() => this.loading=false)
+                ).finally(() => (this.loading = false))
             },
         },
         mounted: function () {

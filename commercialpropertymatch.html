@@ -24,19 +24,24 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
 </head>
 
 <body class="m-0">
 <div id="app">
-    <div v-if="loading">
-        Loading...
-        <div class="lds-ripple1" >
-            <div></div><div></div></div>
-        <div id="ftco-loader" class="show fullscreen">
-            <svg class="circular" width="48px" height="48px">
-                <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#5A98FF"/>
-                <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                        stroke="#044CBC"/>   </svg>
+    <div v-if="loading" style="color: black; font-weight: bold">
+        <div class="container-fluid " style="display: flex; position: fixed;
+     top: 50%;
+      left: 50%;
+      margin-top: -100px;
+      margin-left: -100px;
+  align-items: center; font-size: 32px;">
+            Loading...
+            <div class="lds-ripple1" >
+                <div></div><div></div></div>
+
         </div>
     </div>
     <div v-else>
@@ -85,11 +90,12 @@
                       MATCH</span>
                                     <a :href="'comdetailspage.html?q='+purpose+'&id='+property.id">
                                         <img class="card-img-top img-fluid"
-                                             style="height: 380px;" v-if="property.imageLink1=='#' || property.imageLink1==null " src="images/defaultprop.jpg" class="img-fluid w-80 h-80" alt="Card image cap">
-                                        <img class="card-img-top img-fluid" style="height: 380px;" v-else  :src="property.imageLink1" class="img-fluid w-80 h-80" alt="Card image cap">
+                                             style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                             src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                                        <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
                                     </a>
 
-                                    <div class="card-body bg-white text">
+                                    <div class="card-body bg-white text" style="padding-left: 10px;">
                                         <a :href="'comdetailspage.html?q='+purpose+'&id='+property.id">
                                             <h5 class="card-title">{{property.name}}</h5>
                                             <p class="card-text" style="color: #044CBC ; padding: 0; font-weight: bold;"> ₦{{property.price.toLocaleString()}} </p>
@@ -104,13 +110,9 @@
                     </div>
                 </section>
             </div>
-            <div class="row ftco-animate">
-
-                <div class="row lg-12 ellipse ellipseright">
-                    <img src="images/ellipse2.svg">
-                </div>
+            <div class=" ellipse" style="width: 40px;">
+                <img src="images/ellipse2.svg">
             </div>
-
         </div>
 
     </section>
@@ -265,7 +267,6 @@
                     minPrice: indi[3].split("=")[1].split("-")[0],
                     maxPrice: indi[3].split("=")[1].split("-")[1],
                     numberofbedrooms: indi[4].split("=")[1],
-
                     purpose: indi[5].split("=")[1],
                 }
                 axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';

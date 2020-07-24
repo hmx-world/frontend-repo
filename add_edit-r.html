@@ -13,7 +13,9 @@
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
 </head>
 
 <body style="background-color: #9dbcf7;">
@@ -227,7 +229,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button @click.prevent="submitToInternet" type="submit" class="btn btn-info btn-fill " style="width: 100%; background-color: #044CBC; "><strong>ADD PROPERTY</strong></button>
+                                        <div style="width: 100%" v-if="isLoading">
+                                            <div class="lds-ripple">
+                                                <button @click.prevent="submitToInternet" type="submit"
+                                                        class="btn btn-info btn-fill "
+                                                        style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>ADD
+                                                    PROPERTY</strong></button>
+                                                <div></div><div></div>
+                                            </div>
+                                        </div>
+                                        <div style="width: 100%" v-else>
+                                            <button @click.prevent="submitToInternet" type="submit"
+                                                    class="btn btn-info btn-fill "
+                                                    style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>ADD
+                                                PROPERTY</strong></button>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
@@ -278,6 +294,7 @@
       imageFile3: '',
       imageFile4: '',
       extras: '',
+        isLoading:false,
         selectCityObj: [],
         selectObj: {
             'Lagos': ['Alimosho','Ajeromi','Ifelodun','Kosofe','Mushin','Oshodi-Isolo','Ojo','Ikorodu','Surulere','Ifako-Ijaiye','Somolu','Amuwo-Odofin','Lagos Mainland','Ikeja','Eti-Osa','Badagry','Apapa','Lagos Island','Epe','Ibeju-Lekki'],
@@ -319,7 +336,8 @@
         return userFormData;
       },
       submitToInternet() {
-        alert("Addition of Rental Property in progress "+this.name +"\nIf no redirection some fields are required");
+            this.isLoading = true;
+        //alert("Addition of Rental Property in progress "+this.name +"\nIf no redirection some fields are required");
         axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/'; 
         axios.post('firm/rental',this.createFormData(),
         {
@@ -329,14 +347,17 @@
           }
         }).catch(function(error) {
           console.log(error);
+            alert('Try adding property again...');
+            this.isLoading=false;
+            window.location = "#";
         }).then(response => {
             console.log(response);
            window.location="https://hmx-world.github.io/frontend-repo/firmdashboard.html";
-           localStorage.setItem(
-          "emergencyId",
-          JSON.stringify(response.data.id)
-        );
-          });
+
+          }).finally(() => {
+            this.loading = false;
+            this.isLoading=false;
+        })
     
       }
     }

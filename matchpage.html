@@ -24,20 +24,25 @@
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel = "icon" href =
+          "https://svgshare.com/i/N9e.svg"
+        type = "image/x-icon">
 </head>
 
 <body class="m-0">
   <div id="app">
     <div v-if="loading" style="color: black; font-weight: bold">
-      Loading...
+    <div class="container-fluid " style="display: flex; position: fixed;
+     top: 50%;
+      left: 50%;
+      margin-top: -100px;
+      margin-left: -100px;
+  align-items: center; font-size: 32px;">
+     Loading...
       <div class="lds-ripple1" >
         <div></div><div></div></div>
-      <div id="ftco-loader" class="show fullscreen">
-        <svg class="circular" width="48px" height="48px">
-          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#5A98FF"/>
-          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                  stroke="#044CBC"/>   </svg>
-      </div>
+
+    </div>
     </div>
     <div v-else>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -65,8 +70,8 @@
 
     <section class="ftco-section testimony-section" style="padding-left: 12px;">
       <div class="container">
-        <div class="row justify-content-left mb-4" style="position: relative; left:-11.5%; padding: 0">
-          <img alt="" src="images/Ellipse.png" style="position: absolute; z-index:-5; top: 650px;">
+        <div class=" ellipseal row justify-content-left mb-4" >
+          <img alt="" src="images/Ellipse.png" >
         </div>
         <div class="row justify-content-center mb-3">
           <section class="mb-5">
@@ -84,12 +89,12 @@
                       MATCH</span>
                     <a :href="'detailspage.html?q='+purpose+'&id='+property.id">
                       <img class="card-img-top img-fluid"
-                           style="height: 380px;" v-if="property.imageLink1=='#' || property.imageLink1==null "
-                           src="images/defaultprop.jpg" class="img-fluid w-80 h-80" alt="Card image cap">
-                      <img class="card-img-top img-fluid" style="height: 380px;" v-else  :src="property.imageLink1" class="img-fluid w-80 h-80" alt="Card image cap">
+                           style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                           src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                      <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
 
                     </a>
-                    <div class="card-body bg-white text">
+                    <div class="card-body bg-white text" style="padding-left: 10px;">
                       <a :href="'detailspage.html?q='+purpose+'&id='+property.id">
                         <h5 class="card-title">{{property.name}}</h5>
                         <p class="card-text" style="color: #044CBC ; padding: 0; font-weight: bold;"> ₦{{property.price.toLocaleString()}} </p>
@@ -102,17 +107,13 @@
                 </div>
               </div>
             </div>
+
           </section>
         </div>
-        <div class="row ftco-animate">
-
-          <div class="row lg-12 ellipse ellipseright">
+        <div class=" ellipse" style="width: 40px;">
             <img src="images/ellipse2.svg">
-          </div>
         </div>
-
       </div>
-
     </section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -195,7 +196,8 @@
 <script src="js/aos.js"></script>
 <script src="js/jquery.animateNumber.min.js"></script>
 <script src="js/scrollax.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
 <script src="js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -217,7 +219,8 @@
       imageFile1: '',
       propertyMatch: '',
       purpose: '',
-      loading:true
+      loading:true,
+
 
     },
     created() {
@@ -310,7 +313,7 @@
           console.log(response.data);
           this.propertyMatch = response.data;
           if (this.propertyMatch.length<1){
-           // window.location="file:///Users/admin/Downloads/hmx/nomatchpage.html?"+nomatch;
+            window.location="file:///Users/admin/Downloads/hmx/nomatchpage.html?"+nomatch;
           }
         }).finally(() => (this.loading = false))
 
@@ -337,7 +340,7 @@
           console.log(response.data);
           this.propertyMatch = response.data;
           if (this.propertyMatch.length<1){
-            // window.location="file:///Users/admin/Downloads/hmx/nomatchpage.html?"+nomatch;
+             window.location="file:///Users/admin/Downloads/hmx/nomatchpage.html?"+nomatch;
           }
         }).finally(() => (this.loading = false))
 

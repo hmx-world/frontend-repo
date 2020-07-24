@@ -19,7 +19,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css" />
-
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
 </head>
 <style>
     .nav-link .active {
@@ -79,28 +81,11 @@
                     </div>
                     <ul class="nav">
                         <li class="nav-item active">
-                            <a class="nav-link " href="#">
-                                <p style="font-size: 19px;">Property Type</p>
+                            <a class="nav-link " href="firmdashboard.html">
+                                <p style="font-size: 16px;">Property Type</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <i class="nc-icon nc-app"></i>
-                                <p>Residential</p>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">
-                                <i class="nc-icon nc-app"></i>
-                                <p style="font-size:11px;">Commercial </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="nc-icon nc-app"></i>
-                                <p>Landed</p>
-                            </a>
-                        </li>
+
 
                         <br> <br> <br> <br>
 
@@ -183,20 +168,18 @@
                         <div class="col-lg-5" style="margin:0px 0px 10px 0px; ">
 
                             <form class="search" id="search">
-                                <input class='searchbar transparent' onkeyup="myFunction()" id="searchInput"
+                                <input class='searchbar transparent' id="searchInput"
                                     placeholder="Search for properties..." title="Type in a name" type='text'
                                     autocomplete="on" />
                                 <span> <i class="nc-icon nc-zoom-split"></i></span>
                             </form>
-
                         </div>
                     </div>
                 </div>
-
                 <div class="container-fluid">
-                    <div class="row pl-3 ">
+                    <div class="row ">
                         <div class="col-lg-3">
-                            <div class="card text-center" style=" background-color: #FFE066;">
+                            <div class="card text-center" style="width: 85%; background-color: #FFE066;">
                                 <span style="font-size: 36px;font-weight: bold;">{{rentalCount}}</span>
                                 <br>
                                 <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">
@@ -205,7 +188,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="card text-center" style=" background-color: #A1C2FA;">
+                            <div class="card text-center" style="width: 85%; background-color: #A1C2FA;">
                                 <span style="font-size: 36px;font-weight: bold;">{{commercialCount}}</span>
                                 <br>
                                 <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">
@@ -214,7 +197,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="card text-center" style=" background-color: #ADADEA;">
+                            <div class="card text-center" style="width: 85%; background-color: #ADADEA;">
                                 <span style="font-size: 36px;font-weight: bold;">{{landCount}}</span>
                                 <br>
                                 <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">
@@ -223,7 +206,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="card text-center" style=" background-color: #ee405db9;">
+                            <div class="card text-center" style="width: 85%; background-color: #ee405db9;">
                                 <span style="font-size: 36px;font-weight: bold;">{{saleCount}}</span>
                                 <br>
                                 <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">
@@ -251,11 +234,11 @@
                             <div class="col-lg-12" style="background-color: white; width: 100%;">
                                 <div class="card card-plain ">
                                     <div class="card-header mb-4 row ">
-                                        <p class="card-category col-12 col-sm-4 pt-2"><strong
+                                        <p class="card-category col-sm-2 pt-2"><strong
                                                 style="font-size: 18px; color: black;">Purpose:</strong> </p>
-                                        <select v-model="selectedType" @change="propertyType"
-                                            class="form-control col-12 col-sm-7" name="" id=""
-                                            style="border-radius: 10px;">
+                                        <select
+                                            class="form-control  col-sm-2" name="" id=""
+                                            style="width: 50%; border-radius: 10px;">
                                             <option value="all" selected>All</option>
                                             <option value="rent">Rent</option>
                                             <option value="onsale">For sale</option>
@@ -264,7 +247,7 @@
                                         </select>
                                     </div>
                                     <div class="card-body table-full-width table-responsive">
-                                        <table id="example" class="table " style="width:100%">
+                                        <table id="example" class="table " style="color: black;width:100%">
                                             <thead>
                                                 <tr>
                                                     <th
@@ -385,7 +368,8 @@
 <!--  Google Maps Plugin    -->
 <script src="assets/js/plugins/chartist.min.js"></script>
 <script src="assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
 </script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>

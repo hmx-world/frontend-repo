@@ -14,7 +14,9 @@
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
 
 </head>
 
@@ -247,10 +249,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div style="width: 100%" v-if="isLoading">
+                                                    <div class="lds-ripple">
                                                 <button @click.prevent="submitToInternet" type="submit"
                                                     class="btn btn-info btn-fill "
                                                     style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>ADD
                                                         PROPERTY</strong></button>
+                                                        <div></div><div></div>
+                                                    </div>
+                                                </div>
+                                                <div style="width: 100%" v-else>
+                                                <button @click.prevent="submitToInternet" type="submit"
+                                                        class="btn btn-info btn-fill "
+                                                        style="width: 100%; cursor: pointer; background-color: #044CBC; "><strong>ADD
+                                                    PROPERTY</strong></button>
+                                                    </div>
+
                                                 <div class="clearfix"></div>
                                         </form>
                                     </div>
@@ -300,6 +314,7 @@
             imageFile4: '',
             extras: '',
             selectCityObj: [],
+            isLoading: false,
             selectObj: {
                 'Lagos': ['Alimosho','Ajeromi','Ifelodun','Kosofe','Mushin','Oshodi-Isolo','Ojo','Ikorodu','Surulere','Ifako-Ijaiye','Somolu','Amuwo-Odofin','Lagos Mainland','Ikeja','Eti-Osa','Badagry','Apapa','Lagos Island','Epe','Ibeju-Lekki'],
                 'Abuja': ['Asokoro','Bamburu','Mararaba','Gwarinpa','Wuse','Maitama','Abuja Airport','Garki','Karu','Kubwa','Kurunduma','Jikwoyi','Masaka','Eketahuna','New Nyanya','Karshi','Yoba','Zuba']
@@ -339,7 +354,8 @@
                 return userFormData;
             },
             submitToInternet() {
-                alert("Addition of OnSale Property in progress " + this.name + "\nIf no redirection some fields are required");
+                this.isLoading=true;
+              //  alert("Addition of OnSale Property in progress " + this.name + "\nIf no redirection some fields are required");
                 axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
                 axios.post('firm/onsale', this.createFormData(),
                     {
@@ -350,23 +366,19 @@
                     }).catch(function (error) {
                         console.log(error);
                         alert('Try adding property again...');
+                        this.isLoading=false;
+                        window.location = "#";
                     }).then(response => {
                         console.log(response);
-<<<<<<< HEAD
-                        //window.location = "file:///Users/admin/Downloads/hmx/firmdashboard.html";
-=======
-                        window.location = "https://hmx-world.github.io/frontend-repo/firmdashboard.html";
->>>>>>> aadaedf37ed090594ea0a5bc97af813e7d7e30af
-                        localStorage.setItem(
-                            "emergencyId",
-                            JSON.stringify(response.data.id)
-                        );
-                    });
+                        window.location = "file:///Users/admin/Downloads/hmx/firmdashboard.html";
 
+                    }).finally(() => {
+                    this.loading = false;
+                    this.isLoading=false;
+                })
             }
         }
     })
-
 </script>
 
 </html>

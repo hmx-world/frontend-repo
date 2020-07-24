@@ -22,18 +22,23 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
 </head>
 <body class="m-0">
 <div id="app">
     <div v-if="loading" >
-        Loading...
-        <div class="lds-ripple1" >
-            <div></div><div></div></div>
-        <div id="ftco-loader" class="show fullscreen">
-            <svg class="circular" width="48px" height="48px">
-                <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#5A98FF"/>
-                <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                        stroke="#044CBC"/>   </svg>
+        <div class="container-fluid " style="display: flex; position: fixed;
+     top: 50%;
+      left: 50%;
+      margin-top: -100px;
+      margin-left: -100px;
+  align-items: center; font-size: 32px;">
+            Loading...
+            <div class="lds-ripple1" >
+                <div></div><div></div></div>
+
         </div>
     </div>
     <div v-else>
@@ -150,7 +155,7 @@
 
                         <a class="prev" style="color: whitesmoke; background-color: #044CBC; " onclick="plusSlides(-1)">&#10094;</a>
                         <a class="next" style="color: whitesmoke; background-color: #044CBC; " onclick="plusSlides(1)">&#10095;</a>
-                        <div style="text-align:left; padding-left: 10px; top: 500px; position: absolute;">
+                        <div style="text-align:left; padding-left: 10px; top: 366px; position: absolute;">
                             <span class="dot active" onclick="currentSlide(1)"></span>
                             <span class="dot " onclick="currentSlide(2)"></span>
                             <span class="dot" onclick="currentSlide(3)"></span>
@@ -170,31 +175,28 @@
 
                 <div class="col-sm-3 ">
 
-                    <img v-if="this.firmImage==null || this.firmImage==''"
-                         alt="" class="card" style="padding-left: 0; height: 100px; width: 70%;"
+                    <img v-if="this.firmImage==null || this.firmImage=='' || this.firmImage=='#'"
+                         alt="kk" class="card" style="padding-left: 0; height: 100px; width: 70%;"
                          src="images/defaultfirm.svg" >
-                    <img v-else-if="this.firmImage!=null || this.firmImage!=''"
-                         alt="" class="card" style="padding-left: 0; height: 100px; width: 70%;"
-                      :src="this.firmImage" >
 
-                    <img alt="" v-else class="card" style="padding-left: 0; height: 100px; width: 70%;"
-                         src="images/defaultfirm.svg" >
+                    <img alt="r" v-else class="card" style="padding-left: 0; height: 100px; width: 70%;"
+                         :src="this.firmImage" >
                 </div>
                 <div class="col-sm-9">
                     <p style="color: #4E4E56;font-size: 16px;
-                  line-height: 38px;"> {{this.firmName}} </p>
-
+                  line-height: 38px;"> Firm Name: <strong> {{this.firmName}}</strong> </p>
                     <p style="font-size: 14px; color: #4E4E56;
-                  line-height: 21px;">{{this.firmDesc}}</p>
-
+                  line-height: 21px;">Description: <strong> {{this.firmDesc}}</strong></p>
+                    <p style="font-size: 14px; color: #4E4E56;
+                  line-height: 21px;">Firm Email: <strong> {{this.firmEmail}}</strong></p>
+                    <p style="font-size: 14px; color: #4E4E56;
+                  line-height: 21px;">Number: <strong> {{this.firmNumber}}</strong></p>
+                    <p style="font-size: 14px; color: #4E4E56;
+                  line-height: 21px;">Location: <strong> {{this.firmLocation}}</strong></p>
                 </div>
             </div>
         </div>
-
     </div>
-
-
-
 <br>
 <br>
 <br>
@@ -276,7 +278,8 @@
 <script src="js/aos.js"></script>
 <script src="js/jquery.animateNumber.min.js"></script>
 <script src="js/scrollax.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
 <script src="js/main.js"></script>
 <script>
     var slideIndex = 1;
@@ -347,6 +350,9 @@
             firmDesc:'',
             firmName:'',
             firmImage:'',
+            firmEmail: '',
+            firmNumber:'',
+            firmLocation: '',
             isActive:'',
             loading: true,
             isLoading: false,
@@ -364,6 +370,42 @@
 
             this.purpose=indi[0].split("=")[1];
             this.editId= indi[1].split("=")[1];
+
+            if (this.purpose===""){
+                this.loading = true;
+                axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+                axios.get('/property/commercial/' + this.editId, {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }).then(response => {
+                    this.updatedResponse = response.data;
+                    this.name = this.updatedResponse.name;
+                    this.price = this.updatedResponse.price;
+                    this.title = this.updatedResponse.title;
+                    this.landArea = this.updatedResponse.landArea;
+                    this.city = this.updatedResponse.city;
+                    this.state = this.updatedResponse.state;
+                    this.buildingType = this.updatedResponse.buildingType;
+                    this.town = this.updatedResponse.town;
+                    this.extras = this.updatedResponse.extras;
+                    this.firmName=this.updatedResponse.firm.name;
+
+                    this.firmDesc=this.updatedResponse.firm.description;
+                    this.firmImage = this.updatedResponse.firm.imageUri;
+                    this.numberofbedrooms= this.updatedResponse.numberOfBedrooms;
+                    this.neighbourhoodsecurity = this.updatedResponse.neighbourhoodSecurity;
+                    this.description = this.updatedResponse.siteDescription;
+                    this.imageFile1 = this.updatedResponse.imageLink1;
+                    this.imageFile2 = this.updatedResponse.imageLink2;
+                    this.imageFile3 = this.updatedResponse.imageLink3;
+                    this.imageFile4 = this.updatedResponse.imageLink4;
+                    this.isActive=this.updatedResponse.isActive;
+
+
+                }).finally(() => (this.loading = false))
+            }
 
 
             if (this.purpose==="sale"){
@@ -386,6 +428,7 @@
                     this.town = this.updatedResponse.town;
                     this.extras = this.updatedResponse.extras;
                     this.firmName=this.updatedResponse.firm.name;
+
                     this.firmDesc=this.updatedResponse.firm.description;
                     this.firmImage = this.updatedResponse.firm.imageUri;
                     this.numberofbedrooms= this.updatedResponse.numberOfBedrooms;
@@ -415,6 +458,14 @@
                     this.landArea = this.updatedResponse.landArea;
                     this.city = this.updatedResponse.city;
                     this.state = this.updatedResponse.state;
+                    this.firmName = this.updatedResponse.firm.name;
+                    console.log(this.updatedResponse.firm.name)
+                    this.firmDesc = this.updatedResponse.firm.description;
+                    this.firmEmail = this.updatedResponse.firm.email;
+                    this.firmNumber = this.updatedResponse.firm.phoneNumber;
+                    this.firmLocation = this.updatedResponse.firm.location;
+                    this.firmImage = this.updatedResponse.firm.imageUri;
+
                     this.buildingType = this.updatedResponse.buildingType;
                     this.town = this.updatedResponse.town;
                     this.extras = this.updatedResponse.extras;
@@ -430,29 +481,20 @@
                     this.imageFile3 = this.updatedResponse.imageLink3;
                     this.imageFile4 = this.updatedResponse.imageLink4;
                     this.isActive=this.updatedResponse.isActive;
-
-
                 }).finally(() => {this.loading = false;
-                console.log(this.loading)
                 })
             }
             else {
                 console.log('do nothing');
             }
-
         },
         updated() {
         },
         methods: {
             check(){
                 this.isLoading=true
-
             }
         },
-
-
     })
-
-
 </script>
 </html>
