@@ -247,9 +247,13 @@
                     console.log(response.data);
                     this.propertyMatch = response.data;
                     if (this.propertyMatch.length<1){
-                        window.location="file:///Users/admin/Downloads/hmx/nolandmatchpage.html?"+nomatch;
+                        window.location="https://hmx-world.github.io/frontend-repo/nolandmatchpage.html?"+nomatch;
                     }
+<<<<<<< HEAD
                 }).finally(() => (this.loading = false))
+=======
+                }).finally(() => (this.loading = false));
+>>>>>>> 89b61e4eba7edf1e190eaca333624f5c80ecad4b
             }  else if(indi[0].split("=")[0]==="redirect" ){
                 let formbody = {
                     state: indi[1].split("=")[1],
@@ -269,7 +273,11 @@
                     console.log(response.data);
                     this.propertyMatch = response.data;
                     if (this.propertyMatch.length<1){
+<<<<<<< HEAD
                         window.location="file:///Users/admin/Downloads/hmx/nolandmatchpage.html?"+nomatch;
+=======
+                        window.location="https://hmx-world.github.io/frontend-repo/nolandmatchpage.html?"+nomatch;
+>>>>>>> 89b61e4eba7edf1e190eaca333624f5c80ecad4b
 
                     }
                 }).finally(() => (this.loading = false))
