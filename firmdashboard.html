@@ -236,7 +236,7 @@
                                     <div class="card-header mb-4 row ">
                                         <p class="card-category col-sm-2 pt-2"><strong
                                                 style="font-size: 18px; color: black;">Purpose:</strong> </p>
-                                        <select
+                                        <select  v-model="selectedType" @change="propertyType"
                                             class="form-control  col-sm-2" name="" id=""
                                             style="width: 50%; border-radius: 10px;">
                                             <option value="all" selected>All</option>
