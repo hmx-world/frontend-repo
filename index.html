@@ -21,6 +21,7 @@
 
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/jquery.timepicker.css">
+	<link rel="stylesheet" href="assets/scss/demo.scss">
 
 
 	<link rel="stylesheet" href="css/flaticon.css">
@@ -39,7 +40,9 @@
 <div id="app">
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container-fluid px-md-4	">
-			<a class="navbar-brand" href="index.html">HMX.World </a>
+			<a class="navbar-brand hvr-wobble-horizontal " href="index.html">HMX.World
+
+			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
@@ -48,11 +51,11 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 <!--					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>-->
-					<li class="nav-item"><a href="propertiespage.html" class="nav-link">Properties</a></li>
+					<li class="nav-item hvr-wobble-horizontal"><a href="propertiespage.html" class="nav-link">Properties</a></li>
 					<!-- <li class="nav-item"><a href="nomatchpage.html" class="nav-link">No Properties</a></li> -->
 <!--					<li class="nav-item"><a href="paymentpage.html" class="nav-link">Payment</a></li>-->
-					<li class="nav-item"><a href="planpage.html" class="nav-link">Become a provider</a></li>
-					<li class="nav-item"><a href="contactpage.html" class="nav-link">Contact us</a></li>
+					<li class="nav-item hvr-wobble-horizontal"><a href="planpage.html" class="nav-link">Become a provider</a></li>
+					<li class="nav-item hvr-wobble-horizontal"><a href="contactpage.html" class="nav-link">Contact us</a></li>
 				</ul>
 			</div>
 <!--			<div class="collapse navbar-collapse" id="ftco-nav">-->
@@ -67,24 +70,43 @@
 
 	<!-- END nav -->
 	<div class="hero-wrap img" style="background-image: url(images/bg_1.png);">
-		<div class="overlay"></div>
+		<div class="bird-container bird-container--one">
+			<div class="bird bird--one"></div>
+		</div>
 
-		<div class="container">
+		<div class="bird-container bird-container--two">
+			<div class="bird bird--two"></div>
+		</div>
+
+		<div class="bird-container bird-container--three">
+			<div class="bird bird--three"></div>
+		</div>
+
+		<div class="bird-container bird-container--four">
+			<div class="bird bird--four"></div>
+		</div>
+		<div class="overlay"></div>
+<!--		<img class="moveImage1" src="images/move.png">-->
+<!--		<img class="moveImage1" style="top: 700px;" src="images/move.png">-->
+<!--		<img class="moveImage1" src="images/move.png">-->
+		<div class="container animate__bounceInDown animate__bounceInDown__delay-5s">
+
 			<div class="row d-md-flex no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-10 d-flex align-items ftco-animate">
+				<div class="col-md-10 d-flex align-items ftco-animate fadeInLeft">
 					<div class="text text-left pt-5 mt-md-5">
 						<div class="ftco-search my-md-5">
 							<div class="row">
 								<div class="col-md-12 nav-link-wrap">
-									<div class="nav nav-pills text-center" id="v-pills-tab" role="tablist"
+
+									<div class="nav nav-pills text-center" role="tablist"
 										aria-orientation="vertical" style="display: inline-flex;">
-										<a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill"
+										<a class="nav-link active hvr-wobble-horizontal" id="v-pills-1-tab" data-toggle="pill"
 											href="#v-pills-1" role="tab" aria-controls="v-pills-1"
-											aria-selected="true">RESIDENTIAL</a>
-										<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
-											role="tab" aria-controls="v-pills-2" aria-selected="false">COMMERCIAL</a>
-										<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3"
-											role="tab" aria-controls="v-pills-3" aria-selected="false">LANDED
+											aria-selected="true" style="border-radius: 4px 0px 0px 4px;">RESIDENTIAL</a>
+										<a class="nav-link hvr-wobble-horizontal" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
+											role="tab" aria-controls="v-pills-2" aria-selected="false" style="border-radius: 0px">COMMERCIAL</a>
+										<a class="nav-link hvr-wobble-horizontal" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3"
+											role="tab" aria-controls="v-pills-3" aria-selected="false" style="border-radius: 0px 4px 4px 0px;">LANDED
 											PROPERTY</a>
 									</div>
 								</div>
@@ -95,8 +117,11 @@
 										<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
 											aria-labelledby="v-pills-nextgen-tab">
 											<div
-												style="color: black; font-size: 35px; font-weight: bold; line-height: 50px;">
-												Find the best <br> property match.</div>
+												>
+												<h1 style="color: black; font-size: 35px; font-weight: bold; line-height: 50px;">Find the
+													<span class="txt-rotate" data-period="2000"
+															data-rotate='[ "best property match.", "closest property match.", "unique property.", "most rated.", "pleasing property." ]'></span>
+												</h1> </div>
 											<form action="#" class="search-job">
 												<div class="row no-gutters">
 													<div class="col-md mr-md-2">
@@ -240,7 +265,7 @@
 													<div class="col-md mr-md-2">
 														<div class="form-group">
 															<div class="form-field">
-																<a class="form-control btn btn-primary  "
+																<a class="form-control btn btn-primary hvr-wobble-horizontal "
 																   style=" padding: 8px 0px 6px 0px !important;"
 																   id="" @click.prevent="formBodyRes"
 																>SEARCH
@@ -255,9 +280,12 @@
 										<div class="tab-pane fade" id="v-pills-2" role="tabpanel"
 											aria-labelledby="v-pills-performance-tab">
 
-												<div
-													style="color: black; font-size: 35px; font-weight: bold; line-height: 50px;">
-													Find the best <br> property match.</div>
+											<div
+											>
+												<h1 style="color: black; font-size: 35px; font-weight: bold; line-height: 50px;">Find the
+													<span class="txt-rotate" data-period="2000"
+														  data-rotate='[ "best property match.", "closest property match.", "unique property.", "most rated.", "pleasing property." ]'></span>
+												</h1> </div>
 												<form action="#" class="search-job">
 													<div class="row no-gutters">
 														<div class="col-md mr-md-2">
@@ -388,7 +416,7 @@
 														<div class="col-md mr-md-2">
 															<div class="form-group">
 																<div class="form-field">
-																	<a class="form-control btn btn-primary  "
+																	<a class="form-control btn btn-primary  hvr-wobble-horizontal"
 																	   style=" padding: 8px 0px 6px 0px !important;"
 																	   @click.prevent="formBodyCom"
 																		>SEARCH</a>
@@ -401,9 +429,11 @@
 										</div>
 										<div class="tab-pane fade" id="v-pills-3" role="tabpanel"
 											aria-labelledby="v-pills-performance-tab">
-											<div
-												style="color: black; font-size: 35px; font-weight: bold;line-height: 50px;">
-												Find the best<br> property match.</div>
+											<div>
+												<h1 style="color: black; font-size: 35px; font-weight: bold; line-height: 50px;">Find the
+													<span class="txt-rotate" data-period="2000"
+														  data-rotate='[ "best property match.", "closest property match.", "unique property.", "most rated.", "pleasing property." ]'></span>
+												</h1> </div>
 											<form action="#" class="search-job">
 												<div class="row no-gutters">
 													<div class="col-md mr-md-2">
@@ -519,7 +549,7 @@
 													<div class="col-md mr-md-2">
 														<div class="form-group">
 															<div class="form-field">
-																<a class="form-control btn btn-primary searchbut "
+																<a class="form-control btn btn-primary searchbut hvr-wobble-horizontal"
 																   style=" padding: 8px 0px 6px 0px !important;"
 																   @click.prevent="formBody"
 																	id="output">
@@ -541,19 +571,19 @@
 	</div>
 	<section class="ftco-section testimony-section">
 		<div class="container">
-			<div class="ellipsel row justify-content-left mb-4" >
+			<div class="ellipsel row justify-content-left " >
 				<img src="images/Ellipse.png">
 			</div>
-			<div class="row justify-content-center mb-3">
+			<div class="row justify-content-center ">
 				<div class="col-md-7 text-center heading-section ftco-animate">
 					<span class="subheading">
-						<p style="font-weight: 900px;font-size: 36px;">How it works</p>
+						<p style="font-weight: 900;font-size: 36px;">How it works</p>
 					</span>
 				</div>
 			</div>
 			<div class="row ftco-animate">
 				<ul class="progressbar">
-					<a href="signuppage.html" style="color: #4E4E56;">
+					<a  href="signuppage.html" style="color: #4E4E56;">
 						<li>
 							<div class="col-12 ">
 								<img src="images/step1.png" alt="Image" class="img-fluid">
@@ -576,7 +606,7 @@
 							</div>
 						</li>
 					</a>
-					<a href="#" style="color: #4E4E56;">
+					<a class="hvr-wobble-horizontal1" href="#" style="color: #4E4E56;">
 						<li>
 							<div class="col-12 ">
 								<img src="images/step3.png" alt="Image" class="img-fluid">
@@ -588,7 +618,7 @@
 							</div>
 						</li>
 					</a>
-					<a href="#" style="color: #4E4E56;">
+					<a class="hvr-wobble-horizontal1" href="#" style="color: #4E4E56;">
 						<li>
 							<div class="col-12 ">
 								<img src="images/step4.png" alt="Image" class="img-fluid">
@@ -621,13 +651,13 @@
 				<div class="row d-flex justify-content">
 					<table>
 						<tr style="width: auto; height: auto;">
-							<td style="width: 550px; height: auto;"> <a href="#"><img class="card-img-bottom"
+							<td class="companyname" style="width: 550px; height: auto;"> <a href="#"><img class="card-img-bottom"
 										src="images/customer1.png" alt="Card image cap"> </a> </td>
-							<td style="width: 550px; height: auto;"> <a href="#"><img class="card-img-bottom"
+							<td class="companyname" style="width: 550px; height: auto;"> <a href="#"><img class="card-img-bottom"
 										src="images/customer2.png" alt="Card image cap"> </a> </td>
-							<td style="width: 600px; height: auto;"><a href="#"> <img class="card-img-bottom"
+							<td class="companyname" style="width: 600px; height: auto;"><a href="#"> <img class="card-img-bottom"
 										src="images/customer3.png" alt="Card image cap"> </a> </td>
-							<td style="width: 600px; height: atuo;"> <a href="#"><img class="card-img-bottom"
+							<td class="companyname" style="width: 600px; height: atuo;"> <a href="#"><img class="card-img-bottom"
 										src="images/customer4.png" alt="Card image cap"> </a> </td>
 						</tr>
 					</table>
@@ -709,6 +739,7 @@
 				</div>
 			</div>
 		</div>
+
 	</footer>
 	<!-- loader -->
 	<div v-if="loading">
