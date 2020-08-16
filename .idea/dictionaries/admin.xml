@@ -10,6 +10,7 @@
       <w>numberofadults</w>
       <w>numberofbedrooms</w>
       <w>numberofchildren</w>
+      <w>unstyled</w>
     </words>
   </dictionary>
 </component>

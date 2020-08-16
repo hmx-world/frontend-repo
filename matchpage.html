@@ -22,6 +22,7 @@
 
 
   <link rel="stylesheet" href="css/flaticon.css">
+
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel = "icon" href =
@@ -32,17 +33,8 @@
 <body class="m-0">
   <div id="app">
     <div v-if="loading" style="color: black; font-weight: bold">
-    <div class="container-fluid " style="display: flex; position: fixed;
-     top: 50%;
-      left: 50%;
-      margin-top: -100px;
-      margin-left: -100px;
-  align-items: center; font-size: 32px;">
-     Loading...
-      <div class="lds-ripple1" >
-        <div></div><div></div></div>
+      <div id="suport"><div id="smash"><div id="translateShadow"><div id="rotateImg"><p style="color: #044CBC">HMX</p></div></div></div></div>
 
-    </div>
     </div>
     <div v-else>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -133,15 +125,12 @@
             </div>
           </div>
 
-
           <div class="col-md">
             <div class="ftco-footer-widget mb-3 ml-md-4">
               <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Useful links</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="pb-1 d-block">Home</a></li>
+
                 <li><a href="planpage.html" class="pb-1 d-block">Become a provider</a></li>
-                <li><a href="propertiespage.html" class="pb-1 d-block">Properties</a></li>
-                <li><a href="#" class="pb-1 d-block">About</a></li>
                 <li><a href="dashboardprofile.html" class="pb-1 d-block">Provider Dashboard</a></li>
                 <li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
                 <li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
@@ -149,22 +138,22 @@
             </div>
           </div>
           <div class="col-md">
-            <div class="ftco-footer-widget mb-3">
+            <div class="ftco-footer-widget mb-3 ml-md-4">
               <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Contact</h2>
-              <div class="block-23 mb-3">
-                <ul style="list-style: none;">
-                  <li><a href="#"><span class="icon icon-envelope"></span><span
-                        class="text">hmxworld@gmail.com</span></a></li>
-                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a>
-                  </li>
 
-                </ul>
-              </div>
+              <ul  class="list-unstyled">
+                <li><a href="#"><span class="icon icon-envelope"></span><span
+                        class="text">hmxworld@gmail.com</span></a></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a>
+                </li>
+
+              </ul>
+
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12 text-left">
+          <div class="col-md-12 text-center">
 
             <p>
               Copyright &copy; HMX.world-{{currentYear}}
@@ -260,7 +249,7 @@
 
                     this.propertyMatch = response.data;
             if (this.propertyMatch.length<1){
-            window.location="https://hmx-world.github.io/frontend-repo/nomatchpage.html?"+nomatch;
+            window.location="file:///Users/admin/Downloads/hmx/nomatchpage.html?"+nomatch;
           }
           }).finally(() => (this.loading = false))
 
@@ -290,7 +279,7 @@
           this.propertyMatch = response.data;
 
           if (this.propertyMatch.length<1){
-            window.location="https://hmx-world.github.io/frontend-repo/nomatchpage.html?"+nomatch;
+            window.location="file:///Users/admin/Downloads/hmx/nomatchpage.html?"+nomatch;
           }
         }).finally(() => (this.loading = false))
 
@@ -316,7 +305,7 @@
           console.log(response.data);
           this.propertyMatch = response.data;
           if (this.propertyMatch.length<1){
-            window.location="https://hmx-world.github.io/frontend-repo/nomatchpage.html?"+nomatch;
+            window.location="file:///Users/admin/Downloads/hmx/nomatchpage.html?"+nomatch;
 
           }
         }).finally(() => (this.loading = false))
@@ -344,7 +333,7 @@
           console.log(response.data);
           this.propertyMatch = response.data;
           if (this.propertyMatch.length<1){
-             window.location="https://hmx-world.github.io/frontend-repo/nomatchpage.html?"+nomatch;
+             window.location="file:///Users/admin/Downloads/hmx/nomatchpage.html?"+nomatch;
 
           }
         }).finally(() => (this.loading = false))

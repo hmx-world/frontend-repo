@@ -32,16 +32,8 @@
   <body class="m-0">
     <div id="app">
         <div v-if="loading" style="color: black; font-weight: bold">
-            <div class="container-fluid " style="display: flex; position: fixed;
-     top: 50%;
-      left: 50%;
-      margin-top: -100px;
-      margin-left: -100px;
-  align-items: center; font-size: 32px;">
-                Loading...
-                <div class="lds-ripple1" >
-                    <div></div><div></div></div>
-            </div>
+            <div id="suport"><div id="smash"><div id="translateShadow"><div id="rotateImg"><p style="color: #044CBC">HMX</p></div></div></div></div>
+
         </div>
         <div v-else>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -227,59 +219,59 @@ height: 30px !important;" min="10000" class="form-control">
                   <div  class="col-sm-12 col-lg-4 col-md-6" :key="property.id"  v-for="property in searchMan">
                       <!-- product card -->
                       <div class="product-item bg-light">
-                          <div class="card">
+                          <div class="card"  style="height: 472px;">
                               <div class="thumb-content">
                                   <a v-if="selectedType=='rent'" :href="'detailspage.html?q=rent'+'&id='+property.id">
                                       <img class="card-img-top img-fluid"
-                                           style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                            src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                                      <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
                                   </a>
                                   <a v-else-if="selectedType=='onsale'" :href="'detailspage.html?q=sale'+'&id='+property.id">
                                       <img class="card-img-top img-fluid"
-                                           style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                            src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                                      <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
                                   </a>
                                   <a v-else-if="selectedType=='commercial'" :href="'comdetailspage.html?q='+''+'&id='+property.id">
                                       <img class="card-img-top img-fluid"
-                                           style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                            src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                                      <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
                                   </a>
                                   <a v-else-if="selectedType=='landproperty'" :href="'landdetailspage.html?q='+'land'+'&id='+property.id">
                                       <img class="card-img-top img-fluid"
-                                           style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                            src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                                      <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
 
                                   </a>
                                   <a v-else :href="'detailspage.html?q='+''+'&id='+property.id">
                                       <img class="card-img-top img-fluid"
-                                           style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                            src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                                      <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
 
                                   </a>
                               </div>
-                              <div class="card-body " style="padding-left: 10px; color: black; ">
-                                  <p class="card-title name" id="propName">{{property.name}}<br/>
-                                      {{property.city}}, {{property.state}} state</p>
+                              <div class="card-body " style="padding-left: 15px;  ">
+                                  <p class="card-title name" id="propName" style="color: black;text-transform: uppercase;">{{property.name}}<br/>
+                                      <span style="font-size: 12px; color: grey;"> {{property.city}}, {{property.state}} state</span></p>
                                   <p class="card-title" style="color: #044CBC;">₦{{property.price.toLocaleString()}}</p>
-                                  <p class="card-text" style="font-size: 13px; font-weight: bold;
-                        line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">{{property.numberOfBedrooms}} bedrooms <br>
+                                  <p class="card-text" style="font-size: 12px; font-weight: normal;
+                        line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: grey;">{{property.numberOfBedrooms}} bedrooms <br>
                                    <span style="overflow: hidden;
                                          text-overflow: ellipsis;">   {{property.buildingType}} <br>
                                       {{property.town}}, {{property.city}}</span></p>
-                                  <div class="product-ratings">
-                                      <ul class="list-inline">
-                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                          <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                      </ul>
-                                  </div>
+<!--                                  <div class="product-ratings">-->
+<!--                                      <ul class="list-inline">-->
+<!--                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                                          <li class="list-inline-item"><i class="fa fa-star"></i></li>-->
+<!--                                      </ul>-->
+<!--                                  </div>-->
                               </div>
                           </div>
                       </div>
@@ -289,58 +281,58 @@ height: 30px !important;" min="10000" class="form-control">
                 <div  class="col-sm-12 col-lg-4 col-md-6" :key="property.id"  v-for="property in selectedProperty">
                   <!-- product card -->
                   <div class="product-item bg-light">
-                    <div class="card">
+                    <div class="card" style="height: 472px;">
                       <div class="thumb-content">
                           <a v-if="selectedType=='rent'" :href="'detailspage.html?q=rent'+'&id='+property.id">
                               <img class="card-img-top img-fluid"
-                                   style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                    src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                              <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
                           </a>
                           <a v-else-if="selectedType=='onsale'" :href="'detailspage.html?q=sale'+'&id='+property.id">
                               <img class="card-img-top img-fluid"
-                                   style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                    src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                              <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
                           </a>
                           <a v-else-if="selectedType=='commercial'" :href="'comdetailspage.html?q='+''+'&id='+property.id">
                               <img class="card-img-top img-fluid"
-                                   style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                    src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                              <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
                           </a>
                           <a v-else-if="selectedType=='landproperty'" :href="'landdetailspage.html?q='+'land'+'&id='+property.id">
                               <img class="card-img-top img-fluid"
-                                   style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                    src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                              <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
 
                           </a>
                           <a v-else :href="'detailspage.html?q='+''+'&id='+property.id">
                               <img class="card-img-top img-fluid"
-                                   style="height: 300px !important;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
                                    src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
-                              <img class="card-img-top img-fluid" style="height: 300px !important;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
 
                           </a>
                       </div>
-                      <div class="card-body " style="padding-left: 10px;  color: black; ">
-                        <p class="card-title name" id="propName">{{property.name}}<br/>
-                            {{property.city}}, {{property.state}} state</p>
+                      <div class="card-body " style="padding-left: 15px;  ">
+                        <p class="card-title name" id="propName" style=" color: black;text-transform: uppercase;">{{property.name}}<br/>
+                            <span style="font-size: 12px; color: grey;"> {{property.city}}, {{property.state}} state</span></p>
                         <p class="card-title" style="color: #044CBC;">₦{{property.price.toLocaleString()}}</p>
-                        <p class="card-text" style="font-size: 13px; font-weight: bold;
+                        <p class="card-text" style="font-size: 12px; font-weight: normal;
                         line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">{{property.numberOfBedrooms}} bedrooms <br>
                             {{property.buildingType}} <br>
                             {{property.town}}, {{property.city}}</p>
-                        <div class="product-ratings">
-                          <ul class="list-inline">
-                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                          </ul>
-                        </div>
+<!--                        <div class="product-ratings">-->
+<!--                          <ul class="list-inline">-->
+<!--                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                            <li class="list-inline-item"><i class="fa fa-star"></i></li>-->
+<!--                          </ul>-->
+<!--                        </div>-->
                     </div>
                     </div>
                   </div>
@@ -352,16 +344,16 @@ height: 30px !important;" min="10000" class="form-control">
             <div class="pagination justify-content-center">
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-item">
+                  <li class="page-item hvr-float">
                     <a class="page-link" href="#" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                       <span class="sr-only">Previous</span>
                     </a>
                   </li>
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item "><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
+                  <li class="page-item active hvr-float "><a class="page-link" href="#">1</a></li>
+                  <li class="page-item hvr-float"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item hvr-float"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item hvr-float">
                     <a class="page-link" href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
                       <span class="sr-only">Next</span>
@@ -375,7 +367,7 @@ height: 30px !important;" min="10000" class="form-control">
       </div>
     </section>
           <div class=" ellipse" style="width: 40px;">
-              <img src="images/ellipse2.svg">
+              <img alt="ellipse right" src="images/ellipse2.svg">
           </div>
         </div>
     </section>
@@ -393,37 +385,36 @@ height: 30px !important;" min="10000" class="form-control">
               </ul>
             </div>
           </div>
-          
-          
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-3 ml-md-4">
-              <h2 class="ftco-heading-2"  style="font-weight: bold; font-size: 18px;">Useful links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="pb-1 d-block">Home</a></li>
-                <li><a href="#" class="pb-1 d-block">Become a provider</a></li>
-                <li><a href="#" class="pb-1 d-block">Properties</a></li>
-				<li><a href="#" class="pb-1 d-block">About</a></li>
-				<li><a href="#" class="pb-1 d-block">Provider Dashboard</a></li>
-				<li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
-				<li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-3">
-            	<h2 class="ftco-heading-2"  style="font-weight: bold; font-size: 18px;">Contact</h2>
-            	<div class="block-23 mb-3">
-	              <ul style="list-style: none;">
-	                	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">hmxworld@gmail.com</span></a></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a></li>
 
-	              </ul>
-	            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-3 ml-md-4">
+                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Useful links</h2>
+                    <ul class="list-unstyled">
+
+                        <li><a href="planpage.html" class="pb-1 d-block">Become a provider</a></li>
+                        <li><a href="dashboardprofile.html" class="pb-1 d-block">Provider Dashboard</a></li>
+                        <li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
+                        <li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-3 ml-md-4">
+                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Contact</h2>
+
+                    <ul  class="list-unstyled">
+                        <li><a href="#"><span class="icon icon-envelope"></span><span
+                                class="text">hmxworld@gmail.com</span></a></li>
+                        <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
         </div>
         <div class="row">
-          <div class="col-md-12 text-left">
+          <div class="col-md-12 text-center">
 
             <p>
                 Copyright &copy; HMX.world-{{currentYear}}
@@ -434,10 +425,6 @@ height: 30px !important;" min="10000" class="form-control">
     </footer>
 
 
-
-
-
-  <!-- loader -->
     </div>
     </div>
 
@@ -510,7 +497,7 @@ height: 30px !important;" min="10000" class="form-control">
                 minPrice:0,
                 maxPrice:100000,
                 priceRange:'',
-                loading: true,
+                loading: false,
                 searchMan:[],
                 searchB:false,
             },

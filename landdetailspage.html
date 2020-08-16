@@ -27,20 +27,11 @@
             "https://svgshare.com/i/N9e.svg"
           type = "image/x-icon">
 </head>
-
+<body>
 <div id="app">
     <div v-if="loading" style="color: black; font-weight: bold">
-        <div class="container-fluid " style="display: flex; position: fixed;
-     top: 50%;
-      left: 50%;
-      margin-top: -100px;
-      margin-left: -100px;
-  align-items: center; font-size: 32px;">
-            Loading...
-            <div class="lds-ripple1" >
-                <div></div><div></div></div>
+        <div id="suport"><div id="smash"><div id="translateShadow"><div id="rotateImg"><p style="color: #044CBC">HMX</p></div></div></div></div>
 
-        </div>
     </div>
     <div v-else>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -53,11 +44,9 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-<!--                    <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>-->
-                    <li class="nav-item active"><a href="matchpage.html" class="nav-link">Properties</a></li>
-<!--                    <li class="nav-item"><a href="nomatchpage.html" class="nav-link">No Properties</a></li>-->
-                    <li class="nav-item"><a href="#" class="nav-link">Become a provider</a></li>
-                    <li class="nav-item"><a href="contactpage.html" class="nav-link">Contact us</a></li>
+                    <li class="nav-item active hvr-wobble-horizontal"><a href="propertiespage.html" class="nav-link">Properties</a></li>
+                    <li class="nav-item hvr-wobble-horizontal"><a href="#" class="nav-link">Become a provider</a></li>
+                    <li class="nav-item hvr-wobble-horizontal"><a href="contactpage.html" class="nav-link">Contact us</a></li>
 
 
                 </ul>
@@ -174,11 +163,12 @@
                 </div>
                 <div class="col-sm-9">
                     <p style="color: #4E4E56;font-size: 16px;
-                  line-height: 38px;"> Firm Name: <strong> {{this.firmName}}</strong> </p>
+                  line-height: 38px;"> Firm Name: <strong> {{this.firmName}}</strong>
+                    <span style="font-size: 14px; color: #4E4E56;
+                  line-height: 21px;">Firm Email: <strong> {{this.firmEmail}}</strong></span></p>
                     <p style="font-size: 14px; color: #4E4E56;
                   line-height: 21px;">Description: <strong> {{this.firmDesc}}</strong></p>
-                    <p style="font-size: 14px; color: #4E4E56;
-                  line-height: 21px;">Firm Email: <strong> {{this.firmEmail}}</strong></p>
+
                     <p style="font-size: 14px; color: #4E4E56;
                   line-height: 21px;">Number: <strong> {{this.firmNumber}}</strong></p>
                     <p style="font-size: 14px; color: #4E4E56;
@@ -188,15 +178,14 @@
         </div>
 
     </div>
+<br>
+    </div>
+    </div>
+
+    <div id="map" style="width: 70%; height: 400px; border: 1px solid red;"></div>
 
 
-
-<br>
-<br>
-<br>
-<br>
-
-<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
     <div class="container">
         <div class="row mb-5">
             <div class="col-md">
@@ -214,52 +203,44 @@
                 </div>
             </div>
 
-
             <div class="col-md">
                 <div class="ftco-footer-widget mb-3 ml-md-4">
                     <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Useful links</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="pb-1 d-block">Home</a></li>
-                        <li><a href="#" class="pb-1 d-block">Become a provider</a></li>
-                        <li><a href="#" class="pb-1 d-block">Properties</a></li>
-                        <li><a href="#" class="pb-1 d-block">About</a></li>
-                        <li><a href="#" class="pb-1 d-block">Provider Dashboard</a></li>
+
+                        <li><a href="planpage.html" class="pb-1 d-block">Become a provider</a></li>
+                        <li><a href="dashboardprofile.html" class="pb-1 d-block">Provider Dashboard</a></li>
                         <li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
                         <li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md">
-                <div class="ftco-footer-widget mb-3">
+                <div class="ftco-footer-widget mb-3 ml-md-4">
                     <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Contact</h2>
-                    <div class="block-23 mb-3">
-                        <ul style="list-style: none;">
-                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text"> hmxworld@gmail.com</span></a>
-                            </li>
-                            <li><a href="#"><span class="icon icon-phone"></span><span
-                                    class="text">0800-Hmx-World </span></a></li>
 
-                        </ul>
-                    </div>
+                    <ul  class="list-unstyled">
+                        <li><a href="#"><span class="icon icon-envelope"></span><span
+                                class="text">hmxworld@gmail.com</span></a></li>
+                        <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a>
+                        </li>
+
+                    </ul>
+
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 text-left">
+            <div class="col-md-12 text-center">
 
                 <p>
-                    Copyright &copy; HMX.world-{{currentYear}}
+                    Copyright &copy; HMX.world-<span id="year">2018</span>
                 </p>
             </div>
         </div>
     </div>
 </footer>
 
-
-<!-- loader -->
-    </div>
-
-</div>
 
 </body>
 
@@ -281,6 +262,8 @@
 
 <script src="js/main.js"></script>
 <script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+
     var slideIndex = 1;
     showSlides(slideIndex);
 
@@ -310,6 +293,57 @@
         }
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
+    }
+</script>
+
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDE1PKNKQqYSkXinhgD9fSyniqQVTxk1BI&callback=initMap"></script>
+<script>
+    function initMap() {
+        var options = {
+            zoom:8,
+            center: { lat:6.465422, lng:3.406448} //Coordinates of New York
+        }
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        function addMarker(prop) {
+            var marker = new google.maps.Marker({
+                position: prop.coordinates, // Passing the coordinates
+                map:map, //Map that we need to add
+                draggarble: true// If set to true you can drag the marker
+            });   if(prop.iconImage) { marker.setIcon(prop.iconImage); }   if(prop.content) {
+                var information = new google.maps.InfoWindow({
+                    content: prop.content
+                });
+
+                marker.addListener('click', function() {
+                    information.open(map, marker);
+                });
+            }
+        }addMarker({
+            coordinates:{lat: 6.458985, lng: 3.601521},
+            iconImage:'https://sharepointmaven.com/wp-content/uploads/2016/06/home-icon-small.png',
+            content:'<h4>Lagos Marker</h4>'
+        });
+        addMarker({
+            coordinates:{lat: 9.05785, lng:7.49508},
+            iconImage:'https://sharepointmaven.com/wp-content/uploads/2016/06/home-icon-small.png',
+            content:'<h4>Abuja marker</h4>'// Manhattan Marker
+        });
+        addMarker({
+            coordinates:{lat: 6.6106, lng:3.2958},
+            iconImage:'https://sharepointmaven.com/wp-content/uploads/2016/06/home-icon-small.png',
+            content:'<h4>Alimosho marker</h4>'// Manhattan Marker
+        });
+
+
+
+        var information = new google.maps.InfoWindow({
+            content: '<h4>The marker is at Lagos</h4>'
+        });
+
+        marker.addListener('click', function() {
+            information.open(map, marker);
+        });
+
     }
 </script>
 
