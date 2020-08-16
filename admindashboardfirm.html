@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Hmx Admin Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet"/>
+    <link href="assets/css/demo.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+    <link rel = "icon" href =
+            "https://svgshare.com/i/N9e.svg"
+          type = "image/x-icon">
+</head>
+<style>
+    .nav-link .active {
+        background-color: #A8CFEF;
+    }
+
+    .nav-item .active {
+        background-color: black;
+    }
+
+    .searchbar {
+        margin-top: 2em;
+        border: none;
+        width: 60%;
+
+        color: rgb(95, 91, 91);
+        border-bottom: 1px black solid;
+        background: transparent;
+
+    }
+
+    ::placeholder {
+        color: #4E4E56;
+        opacity: .7;
+        padding-left: 1%;
+    }
+
+    *:focus {
+        outline: none;
+    }
+
+    .go {
+        margin-top: 2em;
+        color: white;
+        border: none;
+        cursor: pointer;
+        background: #044CBC;
+        border-radius: 10px;
+    }
+
+    .go:hover {
+        color: rgba(255, 255, 255, .4);
+    }
+</style>
+
+<body>
+<div id="app">
+    <div class="wrapper">
+        <div class="sidebar">
+
+            <div class="sidebar-wrapper" style="background-color: #044CBC;">
+                <div class="logo">
+                    <a href="index.html" class="simple-text">
+                        <strong>HMX.World</strong>
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="#">
+                            <p style="font-size: 19px;">Anayltics</p>
+                        </a>
+                    </li>
+                    <li class="nav-item hvr-wobble-horizontal" style="width: 100%">
+                        <a class="nav-link active" href="#">
+                            <i class="nc-icon nc-app"></i>
+                            <p>Firms</p>
+                        </a>
+                    </li>
+                    <li class="nav-item hvr-wobble-horizontal">
+                        <a class="nav-link" href="admindashboardemergency.html">
+                            <i class="nc-icon nc-time-alarm"></i>
+                            <p style="font-size:11px;">Emergency Properties </p>
+                        </a>
+                    </li>
+                    <li class="nav-item hvr-wobble-horizontal" style="width: 100%">
+                        <a class="nav-link" href="admindashboardsearch.html">
+                            <i class="nc-icon nc-zoom-split"></i>
+                            <p>Search Query</p>
+                        </a>
+                    </li>
+                    <li class="nav-item hvr-wobble-horizontal">
+                        <a class="nav-link " href="admindashboardchecks.html">
+                            <i class="nc-icon nc-send"></i>
+                            <p style="font-size:11px;">Checks and Redirection </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item active active-pro">
+                        <a class="nav-link active" href="planpage.html">
+                            <i class="nc-icon nc-spaceship"></i>
+                            <p>Upgrade to PRO</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"> Dashboard </a>
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-toggle="dropdown">
+                                    <span class="d-lg-none">Dashboard</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span class="no-icon">Account</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" @click.prevent.stop="logout">
+                                    <span class="no-icon">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <br>
+                        <span style="font-size: 24px; font-weight: bold;margin-left: 10px; margin-bottom: 10%; margin-top: 10%;">Overview</span>
+                    </div>
+                    <div class="col-lg-4 mb-3">
+
+                        <form class="search" id="search">
+                            <input class='searchbar transparent' onkeyup="myFunction()" id="searchInput"
+                                   placeholder="Search for firms..." title="Type in a name" type='text'
+                                   autocomplete="on"/>
+                            <span> <i class="nc-icon nc-zoom-split"></i></span>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row pl-3 ">
+                    <div class="col-lg-3 hvr-wobble-vertical">
+                        <div class="card text-center" style="width: 95%; background-color: #FFE066;">
+                            <span style="font-size: 26px;font-weight: bold;">{{selectedFirm.length}}</span>
+                            <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">
+                                Firm</p>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 hvr-wobble-vertical">
+                        <div class="card text-center" style="width: 95%; background-color: #ADADEA;">
+                            <span style="font-size: 26px;font-weight: bold;">{{allProp}}</span>
+                            <p style="font-weight: 500;font-size: 18px;line-height: 21px; letter-spacing: 0.3px;">
+                                Properties </p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                    </div>
+                    <div class="col-md-4 hvr-wobble-horizontal"  style="margin:0px 10px 10px 0px; ">
+                        <a href="add_edit-f.html">
+                            <button type="submit" class=" btn btn-fill btn-primary"
+                                    style="cursor: pointer;"><strong>+ ADD PROPERTY</strong></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row" style="width: 101%;">
+                        <div class="col-lg-12" style="background-color: white; width: 100%;">
+                            <div class="card card-plain ">
+                                <div class="card-header mb-4 row ">
+                                    <p class="card-category  col-sm-2 pt-2"><strong
+                                            style="font-size: 18px; color: black;">Plan:</strong></p>
+                                    <select v-model="selectedType" @change="FirmType"
+                                            class="form-control  col-sm-2" name="" id=""
+                                            style="width: 50%; border-radius: 10px;">
+                                        <option value="all">All</option>
+                                        <option value="Pro" selected>Pro</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Premium">Premium</option>
+                                    </select>
+                                </div>
+                                <div id="example1" class="card-body table-full-width table-responsive">
+                                    <table class="table " style="width:100%">
+                                        <thead>
+                                        <tr>
+                                            <th
+                                                    style="color: black; text-transform: none; font-size: 16px; font-weight: bold;">
+                                                Firm's
+                                                Name
+                                            </th>
+                                            <th
+                                                    style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                Current Plan
+                                            </th>
+                                            <th
+                                                    style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                Number of Properties
+                                            </th>
+                                            <th
+                                                    style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                Email
+                                            </th>
+                                            <th style="display: none;">
+                                                Emergency
+                                            </th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr :key="Firm.id" v-for="Firm in chosenFirm">
+                                            <td class="text-capitalize">{{Firm.firmName}} <br></td>
+                                            <td>{{Firm.currentPlan}}</td>
+                                            <td>
+                                                <p>
+                                                    {{Firm.onSaleProperties+Firm.commercialProperties+Firm.rentalProperties+Firm.landProperties}}
+                                                </p>
+                                                <p
+                                                        style="letter-spacing: 0.3px;font-weight: 300;font-size: 10px; color:#4E4E56;">
+                                                    {{Firm.onSaleProperties}} for sale,
+                                                    {{Firm.rentalProperties}} Rental,
+                                                    {{Firm.commercialProperties}} Commercial,
+                                                    {{Firm.landProperties}} Landed
+                                                </p>
+                                            </td>
+                                            <td>{{Firm.email}}</td>
+                                            <td style="display: none;"></td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th
+                                                    style="color: black; text-transform: none; font-size: 16px; font-weight: bold;">
+                                                Firm's Name
+                                            </th>
+                                            <th
+                                                    style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                Current Plan
+                                            </th>
+                                            <th
+                                                    style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                Number of Properties
+                                            </th>
+                                            <th
+                                                    style="color: black; font-size: 16px;text-transform: none; font-weight: bold;">
+                                                Email
+                                            </th>
+                                            <th style="display: none;"></th>
+
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container mr-auto ml-auto">
+                        <a class="nav-link" href="#" @click.prevent.stop="logout">
+                            <button href="#" class="btn  "
+                                    style="border-radius: 10px; color: white; background-color: #044CBC;">
+                                <span class="no-icon">Log out</span>
+                            </button>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="assets/js/plugins/bootstrap-switch.js"></script>
+<script src="assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
+</script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("example1");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+        $('#example').DataTable();
+        demo.showNotification();
+
+    });
+</script>
+
+
+<script>
+    let userFormData = new FormData();
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            ProFirms: '',
+            PremiumFirms: '',
+            BusinessFirms: '',
+            allFirms: '',
+            selectedType: 'all',
+            selectedFirm: [],
+            chosenFirm: ''
+        },
+        methods: {
+            logout() {
+                localStorage.clear();
+                alert('You have successfully logged out');
+                 window.location="https://hmx-world.github.io/frontend-repo/loginpage.html";
+            },
+            firmTypeSelector(firmType) {
+                let add = [];
+                for (i = 0, len = this.selectedFirm.length; i < len; i++) {
+                    if (firmType == this.selectedFirm[i].currentPlan) {
+                        add.push(this.selectedFirm[i]);
+                    }
+
+
+                }
+
+                return add;
+
+            },
+            FirmType() {
+                switch (this.selectedType) {
+                    case 'Pro':
+                        this.chosenFirm = this.firmTypeSelector("Pro");
+                        break;
+                    case 'Premium':
+                        this.chosenFirm = this.firmTypeSelector("Premium");
+                        break;
+                    case 'Business':
+                        this.chosenFirm = this.firmTypeSelector("Business");
+                        break;
+                    case 'all':
+                        this.chosenFirm = this.selectedFirm;
+                }
+
+            },
+            fetchProperties() {
+                axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+                axios.get('/admin/firms/all', {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }).then(response => {
+                    this.selectedFirm = response.data;
+                    this.chosenFirm = response.data;
+                    this.FirmType();
+                });
+            },
+
+        },
+        mounted: function () {
+            this.fetchProperties();
+            this.selectedType = 'all';
+            this.FirmType();
+
+        },
+        computed: {
+            allProp() {
+                let add = 0;
+                for (i = 0, len = this.selectedFirm.length; i < len; i++) {
+                    add += this.selectedFirm[i].rentalProperties + this.selectedFirm[i].landProperties
+                        + this.selectedFirm[i].onSaleProperties + this.selectedFirm[i].commercialProperties
+                }
+
+                return add;
+            },
+        }
+    })
+
+
+</script>
+</html>

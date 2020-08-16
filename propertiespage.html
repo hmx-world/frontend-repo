@@ -23,11 +23,19 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-
-    
+    <link rel="stylesheet" href="assets/ion.rangeSlider.css">
+    <link rel="stylesheet" href="assets/ion.rangeSlider.min.css">
+      <link rel = "icon" href =
+              "https://svgshare.com/i/N9e.svg"
+            type = "image/x-icon">
   </head>
-  <body>
-    
+  <body class="m-0">
+    <div id="app">
+        <div v-if="loading" style="color: black; font-weight: bold">
+            <div id="suport"><div id="smash"><div id="translateShadow"><div id="rotateImg"><p style="color: #044CBC">HMX</p></div></div></div></div>
+
+        </div>
+        <div v-else>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container-fluid px-md-4	">
 	      <a class="navbar-brand" href="index.html">HMX.World </a>
@@ -37,14 +45,11 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
+<!--	          <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>-->
 	          <li class="nav-item active"><a href="propertiespage.html" class="nav-link">Properties</a></li>
-            <li class="nav-item"><a href="nomatchpage.html" class="nav-link">No Properties</a></li>
+<!--            <li class="nav-item"><a href="nomatchpage.html" class="nav-link">No Properties</a></li>-->
             <li class="nav-item"><a href="planpage.html" class="nav-link">Become a provider</a></li>
 	          <li class="nav-item"><a href="contactpage.html" class="nav-link">Contact us</a></li>
-	       
-
-
 	        </ul>
 	      </div>
 	    </div>
@@ -53,11 +58,12 @@
     
 
     <section class="ftco-section testimony-section" style="padding-left: 12px;">
-      <div class="container">
-		<div class="row justify-content-left mb-1" style="position: relative; left:-11.5%; padding: 0">
-      <img src="images/Ellipse.png" style="position: absolute; z-index:-5; top: 850px;">
+
       
-    </div>
+      <div class="container">
+          <div class=" ellipseal row justify-content-left mb-4" >
+              <img alt="" src="images/Ellipse.png" >
+          </div>
     <section class="page-search">
       <div class="container">
         <div class="row">
@@ -67,11 +73,10 @@
               <form>
                 <div class="form-row">
                   <div class="form-group col-md-10" >
-                    <input type="text" class="form-control" style="border: 2px solid #4285F5;  opacity: 0.5; box-sizing: border-box; box-shadow: 0px 4px 6px #044CBC; border-radius: 6px;" id="inputtext4" placeholder="What are you looking for?">
-                  
+                    <input type="text" class="form-control" style="border: 2px solid #4285F5;  opacity: 0.5; box-sizing: border-box; box-shadow: 0px 4px 6px #044CBC; border-radius: 6px;"
+                           v-model="search"  placeholder="What are you looking for?">
                   </div>
                   <div class="form-group col-md-2">
-                    
                     <button type="submit" class="searchbtn" >SEARCH NOW</button>
                   </div>
                 </div>
@@ -86,8 +91,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="search-result bg-gray">
-              <h2>Results For "Lekki"</h2>
-              <p>9 Results on 12 May, 2020</p>
+<!--              <h2>Results For "Lekki"</h2>-->
+              <p>All {{selectedProperty.length}} active properties</p>
             </div>
           </div>
         </div>
@@ -98,100 +103,102 @@
               
               <div class="widget category-list">
                 <h4 class="widget-header"><strong>PROPERTY TYPE</strong></h4>
-                <div class="form-check">
+                  <div class="form-check"  v-model="selectedType" @change="propertyType">
+                      <label class="form-check-label">
+                          <input class="form-check-input" type="radio"  @change="propertyType" v-model="selectedType" value="all">
+                          All
+                      </label>
+                  </div>
+                <div class="form-check"  v-model="selectedType" @change="propertyType">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    Residential
+                    <input class="form-check-input" type="radio"  @change="propertyType" v-model="selectedType" value="rent">
+                    Rental
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
+                    <input class="form-check-input" type="radio" @change="propertyType" v-model="selectedType" value="commercial">
                     Commercial
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
+                    <input class="form-check-input" type="radio" @change="propertyType" v-model="selectedType" value="landproperty">
                     Landed
                   </label>
                 </div>
-                
+                  <div class="form-check">
+                      <label class="form-check-label">
+                          <input class="form-check-input" type="radio" @change="propertyType" v-model="selectedType" value="onsale">
+                          On Sale
+                      </label>
+                  </div>
     </div>
-    
-    <div class="widget category-list">
-      <h4 class="widget-header"><strong>PURPOSE</strong></h4>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          Rent
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-            For Sale 
-                 </label>
-              </div>
-            </div>
-            
-    
+
     <div class="widget price-range w-100">
       <h4 class="widget-header">PRICE RANGE</h4>
-      <div class="block">
-        <label for="range">
-          <input type="range" name="range" id="range" min="0" max="300" step="5" value="175"/>
-          </label>
-            <div class="d-flex justify-content-between mt-2">
-              <output for="range" class="output">w-er0543</output>
-            </div>
-      </div>
+        <div class="row">
+        Min: <input v-model="minPrice" type="number"
+               style="border-radius: 0px;
+height: 30px !important;" min="10000" @change="filterAll"  class="form-control">
+        Max: <input v-model="maxPrice" @change="filterAll"  type="number" style="border-radius: 0px;
+height: 30px !important;" min="10000" class="form-control">
+        </div>
     </div>
     
     <div class="widget filter">
       <h4 class="widget-header"><strong>BEDROOM</strong></h4>
-      <select>
-        <option>ANY</option>
-        <option value="1">2</option>
-        <option value="2">3</option>
-        <option value="4">5</option>
+      <select v-model="bed" @change="filterAll">
+        <option value="Any">ANY</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
       </select>
     </div>
 
     <div class="widget product-shorting">
       <h4 class="widget-header"><strong>BUILDING TYPE</strong></h4>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          Bungalow
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          Duplex
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          Two-3 Apartment
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          Another type
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          A new type
-        </label>
-      </div>
+        <div class="form-check" >
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" @change="filterAll"   value="Duplex" v-model="building">
+                Duplex
+            </label>
+        </div>
+        <div class="form-check" >
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio"  @change="filterAll"  value="Bungalow" v-model="building" >
+                Bungalow
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio"  @change="filterAll" value="Much more"  v-model="building" >
+                Two-3 Apartment
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio"  @change="filterAll" value="Mansion" v-model="building" >
+              Mansion
+            </label>
+        </div>
     </div>
-    
+                <div class="widget filter">
+                    <h4 class="widget-header"><strong>CLEAR FILTER</strong></h4>
+                    <a href="propertiespage.html">
+                        <button href="#" class="btn btn-dark" style="border-radius: 10px; color: white; background-color: #044CBC;">
+                            <span class="no-icon">Clear</span>
+                        </button>
+                    </a>
+
+                </div>
             </div>
           </div>
           <div class="col-md-9">
@@ -199,344 +206,154 @@
               <div class="row">
                 <div class="col-md-6">
                   <strong style="color: black;">Sort</strong>
-                  <select>
-                    <option>Most Recent</option>
+                  <select disabled>
                     <option value="1">Most Popular</option>
                     <option value="2">Lowest Price</option>
-                    <option value="4">Highest Price</option>
+                    <option value="3">Highest Price</option>
                   </select>
                 </div>
-                <div class="col-md-6">
-                  <div class="view">
-                    <strong>Views</strong>
-                    <ul class="list-inline view-switcher">
-                      <li class="list-inline-item">
-                        <a href="#" onclick="event.preventDefault();" class="text-info"><i class="fa fa-th-large"></i></a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#"><i class="fa fa-reorder"></i></a>
-                      </li>
-                    </ul>
+              </div>
+            </div>
+            <div id="example" class="product-grid-list">
+              <div class="row mt-30" v-if="searchB">
+                  <div  class="col-sm-12 col-lg-4 col-md-6" :key="property.id"  v-for="property in searchMan">
+                      <!-- product card -->
+                      <div class="product-item bg-light">
+                          <div class="card"  style="height: 472px;">
+                              <div class="thumb-content">
+                                  <a v-if="selectedType=='rent'" :href="'detailspage.html?q=rent'+'&id='+property.id">
+                                      <img class="card-img-top img-fluid"
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                                  </a>
+                                  <a v-else-if="selectedType=='onsale'" :href="'detailspage.html?q=sale'+'&id='+property.id">
+                                      <img class="card-img-top img-fluid"
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                                  </a>
+                                  <a v-else-if="selectedType=='commercial'" :href="'comdetailspage.html?q='+''+'&id='+property.id">
+                                      <img class="card-img-top img-fluid"
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                                  </a>
+                                  <a v-else-if="selectedType=='landproperty'" :href="'landdetailspage.html?q='+'land'+'&id='+property.id">
+                                      <img class="card-img-top img-fluid"
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+
+                                  </a>
+                                  <a v-else :href="'detailspage.html?q='+''+'&id='+property.id">
+                                      <img class="card-img-top img-fluid"
+                                           style="height: 300px !important; object-fit: cover;" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                           src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                                      <img class="card-img-top img-fluid" style="height: 300px !important; object-fit: cover;" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+
+                                  </a>
+                              </div>
+                              <div class="card-body " style="padding-left: 15px;  ">
+                                  <p class="card-title name" id="propName" style="color: black;text-transform: uppercase;">{{property.name}}<br/>
+                                      <span style="font-size: 12px; color: grey;"> {{property.city}}, {{property.state}} state</span></p>
+                                  <p class="card-title" style="color: #044CBC;">₦{{property.price.toLocaleString()}}</p>
+                                  <p class="card-text" style="font-size: 12px; font-weight: normal;
+                        line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: grey;">{{property.numberOfBedrooms}} bedrooms <br>
+                                   <span style="overflow: hidden;
+                                         text-overflow: ellipsis;">   {{property.buildingType}} <br>
+                                      {{property.town}}, {{property.city}}</span></p>
+<!--                                  <div class="product-ratings">-->
+<!--                                      <ul class="list-inline">-->
+<!--                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                                          <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                                          <li class="list-inline-item"><i class="fa fa-star"></i></li>-->
+<!--                                      </ul>-->
+<!--                                  </div>-->
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                <div class="row mt-30" v-else>
+                <div  class="col-sm-12 col-lg-4 col-md-6" :key="property.id"  v-for="property in selectedProperty">
+                  <!-- product card -->
+                  <div class="product-item bg-light">
+                    <div class="card" style="height: 472px;">
+                      <div class="thumb-content">
+                          <a v-if="selectedType=='rent'" :href="'detailspage.html?q=rent'+'&id='+property.id">
+                              <img class="card-img-top img-fluid"
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                          </a>
+                          <a v-else-if="selectedType=='onsale'" :href="'detailspage.html?q=sale'+'&id='+property.id">
+                              <img class="card-img-top img-fluid"
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                          </a>
+                          <a v-else-if="selectedType=='commercial'" :href="'comdetailspage.html?q='+''+'&id='+property.id">
+                              <img class="card-img-top img-fluid"
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+                          </a>
+                          <a v-else-if="selectedType=='landproperty'" :href="'landdetailspage.html?q='+'land'+'&id='+property.id">
+                              <img class="card-img-top img-fluid"
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+
+                          </a>
+                          <a v-else :href="'detailspage.html?q='+''+'&id='+property.id">
+                              <img class="card-img-top img-fluid"
+                                   style="height: 254px !important; object-fit: cover" v-if="property.imageLink1=='#' || property.imageLink1==null "
+                                   src="images/defaultprop.jpg" class="img-fluid " alt="Card image cap">
+                              <img class="card-img-top img-fluid" style="height: 254px !important; object-fit: cover" v-else  :src="property.imageLink1" class="img-fluid " alt="Card image cap">
+
+                          </a>
+                      </div>
+                      <div class="card-body " style="padding-left: 15px;  ">
+                        <p class="card-title name" id="propName" style=" color: black;text-transform: uppercase;">{{property.name}}<br/>
+                            <span style="font-size: 12px; color: grey;"> {{property.city}}, {{property.state}} state</span></p>
+                        <p class="card-title" style="color: #044CBC;">₦{{property.price.toLocaleString()}}</p>
+                        <p class="card-text" style="font-size: 12px; font-weight: normal;
+                        line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">{{property.numberOfBedrooms}} bedrooms <br>
+                            {{property.buildingType}} <br>
+                            {{property.town}}, {{property.city}}</p>
+<!--                        <div class="product-ratings">-->
+<!--                          <ul class="list-inline">-->
+<!--                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>-->
+<!--                            <li class="list-inline-item"><i class="fa fa-star"></i></li>-->
+<!--                          </ul>-->
+<!--                        </div>-->
+                    </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="product-grid-list">
-              <div class="row mt-30">
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: auto;" src="images/lekki8.png" alt="Card image cap">
-          
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-            <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-            <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-           
-            <p class="card-text" style="font-size: 13px; font-weight: bold;
-            line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-              Bungalow <br>
-              11 building Estate Housing, Ibeju</p></a>
-            <div class="product-ratings">
-              <ul class="list-inline">
-                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                <li class="list-inline-item "><i class="fa fa-star"></i></li>
-                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-        </div>
-      </div>
-    </div>
 
-                </div>
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki5.jpg" alt="Card image cap">
-          </a>
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-          <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-          <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-         
-          <p class="card-text" style="font-size: 13px; font-weight: bold;
-          line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-            Bungalow <br>
-            11 building Estate Housing, Ibeju</p></a>
-          <div class="product-ratings">
-            <ul class="list-inline">
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item"><i class="fa fa-star"></i></li>
-            </ul>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-                </div>
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-          <!-- <div class="price">$200</div> -->
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki6.jpg" alt="Card image cap">
-          </a>
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-          <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-          <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-         
-          <p class="card-text" style="font-size: 13px; font-weight: bold;
-          line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-            Bungalow <br>
-            11 building Estate Housing, Ibeju</p></a>
-          <div class="product-ratings">
-            <ul class="list-inline">
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item"><i class="fa fa-star"></i></li>
-            </ul>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-    
-    
-                </div>
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-         
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki3.png" alt="Card image cap">
-          </a>
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-          <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-          <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-         
-          <p class="card-text" style="font-size: 13px; font-weight: bold;
-          line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-            Bungalow <br>
-            11 building Estate Housing, Ibeju</p></a>
-          <div class="product-ratings">
-            <ul class="list-inline">
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item"><i class="fa fa-star"></i></li>
-            </ul>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-    
-    
-                </div>
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-        
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki1.png" alt="Card image cap">
-          </a>
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-          <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-          <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-         
-          <p class="card-text" style="font-size: 13px; font-weight: bold;
-          line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-            Bungalow <br>
-            11 building Estate Housing, Ibeju</p></a>
-          <div class="product-ratings">
-            <ul class="list-inline">
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-            </ul>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-    
-    
-                </div>
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki4.jpg" alt="Card image cap">
-          </a>
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-          <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-          <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-         
-          <p class="card-text" style="font-size: 13px; font-weight: bold;
-          line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-            Bungalow <br>
-            11 building Estate Housing, Ibeju</p></a>
-          <div class="product-ratings">
-            <ul class="list-inline">
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-            </ul>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-    
-    
-                </div>
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-       
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki10.png" alt="Card image cap">
-          </a>
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-          <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-          <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-         
-          <p class="card-text" style="font-size: 13px; font-weight: bold;
-          line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-            Bungalow <br>
-            11 building Estate Housing, Ibeju</p></a>
-          <div class="product-ratings">
-            <ul class="list-inline">
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item"><i class="fa fa-star"></i></li>
-            </ul>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-    
-    
-                </div>
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-         
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki4.jpg" alt="Card image cap">
-          </a>
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-          <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-          <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-         
-          <p class="card-text" style="font-size: 13px; font-weight: bold;
-          line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-            Bungalow <br>
-            11 building Estate Housing, Ibeju</p></a>
-          <div class="product-ratings">
-            <ul class="list-inline">
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item"><i class="fa fa-star"></i></li>
-            </ul>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-    
-    
-                </div>
-                <div class="col-sm-12 col-lg-4 col-md-6">
-                  <!-- product card -->
-    <div class="product-item bg-light">
-      <div class="card">
-        <div class="thumb-content">
-         
-          <a href="detailspage.html">
-            <img class="card-img-top img-fluid" style="height: 300px; width: 100%;" src="images/lekki2.png" alt="Card image cap">
-          </a>
-        </div>
-        <div class="card-body " style="padding-left: 10px; color: black; ">
-          <p class="card-title">2/3 Bedroom Lekki, Lagos state</p>
-          <p class="card-title" style="color: #044CBC;">N 1.2 Million</p>
-         
-          <p class="card-text" style="font-size: 13px; font-weight: bold;
-          line-height: 20px; letter-spacing: 0.5px;text-transform: uppercase;color: #363636;">5 bedrooms <br>
-            Bungalow <br>
-            11 building Estate Housing, Ibeju</p></a>
-          <div class="product-ratings">
-            <ul class="list-inline">
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-              <li class="list-inline-item"><i class="fa fa-star"></i></li>
-            </ul>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-    
-    
-                </div>
-              </div>
+
             </div>
             <div class="pagination justify-content-center">
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-item">
+                  <li class="page-item hvr-float">
                     <a class="page-link" href="#" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                       <span class="sr-only">Previous</span>
                     </a>
                   </li>
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item "><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
+                  <li class="page-item active hvr-float "><a class="page-link" href="#">1</a></li>
+                  <li class="page-item hvr-float"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item hvr-float"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item hvr-float">
                     <a class="page-link" href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
                       <span class="sr-only">Next</span>
@@ -549,14 +366,9 @@
         </div>
       </div>
     </section>
-        <div class="row ftco-animate" >
-          
-            
-              
-         <div class="row lg-12" style="float: right;  position: relative; left:98.5%; padding-bottom: 50px;">
-			<img src="images/ellipse2.svg">
-		</div>
-		  </div> 
+          <div class=" ellipse" style="width: 40px;">
+              <img alt="ellipse right" src="images/ellipse2.svg">
+          </div>
         </div>
     </section>
 
@@ -570,55 +382,51 @@
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-    
               </ul>
             </div>
           </div>
-          
-          
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-3 ml-md-4">
-              <h2 class="ftco-heading-2"  style="font-weight: bold; font-size: 18px;">Useful links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="pb-1 d-block">Home</a></li>
-                <li><a href="#" class="pb-1 d-block">Become a provider</a></li>
-                <li><a href="#" class="pb-1 d-block">Properties</a></li>
-				<li><a href="#" class="pb-1 d-block">About</a></li>
-				<li><a href="#" class="pb-1 d-block">Provider Dashboard</a></li>
-				<li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
-				<li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-3">
-            	<h2 class="ftco-heading-2"  style="font-weight: bold; font-size: 18px;">Contact</h2>
-            	<div class="block-23 mb-3">
-	              <ul style="list-style: none;">
-	                	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">hmxworld@gmail.com</span></a></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a></li>
 
-	              </ul>
-	            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-3 ml-md-4">
+                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Useful links</h2>
+                    <ul class="list-unstyled">
+
+                        <li><a href="planpage.html" class="pb-1 d-block">Become a provider</a></li>
+                        <li><a href="dashboardprofile.html" class="pb-1 d-block">Provider Dashboard</a></li>
+                        <li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
+                        <li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-3 ml-md-4">
+                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Contact</h2>
+
+                    <ul  class="list-unstyled">
+                        <li><a href="#"><span class="icon icon-envelope"></span><span
+                                class="text">hmxworld@gmail.com</span></a></li>
+                        <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
         </div>
         <div class="row">
-          <div class="col-md-12 text-left">
+          <div class="col-md-12 text-center">
 
             <p>
-  Copyright &copy; HMX.world-<script>document.write(new Date().getFullYear());</script> 
+                Copyright &copy; HMX.world-{{currentYear}}
  </p>
           </div>
         </div>
       </div>
     </footer>
-    
-  
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#5A98FF"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#044CBC"/></svg></div>
 
+    </div>
+    </div>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -631,62 +439,226 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
 
   <script src="js/main.js"></script>
-    
+  <script src="assets/ion.rangeSlider.js"></script>
+  <script src="assets/ion.rangeSlider.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script type="text/javascript">
+
+        function myFunction() {
+
+            let input, filter, col, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            col = document.getElementById("example");
+            tr = col.getElementsByClassName("name");
+            for (i = 0; i < tr.length; i++) {
+
+                td = tr[i].getElementsByClassName("name")[0];
+                if (td) {
+
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+    </script>
+
+    <script>
+        let userFormData = new FormData();
+        getFirmId = localStorage.getItem("FirmId")
+        getPropId = localStorage.getItem("id")
+        var app = new Vue({
+            el: '#app',
+            data: {
+                search:'',
+                emergencyId: '',
+                emergencyType: '',
+                allProperties: [],
+                rentalProperties: '',
+                saleProperties: '',
+                commercialProperties: '',
+                landProperties: '',
+                selectedType: 'all',
+                selectedTypeB: '',
+                selectedProperty: [],
+                bed: 'Any',
+                building:'',
+                minPrice:0,
+                maxPrice:100000,
+                priceRange:'',
+                loading: false,
+                searchMan:[],
+                searchB:false,
+            },
+            // watch: {
+            //     priceRange: function(){
+            //         alert('bo');
+            //     }
+            // },
+            methods: {
+                filterAll(){
+                    this.searchB = true
+                     searchMan = this.selectedProperty;
+                        searchMan = this.filterPrice(searchMan);
+
+                    if(this.bed!=="Any") {
+                        searchMan =  this.filterBedroom(searchMan);
+                    }
+                    if (this.building!==""){
+                        searchMan =  this.filterBuilding(searchMan);
+                    }
+                   this.searchMan = searchMan;
+                },
+                propertyType() {
+                    switch (this.selectedType) {
+                        case 'rent':
+                            this.selectedProperty = this.rentalProperties;
+                            break;
+                        case 'onsale':
+                            this.selectedProperty = this.saleProperties;
+
+                            break;
+                        case 'commercial':
+                            this.selectedProperty = this.commercialProperties;
+                            break;
+                        case 'landproperty':
+                            this.selectedProperty = this.landProperties;
+                            break;
+                        case 'all':
+                            this.selectedProperty = this.allProperties;
+                            break;
+                        default:
+                            this.selectedProperty = this.allProperties;
+                            break;
+                    }
+                },
+                fetchProperties() {
+                    axios.defaults.baseURL = 'https://hmxserver.azurewebsites.net/api/';
+                    axios.get('/property/active/commercial/all/', {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                            "Access-Control-Allow-Origin": "*"
+                        }
+                    }).then(response => {
+
+                        this.commercialProperties = response.data;
+                        this.allProperties = this.allProperties.concat(this.commercialProperties);
+                        this.propertyType();
+                    }).finally(() => (this.loading=false));
+                    axios.get('/property/active/rental/all', {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                            "Access-Control-Allow-Origin": "*"
+                        }
+                    }).then(response => {
+                        this.rentalProperties = response.data;
+                        this.allProperties = this.allProperties.concat(this.rentalProperties);
+                        this.propertyType();
+                    }).finally(() => (this.loading=false));
+                    axios.get('/property/active/onsale/all', {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                            "Access-Control-Allow-Origin": "*"
+                        }
+                    }).then(response => {
+                        this.saleProperties = response.data;
+                        this.allProperties = this.allProperties.concat(this.saleProperties);
+                        this.propertyType();
+                    }).finally(() => (this.loading=false));
+                    axios.get('/property/active/landproperties/all/', {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token").slice(1, -1),
+                            "Access-Control-Allow-Origin": "*"
+                        }
+                    }).then(response => {
+                        this.landProperties = response.data;
+                        this.allProperties = this.allProperties.concat(this.landProperties);
+
+                        this.propertyType();
+                    }).finally(() => (this.loading=false));
+                },
+                filterBedroom(propertyForFilter){
+                   let result = [];
+                for (property=0; property < propertyForFilter.length; property++) {
+                    if ('numberOfBedrooms' in propertyForFilter[property]) {
+                        if (propertyForFilter[property].numberOfBedrooms == this.bed) {
+                            result.push(propertyForFilter[property]);
+                        }
+                    }
+                }
+                this.searchMan= result;
+                return result;
+                },
+                filterBuilding(propertyForFilter){
+                    let result = [];
+                    for (property=0; property < propertyForFilter.length; property++) {
+                        if ('buildingType' in propertyForFilter[property]) {
+                            if (propertyForFilter[property].buildingType == this.building) {
+                                result.push(propertyForFilter[property]);
+                            }
+                        }
+                    }
+                    this.searchMan= result;
+                    return result;
+                },
+                filterPrice(propertyForFilter){
+                    let result = [];
+                    for (property=0; property < propertyForFilter.length; property++) {
+                        if ('price' in propertyForFilter[property]) {
+                            if (propertyForFilter[property].price >= this.minPrice && this.selectedProperty[property].price <= this.maxPrice) {
+                                result.push(propertyForFilter[property]);
+                            }
+                        }
+                    }
+                    this.searchMan= result;
+                    return result;
+                },
+            },
+            mounted: function () {
+                this.fetchProperties();
+                this.selectedType = 'all';
+                this.propertyType();
+            },
+            computed: {
+                currentYear() {
+                    return new Date().getFullYear();
+                },
+            }
+        })
+
+    </script>
+
   <script>
+
+$(".js-range-slider").ionRangeSlider({
+  skin: "square",
+  prefix: "₦",
+  prettify_enabled: true,
+  step: 500000,
+        prettify_separator: ","
+});
+
     (function ($) {
   'use strict';
-
-  //  Count Up
-  function counter() {
-    var oTop;
-    if ($('.counter').length !== 0) {
-      oTop = $('.counter').offset().top - window.innerHeight;
-    }
-    if ($(window).scrollTop() > oTop) {
-      $('.counter').each(function () {
-        var $this = $(this),
-          countTo = $this.attr('data-count');
-        $({
-          countNum: $this.text()
-        }).animate({
-          countNum: countTo
-        }, {
-          duration: 1000,
-          easing: 'swing',
-          step: function () {
-            $this.text(Math.floor(this.countNum));
-          },
-          complete: function () {
-            $this.text(this.countNum);
-          }
-        });
-      });
-    }
-  }
   $(window).on('scroll', function () {
-    counter();
-  });
 
-  // bottom to top
-  $('#top').click(function () {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 'slow');
-    return false;
   });
-  // bottom to top
 
   $(document).on('ready', function () {
 
     // Nice Select
     $('select').niceSelect();
-    // -----------------------------
-    //  Client Slider
-    // -----------------------------
     $('.category-slider').slick({
       slidesToShow: 8,
       infinite: true,
@@ -694,49 +666,7 @@
       autoplay: false,
       autoplaySpeed: 2000
     });
-    // -----------------------------
-    //  Select Box
-    // -----------------------------
-    // $('.select-box').selectbox();
-    // -----------------------------
-    //  Video Replace
-    // -----------------------------
-    $('.video-box img').click(function () {
-      var video = '<iframe allowfullscreen src="' + $(this).attr('data-video') + '"></iframe>';
-      $(this).replaceWith(video);
-    });
-    // -----------------------------
-    //  Coupon type Active switch
-    // -----------------------------
-    $('.coupon-types li').click(function () {
-      $('.coupon-types li').not(this).removeClass('active');
-      $(this).addClass('active');
-    });
-    // -----------------------------
-    // Datepicker Init
-    // -----------------------------
-    $('.input-group.date').datepicker({
-      format: 'dd/mm/yy'
-    });
-    // -----------------------------
-    // Datepicker Init
-    // -----------------------------
 
-    // -----------------------------
-    // Button Active Toggle
-    // -----------------------------
-    $('.btn-group > .btn').click(function () {
-      $(this).find('i').toggleClass('btn-active');
-    });
-    // -----------------------------
-    // Coupon Type Select
-    // -----------------------------
-    $('#online-code').click(function () {
-      $('.code-input').fadeIn(500);
-    });
-    $('#store-coupon, #online-sale').click(function () {
-      $('.code-input').fadeOut(500);
-    });
     /***ON-LOAD***/
     jQuery(window).on('load', function () {
 
@@ -758,7 +688,7 @@
     fade: true
   });
 
-  // Client Slider 
+  // Client Slider
   $('.category-slider').slick({
     dots: false,
     slidesToShow: 5,
@@ -797,7 +727,7 @@
     ]
   });
 
-  // trending-ads-slide 
+  // trending-ads-slide
 
   $('.trending-ads-slide').slick({
     dots: false,
@@ -872,5 +802,6 @@ $('#range').on("input", function() {
     $('.output').val(this.value +",000  $" );
     }).trigger("change");
   </script>
+
   </body>
 </html>

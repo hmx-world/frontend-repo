@@ -61,10 +61,7 @@ td.default {
 .bg-blue {
   border-top:3px solid #0097CF;
 }
-.sep {
-  background:#F5F5F5;
-  font-weight:bold;
-}
+
 .txt-l { font-size:28px; font-weight:bold; }
 .txt-top { position:relative; top:-9px; left:-2px; }
 .tick { font-size:18px; color:#000; }
@@ -87,8 +84,11 @@ td.default {
   }
 }
         </style>
+      <link rel = "icon" href =
+              "https://svgshare.com/i/N9e.svg"
+            type = "image/x-icon">
   </head>
-  <body>
+  <body class="m-0">
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container-fluid px-md-4	">
@@ -99,9 +99,9 @@ td.default {
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
-			  <li class="nav-item"><a href="matchpage.html" class="nav-link">Properties</a></li>
-			  <li class="nav-item"><a href="nomatchpage.html" class="nav-link">No Properties</a></li>
+<!--	          <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>-->
+			  <li class="nav-item"><a href="propertiespage.html" class="nav-link">Properties</a></li>
+<!--			  <li class="nav-item"><a href="nomatchpage.html" class="nav-link">No Properties</a></li>-->
 	          <li class="nav-item active"><a href="planpage.html" class="nav-link">Become a provider</a></li>
 	          <li class="nav-item"><a href="contactpage.html" class="nav-link">Contact us</a></li>
 	       
@@ -136,9 +136,9 @@ td.default {
                     <span class="tick">&#10003;</span>
 </div>
 <div class="col-md-11"  >
-    <span class="tick" > <p style="color: #4E4E56;font-size: 14PX;"> <strong>Matching Property</strong> <br>
+    <span class="tick" > </span> <p style="color: #4E4E56;font-size: 14PX;"> <strong>Matching Property</strong> <br>
      Cut down time by matching client’s request against your database. </p>
-    </span>
+
 </div>
              </div>
              <div class="row">
@@ -146,9 +146,9 @@ td.default {
                     <span class="tick">&#10003;</span>
 </div>
 <div class="col-md-11"  >
-    <span class="tick" > <p style="color: #4E4E56;font-size: 14PX;"> <strong>Integrated Database</strong> <br>
+    <span class="tick" ></span> <p style="color: #4E4E56;font-size: 14PX;"> <strong>Integrated Database</strong> <br>
         Real Estate firms exchange leads and information regarding properties </p>
-    </span>
+
 </div>
              </div>
              <div class="row">
@@ -156,9 +156,9 @@ td.default {
                     <span class="tick">&#10003;</span>
 </div>
 <div class="col-md-11"  >
-    <span class="tick" > <p style="color: #4E4E56;font-size: 14PX;"> <strong>Managing Properties</strong> <br>
+    <span class="tick" ></span> <p style="color: #4E4E56;font-size: 14PX;"> <strong>Managing Properties</strong> <br>
         Your Firm can list and manage properties using the dashboard.  </p>
-    </span>
+
 </div>
              </div>
           <div class="row" >
@@ -174,7 +174,7 @@ td.default {
 
           <div class="col-md-6 order-md-last d-flex">
               <div id="map" class="bg-white">
-              <img src="images/fine.png">
+              <img class="img-fluid " style="object-fit: cover" src="images/fine.png">
                       </div>
                   </div>
               </div>
@@ -183,13 +183,13 @@ td.default {
 
     <section class="ftco-section testimony-section">
       <div class="container">
-		<div class="row justify-content-left mb-4" style="position: relative; left:-11.5%; padding: inherit">
+		<div class="ellipsel row justify-content-left mb-4" >
 			<img src="images/Ellipse.png">
 		</div>
        
         <div class="row justify-content-center mb-3">
             <div class="col-md-7 text-center heading-section ftco-animate">
-                <span class="subheading"><p style="font-weight: 900px;font-size: 36px;">How it works</p></span> 
+                <span class="subheading"><p style="font-weight: 900px;font-size: 36px;">How it works</p></span>
             </div>
           </div>
           <div class="row ftco-animate" >
@@ -215,9 +215,9 @@ td.default {
                     </div> </li> </a>
                   </ul>
 
-         <div class="row lg-12" style="float: right;  position: relative; left:98.5%; padding-bottom: 50px;">
-			<img src="images/ellipse2.svg">
-		</div> 
+                  <div class="row lg-12 ellipse" >
+                    <img src="images/ellipse2.svg">
+                  </div>
 		  </div>
 		   <div style="position: relative; align-items: center; height: 40px; justify-content: center;">
                  <h1 style="text-align: center; color: #044CBC; font-size: 36px; font-weight: bold;"> <strong>Our plans</strong> </h1>
@@ -234,7 +234,7 @@ td.default {
 			
 			<article class="article-p"> 
                 
-                <table>
+                <table class="table-responsive table-full-width">
                   <thead>
                     <tr >
                       <th class="hide"></th>
@@ -366,37 +366,36 @@ td.default {
               </ul>
             </div>
           </div>
-          
-          
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-3 ml-md-4">
-              <h2 class="ftco-heading-2"  style="font-weight: bold; font-size: 18px;">Useful links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="pb-1 d-block">Home</a></li>
-                <li><a href="#" class="pb-1 d-block">Become a provider</a></li>
-                <li><a href="#" class="pb-1 d-block">Properties</a></li>
-				<li><a href="#" class="pb-1 d-block">About</a></li>
-				<li><a href="#" class="pb-1 d-block">Provider Dashboard</a></li>
-				<li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
-				<li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-3">
-            	<h2 class="ftco-heading-2"  style="font-weight: bold; font-size: 18px;">Contact</h2>
-            	<div class="block-23 mb-3">
-	              <ul style="list-style: none;">
-	                	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text"> hmxworld@gmail.com</span></a></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a></li>
 
-	              </ul>
-	            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-3 ml-md-4">
+                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Useful links</h2>
+                    <ul class="list-unstyled">
+
+                        <li><a href="planpage.html" class="pb-1 d-block">Become a provider</a></li>
+                        <li><a href="dashboardprofile.html" class="pb-1 d-block">Provider Dashboard</a></li>
+                        <li><a href="#" class="pb-1 d-block">Privacy Policy</a></li>
+                        <li><a href="#" class="pb-1 d-block">Terms and Conditions</a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-3 ml-md-4">
+                    <h2 class="ftco-heading-2" style="font-weight: bold; font-size: 18px;">Contact</h2>
+
+                    <ul  class="list-unstyled">
+                        <li><a href="#"><span class="icon icon-envelope"></span><span
+                                class="text">hmxworld@gmail.com</span></a></li>
+                        <li><a href="#"><span class="icon icon-phone"></span><span class="text">0800-Hmx-World </span></a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
         </div>
         <div class="row">
-          <div class="col-md-12 text-left">
+          <div class="col-md-12 text-center">
 
             <p>
   Copyright &copy; HMX.world-<script>document.write(new Date().getFullYear());</script> 
@@ -424,7 +423,8 @@ td.default {
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-
+      <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
   <script src="js/main.js"></script>
     
   </body>

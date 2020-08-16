@@ -15,7 +15,6 @@
 /*      light colors         */
 
 @keyframes spin {
-
     from {
         transform: rotate(0deg);
     }
@@ -51,6 +50,69 @@
     }
 }
 
+
+
+.lds-ripple {
+    position: relative;
+}
+.lds-ripple1 {
+    position: relative;
+}
+.lds-ripple div {
+    position: absolute;
+    margin-left: 60%;
+    margin-top: -11px;
+    border: 4px solid #FFFFFF ;
+    opacity: 1;
+
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple1 div {
+    position: absolute;
+    border: 4px solid #044CBC ;
+    opacity: 1;
+
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2), .lds-ripple1 div:nth-child(2)  {
+    animation-delay: -0.5s;
+}
+@keyframes lds-ripple{
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}@keyframes lds-ripple1{
+     0% {
+         top: 36px;
+         left: 36px;
+         width: 0;
+         height: 0;
+         opacity: 1;
+     }
+     100% {
+         top: 0px;
+         left: 0px;
+         width: 72px;
+         height: 72px;
+         opacity: 0;
+     }
+ }
+
+
 /*           Font Smoothing      */
 
 body,
@@ -77,7 +139,7 @@ td,
 button.close {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+
     font-weight: 400;
 }
 
@@ -159,6 +221,7 @@ h6 .small,
 .h6 .small {
     color: #9A9A9A;
     font-weight: 300;
+
     line-height: 1.5;
 }
 
@@ -295,7 +358,12 @@ input:focus {
     z-index: 1;
 }
 
-
+.page-header .title-container {
+    color: #fff;
+    position: relative;
+    top: 250px;
+    z-index: 3;
+}
 
 .page-header .filter:after {
     background: transparent linear-gradient(to bottom, #9368e9 0%, #943bea 100%) repeat scroll 0 0/150% 150%;
@@ -383,7 +451,7 @@ body>.navbar-collapse .logo p {
     margin: 10px 10px;
     color: #FFFFFF;
     line-height: 20px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Roboto;
 }
 
 .sidebar .logo .simple-text,
@@ -526,7 +594,7 @@ body>.navbar-collapse .logo p {
     margin: 10px 10px;
     color: #FFFFFF;
     line-height: 20px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Roboto;
 }
 
 .sidebar .logo .simple-text,
@@ -867,13 +935,12 @@ body>.navbar-collapse[data-color="purple"]:after {
 .btn {
     border-width: 2px;
     background-color: transparent;
-    font-weight: 500;
+    font-weight: 400;
     opacity: 0.8;
-    width: 100%;
-    cursor: pointer;
+    filter: alpha(opacity=80);
     padding: 8px 16px;
     border-color: #888888;
-    color: black;
+    color: #888888;
 }
 
 .btn:hover,
@@ -882,9 +949,8 @@ body>.navbar-collapse[data-color="purple"]:after {
 .btn.active,
 .open>.btn.dropdown-toggle {
     background-color: transparent;
-    color: #000;
-    border: 2px solid #044cbc;
-    
+    color: #777777;
+    border-color: #777777;
 }
 
 .btn.disabled,
@@ -961,7 +1027,8 @@ fieldset[disabled] .btn.active {
 
 .btn-primary {
     border-color: #3472F7;
-    color: #3472F7;
+    color: white;
+    background-color: #044CBC;
 }
 
 .btn-primary:hover,
@@ -1785,7 +1852,7 @@ fieldset[disabled] .form-control {
     border-bottom-width: 1px;
     font-size: 12px;
     text-transform: uppercase;
-    color: #9A9A9A;
+
     font-weight: 400;
     padding-bottom: 5px;
     border-top: none !important;
@@ -3219,7 +3286,7 @@ Copyright (c) 2015 Daniel Eden
 
 .ct-bar {
     fill: none;
-    stroke-width: 10px;
+    stroke-width: 49px;
 }
 
 .ct-slice-donut {
@@ -3231,7 +3298,7 @@ Copyright (c) 2015 Daniel Eden
 .ct-series-a .ct-line,
 .ct-series-a .ct-bar,
 .ct-series-a .ct-slice-donut {
-    stroke: #1DC7EA;
+    stroke: #4285F5;
 }
 
 .ct-series-a .ct-slice-pie,
@@ -3243,7 +3310,7 @@ Copyright (c) 2015 Daniel Eden
 .ct-series-b .ct-line,
 .ct-series-b .ct-bar,
 .ct-series-b .ct-slice-donut {
-    stroke: #FB404B;
+    stroke:#FFE066;
 }
 
 .ct-series-b .ct-slice-pie,
